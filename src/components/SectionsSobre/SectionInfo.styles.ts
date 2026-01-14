@@ -5,15 +5,15 @@ export const Container = styled.section`
   justify-content: center;
   align-items: center;
   gap: 40px;
-  padding: 60px 8%;
-  background: #f9f9f9;
-  border-radius: 20px;
+  padding: 5rem 8%;
+  background: #EEF5EA  ;
   caret-color: transparent;
-
-  @media (max-width: 960px) {
-    flex-direction: column;
-    text-align: center;
-    padding: 6px 8%;
+  max-width: 1500px;
+  margin: 1.3rem auto;
+  border-radius: 20px;
+  box-shadow: 10px 10px 8px 1px #999;
+  @media (max-width: 1253px) {
+    padding: 3rem 6%;
   }
 `;
 
@@ -44,6 +44,7 @@ export const ImagesArea = styled.div`
     height: 370px;
     object-fit: cover;
     border-radius: 20px;
+    aspect-ratio: 16 / 9; /* ← Mantém proporção automática */
     width: 100%;
     transition:
       transform 0.3s ease,
@@ -56,12 +57,21 @@ export const ImagesArea = styled.div`
   }
 
   img:first-child {
-    max-width: 220px;
+    max-width: 635px;
   }
 
-  img:last-child {
-    max-width: 380px;
+  @media (max-width: 1253px) {
+    max-width: 500px;
+
+    img {
+      height: auto; /* ← Altura automática baseada no aspect-ratio */
+      max-height: 280px; /* ← Limita a altura máxima */
+    }
   }
+
+  /* img:last-child {
+    max-width: 380px;
+  } */
 
   @media (max-width: 1050px) {
     img {

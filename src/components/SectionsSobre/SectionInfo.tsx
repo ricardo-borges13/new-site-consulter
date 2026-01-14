@@ -35,8 +35,10 @@ export const SectionInfo = ({
       </S.TextArea>
 
       <S.ImagesArea>
+
         <img src={image1} alt="" />
         {image2 && <img src={image2} alt="" />}
+
       </S.ImagesArea>
     </S.Container>
   );

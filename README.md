@@ -137,3 +137,42 @@ Componente de banner principal (hero section) utilizado na página inicial do si
 - **Tipografia escalável**: Tamanhos de fonte ajustados por breakpoint
 - **Acessível**: Estrutura semântica com `<section>` e headings adequados
 - **Imagem**: A imagem é inserida no arquivo de styled component (`heto.styles.ts`)
+
+-------------------------------------------------------------------------------
+
+### Componente `SectionInfo`
+Componente responsável para informar sobre a empresa que é utilizado na página inicial do site.
+Apresenta um título, descrição, foto(s) e um botão "Saiba mais" que direciona para outra página com mais detalhes sobre a empresa.
+
+#### Local de Uso
+- Importado e utilizado na page Home (`Home.tsx`)
+
+#### Estrutura de Props
+```tsx
+const sobreData: SectionInfoProps = {
+  title: 'Por que escolher a Consulter?',        // Título da seção
+  description: `Texto com HTML`,  // Descrição (aceita HTML)
+  image1,                                         // Imagem principal (obrigatória)
+  image2,                                         // Segunda imagem (opcional)
+  buttonText: 'Saiba mais',                      // Texto do botão (opcional)
+  path: '/quem-somos',                           // Rota de destino (opcional)
+};
+```
+
+#### Como Usar
+1. Importe a imagem no `Home.tsx`: `import image1 from '@/assets/images/foto.jpg'`
+2. Crie o objeto `sobreData` com as informações desejadas
+3. Passe as props: `<SectionInfo {...sobreData} />`
+
+#### Responsividade
+- **Desktop**: Layout horizontal (texto à esquerda, imagens à direita)
+- **Mobile (< 960px)**: Layout vertical (texto em cima, imagens embaixo)
+- **Tablets (< 1050px)**: Imagens ficam ocultas
+
+#### Observações
+- As props do componente vêm da constante `sobreData` no Home
+- A descrição aceita HTML (use `<p>` e `<strong>`)
+- Se não passar `buttonText`, o botão não aparece
+- Pode usar 1 ou 2 imagens conforme necessário
+
+--------------------------------------------------------------------------------

@@ -12,7 +12,7 @@ export const HeroContainer = styled.section`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
+  box-shadow: 1px 2px 18px 1px #080808;
   display: flex;
   align-items: center;
   padding: 4rem 2rem;

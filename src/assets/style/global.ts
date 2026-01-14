@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   min-height: 100%;
   font-family: 'Poppins', sans-serif;
-  background-color: #8592a0;
+  background-color: #FFFFFF;
   color: #1A1A1A;
   overflow-x: hidden;
   }
