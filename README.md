@@ -12,6 +12,35 @@ Foi criado as pastas mais importantes e já definido um layout no componente e r
 - Styled-components
 - Bootstrap
 
+## 🏷️ Versionamento da Aplicação
+
+O projeto utiliza o número de versão definido no arquivo `package.json` como **fonte única da versão da aplicação**, permitindo que a versão exibida no sistema seja atualizada de forma centralizada.
+Essa abordagem facilita manutenção, controle de releases e rastreabilidade de builds.
+---
+
+### 📁 Arquivo `src/version.ts`
+
+Foi criado o arquivo `version.ts`, responsável por importar a versão diretamente do `package.json` e disponibilizá-la para toda a aplicação.
+
+Para permitir a importação do arquivo `package.json` dentro do projeto React com TypeScript, foram adicionadas as seguintes opções no arquivo `tsconfig.app.json`:
+
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  }
+}
+
+### Utilização nos Componentes
+A versão da aplicação pode ser utilizada em qualquer componente através da constante APP_VERSION.
+
+Exemplo de uso no componente Footer:
+
+import { APP_VERSION } from '../../version';
+
+<small>Versão {APP_VERSION}</small>
+
+--------------------------------------------------------------------------
 ## 🎨 Estilos Globais
 
 ### Pasta `styles` — arquivo `global.ts`
@@ -25,6 +54,7 @@ O `GlobalStyle` define:
 
 Esse arquivo é carregado uma única vez na aplicação.
 
+--------------------------------------------------------------------------
 
 ## 🧭 Rotas (`router`)
 
@@ -49,10 +79,9 @@ A pasta `router` é responsável por **centralizar a configuração de rotas da 
 ### Integração com a aplicação
 O roteamento é inicializado no arquivo `App.tsx` através do componente:
 
-```ts
 <RouterProvider router={router} />
 
-
+----------------------------------------------------------------------------
 
 ## 🧩 Componentes Globais
 
@@ -72,16 +101,17 @@ Componente responsável por **resetar o scroll da página ao trocar de rota**.
 - Melhorar a experiência do usuário em navegação SPA
 - Evitar que novas páginas carreguem com scroll anterior
 
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
 ### Componente `Layout`
 Componente responsável por **definir o layout global da aplicação**, envolvendo todas as páginas que compartilham estrutura visual comum.
 
-### Funcionamento
+#### Funcionamento
 - Renderiza elementos fixos da aplicação (Header e Footer)
 - Utiliza o componente `<Outlet />` do React Router para renderizar o conteúdo dinâmico das páginas
 - Permite centralizar comportamentos globais (ex: `ScrollToTop`)
 
-### Local de Uso
+#### Local de Uso
 - Importado e utilizado na configuração de rotas (`AppRoutes.tsx`)
 - Atua como rota pai para páginas que utilizam layout compartilhado
 
@@ -92,3 +122,18 @@ Componente responsável por **definir o layout global da aplicação**, envolven
 
 ----------------------------------------------------------------------------------
 
+### Componente `Hero`
+
+Componente de banner principal (hero section) utilizado na página inicial do site. Apresenta título, subtítulo e botões de call-to-action sobre uma imagem de fundo impactante.
+
+#### Local de Uso
+- Importado e utilizado na page Home (`Home.tsx`)
+
+#### 🎨 Características
+
+- **Responsivo**: Adaptado para desktop, tablet e mobile
+- **Background dinâmico**: Imagem de fundo com overlay escuro para melhor legibilidade
+- **Botões interativos**: Efeitos hover e active states
+- **Tipografia escalável**: Tamanhos de fonte ajustados por breakpoint
+- **Acessível**: Estrutura semântica com `<section>` e headings adequados
+- **Imagem**: A imagem é inserida no arquivo de styled component (`heto.styles.ts`)

@@ -1,15 +1,23 @@
 import { Outlet } from 'react-router-dom';
-import { HeaderMain } from '../../pages/Header/Header';
-import { Footer } from '../../pages/Footer/Footer';
+import * as S from './Layout.styles';
+
 import { ScrollToTop } from '../ScrollToTop/ScrollToTop';
+import { HeaderMain, HeaderTop, contactData } from '../Header';
+import { Footer } from '../Footer/Footer';
 
 export const Layout = () => {
   return (
-    <>
-      <ScrollToTop />
-      <HeaderMain />
-      <Outlet />
-      <Footer />
-    </>
+
+      <S.LayoutWrapper>
+        <ScrollToTop />
+        <HeaderTop {...contactData} />
+        <HeaderMain />
+
+        <S.MainContent>
+          <Outlet />
+        </S.MainContent>
+         <Footer {...contactData} />
+      </S.LayoutWrapper>
+
   );
 };
