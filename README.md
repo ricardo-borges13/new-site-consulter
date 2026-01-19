@@ -175,4 +175,41 @@ const sobreData: SectionInfoProps = {
 - Se não passar `buttonText`, o botão não aparece
 - Pode usar 1 ou 2 imagens conforme necessário
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+### Componente `CardProduct`
+Componente responsável por criar os cards de produtos que são utilizados dentro do componente ProductGroup.
+Apresenta um título, descrição, duas imagens (ícone e imagem principal) e dois botões ("Saiba mais" como texto e seta verde "→") que direcionam para a página de detalhes do produto.
+
+#### Local de Uso
+- Importado e utilizado no componente ProductGroup (`ProductGroup.tsx`) que está presente na Home (`Home.tsx`).
+
+#### Estrutura de Props
+```tsx
+{
+  title: 'Borrachas',                              // Título do produto
+  description: 'Borrachas industriais...',         // Descrição do produto
+  images: [icone1, image1],                        // [0] = ícone, [1] = imagem principal
+  buttonText: 'Saiba mais',                        // Texto do botão
+  onButtonClick: () => navigate('/produtos/borrachas')  // Função ao clicar
+}
+```
+
+#### Como Usar
+1. Importe as imagens no arquivo que usa `ProductGroup`. OBS: O caminho da imagem é na `Home`
+2. Passe as props ao chamar o componente:
+```tsx
+<CardProduct
+  title="Borrachas"
+  description="Borrachas industriais e pró-indensça..."
+  images={[icone1, image1]}
+  buttonText="Saiba mais"
+  onButtonClick={() => navigate('/produtos/borrachas')}
+/>
+```
+
+#### Observações
+- O array `images` deve ter exatamente 2 imagens: `[ícone, imagemPrincipal]`
+- A primeira imagem (`images[0]`) é o ícone que aparece ao lado do título
+- A segunda imagem (`images[1]`) é a imagem principal do card
+- Os dois botões executam a mesma função `onButtonClick`
+- O caminho das imagens é definido na página que importa o `ProductGroup`
