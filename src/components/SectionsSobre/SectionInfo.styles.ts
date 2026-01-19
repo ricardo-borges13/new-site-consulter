@@ -6,7 +6,7 @@ export const Container = styled.section`
   align-items: center;
   gap: 40px;
   padding: 5rem 8%;
-  background: #EEF5EA  ;
+  background: #eef5ea;
   caret-color: transparent;
   max-width: 1500px;
   margin: 1.3rem auto;
@@ -41,7 +41,7 @@ export const ImagesArea = styled.div`
   gap: 30px;
 
   img {
-    height: 370px;
+    height: 450px;
     object-fit: cover;
     border-radius: 20px;
     aspect-ratio: 16 / 9; /* ← Mantém proporção automática */
@@ -57,24 +57,30 @@ export const ImagesArea = styled.div`
   }
 
   img:first-child {
-    max-width: 635px;
+    max-width: 340px;
   }
 
   @media (max-width: 1253px) {
-    max-width: 500px;
+    max-width: 600px;
 
     img {
-      height: auto; /* ← Altura automática baseada no aspect-ratio */
-      max-height: 280px; /* ← Limita a altura máxima */
+      width: clamp(260px, 30vw, 300px);
+      height: clamp(360px, 40vw, 400px);
+    }
+
+    @media (max-width: 650px) {
+      img:first-child {
+        display: none;
+      }
     }
   }
 
-  /* img:last-child {
-    max-width: 380px;
-  } */
+  img:last-child {
+    width: clamp(220px, 25vw, 260px);
+  }
 
-  @media (max-width: 1050px) {
-    img {
+  @media (max-width: 1000px) {
+    img:last-child {
       display: none;
     }
   }
