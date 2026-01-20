@@ -272,36 +272,160 @@ O componente renderiza **4 cards fixos** com as seguintes informações:
 
 
 -----------------------------------------------------------
+## COMPONENTE DE CONTATO
+
+### Componente `FormContact`
+Formulário de contato construído com React Hook Form para validação e gerenciamento de estado.
+
+#### Dependências
+```bash
+npm install react-hook-form react-hot-toast
+```
+
+#### Local de Uso
+- **Caminho**: `src/components/FormContact/FormContact.tsx`
+- **Usado em**: `SectionContactUs`
+
+#### Estrutura de Dados
+```typescript
+type FormInputs = {
+  nome: string;
+  empresa: string;
+  telefone?: string;
+  email: string;
+  assunto?: string;
+  mensagem: string;
+};
+```
+**Validações implementadas:**
+- Nome: obrigatório
+- Email: obrigatório + validação de formato
+- Assunto: obrigatório
+- Mensagem: obrigatória + mínimo de 5 caracteres
+- Empresa e Telefone: opcionais
 
 
-### Componente `FormContac`
-Componente responsável pelo formulário de cotato.
+#### Como Usar
+- É feito o destruct de register, handleSubmit, reset, formState para o formulário Hook form poder executar as tarefas necessárias:
 
-Estamos utilizando a biblioteca HOOK FORM(npm install react-hook-form)
+**React Hook Form - Principais recursos:**
 
-regiter: Conecta um campo do formulário ao React Hook Form. Sem o register, o formulário não sabe que o campo existe.
+| Hook/Método | Função |
+|-------------|--------|
+| `register` | Registra e valida campos do formulário |
+| `handleSubmit` | Processa o envio após validação |
+| `reset` | Limpa todos os campos e erros |
+| `formState.errors` | Exibe mensagens de erro por campo |
+| `formState.isSubmitting` | Controla estado de carregamento durante envio |
 
-handleSubmit: Gerencia o envio do formulário.
-1-Valida todos os campos
-2-Se houver erro → não envia
-3-Se estiver tudo ok → chama sua função
+**Fluxo de funcionamento:**
+1. Campos são registrados via `register`
+2. Usuário preenche o formulário
+3. Ao clicar em "Enviar", `handleSubmit` valida os dados
+4. Se houver erros, exibe mensagens via `formState.errors`
+5. Se válido, executa `onSubmit` com `isSubmitting = true`
+6. Exibe toast de sucesso/erro via `react-hot-toast`
+7. Após sucesso, executa `reset()` para limpar o formulário
 
-reset: Reseta o formulário para o estado inicial.
-1-Limpar todos os campos
-2-Voltar valores padrão
-3-Limpar erros
+#### Notificações (Toast)
+- **Posição**: Centro da tela
+- **Estilo**: Dark mode com bordas arredondadas
+- **Duração**: 9s (sucesso) / 4s (erro)
+- Instalado biblioteca react-hot-toast para personalizar o alert.
 
-formState: Estado interno do formulário. Ele contém várias informações importantes sobre o formulário naquele momento.
+#### Integração com Backend
+O código atual possui simulação de envio. Para integrar com Formspree (ou outro serviço), descomente a função `onSubmitTeste`:
+```typescript
+// Trocar onSubmit por onSubmitTeste no handleSubmit
+const onSubmitTeste = async (data: FormInputs) => {
+  const response = await fetch('https://formspree.io/f/SEU_ID', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  // ... tratamento de resposta
+};
+```
 
-Como tudo trabalha junto (visão geral)
+------------------------------------------------------------------------------------------
 
-1-register → registra campos
-2-Usuário digita
-3-handleSubmit é acionado
-4-Validação acontece
-5-formState.errors é atualizado
-6-Se válido → onSubmit
-7-Durante envio → isSubmitting = true
-8-Após sucesso → reset()
+### Componente `SectionContacUs`
+Seção completa de contato contendo informações de contato (telefones, email) e o formulário `FormContact`.
 
-Instalado biblioteca react-hot-toast para personalizar o alert.
+
+#### Local de Uso
+- **Caminho**: `src/components/SectionContactUs/SectionContactUs.tsx`
+- **Usado em**: Página `Home`
+
+#### Props (Interface ContactInfo)
+```typescript
+export type ContactInfo = {
+  phone: string;        // Telefone principal (obrigatório)
+  phone2?: string;      // Telefone secundário (opcional)
+  phone3?: string;      // Telefone terciário (opcional)
+  nome2?: string;       // Nome do contato 2 (opcional)
+  nome3?: string;       // Nome do contato 3 (opcional)
+  email: string;        // Email (obrigatório)
+  text?: string;        // Texto adicional (opcional)
+};
+```
+
+#### Como Usar
+```typescript
+import { SectionsContactus } from './components/SectionContactUs/SectionContactUs';
+import { contactData } from '../../components/Header';
+
+// Na página Home
+<SectionsContactus {...contactData} />
+
+```
+- O arquivo `contactData.ts` está dentro da pasta HEADER (componentes) com as informações de telefone, nome, e-mail e etc. Essas informações é enviada para o "header" e "Entre em Contato" (SectionContacus).
+- A tipagem de `contactData` fica na pasta global de TYPES `contact.d.ts`:
+export type ContactInfo = {
+  phone: string;
+  phone2?: string;
+  phone3?: string;
+  nome2? : string;
+  nome3? : string;
+  email: string;
+  text?: string;
+};
+- As imagens dos ícones é inserido neste componente
+
+#### Funções auxiliares
+- É criado uma variável para guardar os valores formatado do telefone, e-mail, nome e icone:
+  const formatPhoneHref = (value: string) =>
+    `tel:${value.replace(/[^\d+]/g, '')}`;
+
+ **`formatPhoneHref(value: string)`**
+- Remove caracteres não numéricos do telefone
+- Adiciona prefixo `tel:` para criar link clicável
+- Exemplo: `"(11) 9999-9999"` → `"tel:+11999999999"`
+
+**Renderização condicional de contatos:**
+```typescript
+const contacts = [
+  { nome: 'Central', phone, icon: FaPhone },
+  { nome: nome2, phone: phone2, icon: FaUserTie },
+  { nome: nome3, phone: phone3, icon: FaUser },
+].filter(item => item.phone); // Remove itens sem telefone
+```
+#### Estrutura Visual
+```
+┌─────────────────────────────────────┐
+│  Entre em Contato                   │
+│  Ficou com alguma dúvida?           │
+│                                     │
+│  📞 Central: (XX) XXXX-XXXX         │
+│  👔 Nome2: (XX) XXXX-XXXX           │
+│  👤 Nome3: (XX) XXXX-XXXX           │
+│  ✉️  email@exemplo.com              │
+│                                     │
+│  [Formulário de Contato]            │
+└─────────────────────────────────────┘
+```
+#### Observações Importantes
+- Compartilha `contactData` com o componente `Header`
+- Telefones e emails são links clicáveis (facilitam contato em mobile)
+- Sistema de filtro evita renderizar campos vazios
+- Layout responsivo com grid adaptativo

@@ -71,7 +71,7 @@ export const FormContact = () => {
         }}
         toastOptions={{
           style: {
-            background: '#7dbb3a',
+            background: '#2a2a2a',
             color: '#fff',
             fontSize: '16px',
             padding: '16px 24px',

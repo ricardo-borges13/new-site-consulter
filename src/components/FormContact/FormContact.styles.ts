@@ -53,11 +53,11 @@ export const FormContainer = styled.div`
 
 
   button {
-    background-color: #94c11f;
+    background-color: #2a2a2a;
     color: white;
     font-weight: 700;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 0.6rem 1.5rem;
     cursor: pointer;
     align-self: center;
@@ -75,7 +75,7 @@ export const FormContainer = styled.div`
 
   .success {
     text-align: center;
-    color: #006400;
+    color: #2a2a2a;
     font-weight: 600;
   }
 `;
