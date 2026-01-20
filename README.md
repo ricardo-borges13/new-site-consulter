@@ -213,3 +213,59 @@ Apresenta um título, descrição, duas imagens (ícone e imagem principal) e do
 - A segunda imagem (`images[1]`) é a imagem principal do card
 - Os dois botões executam a mesma função `onButtonClick`
 - O caminho das imagens é definido na página que importa o `ProductGroup`
+
+
+------------------------------------------------------------------------------
+
+### Componente `ProductGroup`
+Componente responsável por receber os cards do `CardProduct`
+Apresenta um título, quatro imagens e quatro ícones que representa as "LINHAS DE PRODUTOS" da empresa representado pelos cards.
+
+Componente responsável por exibir as linhas de produtos da empresa em formato de cards.
+Apresenta um título da seção e quatro cards fixos (usando o componente `CardProduct`) que representam as categorias: Borrachas, Material Elétrico, Acessórios e Soluções Industriais.
+
+
+#### Local de Uso
+- Importado e utilizado na page HOME (`Home.tsx`).
+
+#### Estrutura de Props
+```tsx
+{
+  title: 'Nossas linhas de produto',  // Título da seção
+  image1: imageProduto1,              // Imagem principal - Borrachas
+  image2: imageProduto2,              // Imagem principal - Material Elétrico
+  image3: imageProduto3,              // Imagem principal - Acessórios
+  image4: imageProduto4,              // Imagem principal - Soluções Industriais
+  icone1: iconeBorrachas,             // Ícone - Borrachas
+  icone2: iconeEletrico,              // Ícone - Material Elétrico
+  icone3: iconeAcessorios,            // Ícone - Acessórios
+  icone4: iconeSolucoes,              // Ícone - Soluções Industriais
+}
+```
+
+#### Como Usar
+1. Importe as imagens (ícones e imagens principais) no `Home.tsx`:
+```tsx
+import imageProduto1 from '@/assets/images/borrachas.jpg';
+import icone1 from '@/assets/images/icone-borrachas.svg';
+// ... repita para os outros 3 produtos
+```
+
+2. Passe as props ao chamar o componente:
+```tsx
+
+```
+#### Cards Renderizados
+O componente renderiza **4 cards fixos** com as seguintes informações:
+
+1. **Borrachas**: "Borrachas industriais para vedação, isolamento e aplicações de alta resistência."
+2. **Material Elétrico**: "Componentes elétricos industriais para automação, manutenção e infraestrutura."
+3. **Acessórios**: "Acessórios industriais para suporte, fixação e montagem de sistemas."
+4. **Soluções Industriais**: "Soluções personalizadas para processos e sistemas industriais."
+
+#### Observações
+- O componente recebe apenas as **imagens** via props; os títulos e descrições são fixos no código
+- Todos os cards navegam para sua respectiva página (ex: `/produtos/acessorios`) ao clicar (ajustar rotas conforme necessário)
+- Cada card usa internamente o componente `CardProduct`
+- As imagens são organizadas em pares `[ícone, imagemPrincipal]` antes de serem passadas ao `CardProduct`
+- O layout dos cards é controlado pelo `ProductGroup.styles.ts`
