@@ -269,3 +269,39 @@ O componente renderiza **4 cards fixos** com as seguintes informações:
 - Cada card usa internamente o componente `CardProduct`
 - As imagens são organizadas em pares `[ícone, imagemPrincipal]` antes de serem passadas ao `CardProduct`
 - O layout dos cards é controlado pelo `ProductGroup.styles.ts`
+
+
+-----------------------------------------------------------
+
+
+### Componente `FormContac`
+Componente responsável pelo formulário de cotato.
+
+Estamos utilizando a biblioteca HOOK FORM(npm install react-hook-form)
+
+regiter: Conecta um campo do formulário ao React Hook Form. Sem o register, o formulário não sabe que o campo existe.
+
+handleSubmit: Gerencia o envio do formulário.
+1-Valida todos os campos
+2-Se houver erro → não envia
+3-Se estiver tudo ok → chama sua função
+
+reset: Reseta o formulário para o estado inicial.
+1-Limpar todos os campos
+2-Voltar valores padrão
+3-Limpar erros
+
+formState: Estado interno do formulário. Ele contém várias informações importantes sobre o formulário naquele momento.
+
+Como tudo trabalha junto (visão geral)
+
+1-register → registra campos
+2-Usuário digita
+3-handleSubmit é acionado
+4-Validação acontece
+5-formState.errors é atualizado
+6-Se válido → onSubmit
+7-Durante envio → isSubmitting = true
+8-Após sucesso → reset()
+
+Instalado biblioteca react-hot-toast para personalizar o alert.

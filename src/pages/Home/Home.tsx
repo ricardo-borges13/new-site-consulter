@@ -16,6 +16,8 @@ import {
 } from '../../components/SectionsSobre/SectionInfo';
 
 import { ProductGroup } from '../../components/ProductGroup/ProdutctGroup';
+import { SectionsContactus } from '../../components/SectionsContactUs/SectionsContactUs';
+import { contactData } from '../../components/Header';
 
 const sobreData: SectionInfoProps = {
   title: 'Por que escolher a Consulter?',
@@ -62,6 +64,7 @@ export const Home = () => {
         icone3={icone3}
         icone4={icone4}
       />
+      <SectionsContactus {...contactData} />
     </>
   );
 };
