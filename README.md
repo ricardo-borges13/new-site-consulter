@@ -429,3 +429,197 @@ const contacts = [
 - Telefones e emails são links clicáveis (facilitam contato em mobile)
 - Sistema de filtro evita renderizar campos vazios
 - Layout responsivo com grid adaptativo
+
+-----------------------------------------------------------------------------
+## Componentes de Carrossel
+
+### `SectionCarousel`
+Container wrapper que envolve carrosseis, fornecendo estrutura consistente com título e área de conteúdo.
+
+#### Localização
+- **Caminho**: `src/components/SectionCarousel/SectionCarousel.tsx`
+- **Usado em**: Página `Home` (envolve o `ClientsCarousel`)
+
+#### Props
+```typescript
+type SectionCarouselProps = {
+  title: string;           // Título da seção
+  children: React.ReactNode; // Componente de carrossel a ser renderizado
+};
+```
+
+#### Como Usar
+```typescript
+import { SectionCarousel } from './components/SectionCarousel/SectionCarousel';
+import { ClientsCarousel } from './components/ClientsCarousel/ClientsCarousel';
+
+<SectionCarousel title="Nossos Clientes">
+  <ClientsCarousel />
+</SectionCarousel>
+```
+
+#### Características
+- **Pattern**: Composition (renderiza `children`)
+- **Responsabilidade**: Apenas estrutura visual e título
+- **Estilização**: Via styled-components (`SectionCarousel.styles`)
+
+#### Estrutura Visual
+```
+┌─────────────────────────────────────┐
+│  [Título da Seção]                  │
+│                                     │
+│  [Conteúdo do Carrossel]            │
+└─────────────────────────────────────┘
+```
+
+---
+
+### `ClientsCarousel`
+Carrossel responsivo de logos de clientes com navegação automática e manual.
+
+#### Dependências
+```bash
+npm install react-multi-carousel lucide-react
+```
+
+#### Localização
+- **Caminho**: `src/components/ClientsCarousel/ClientsCarousel.tsx`
+- **Usado em**: Dentro do `SectionCarousel` na página `Home`
+
+#### Estrutura de Dados
+```typescript
+const logos = [
+  { src: string, alt: string }, // Caminho da imagem e texto alternativo
+  // ... array com todos os clientes
+];
+```
+
+
+#### Funcionalidades
+
+**Configurações do Carrossel:**
+```typescript
+<Carousel
+  responsive={responsive}      // Breakpoints responsivos
+  infinite                     // Loop infinito
+  autoPlay                     // Rotação automática
+  autoPlaySpeed={3500}         // 3.5s entre transições
+  arrows={true}                // Habilita setas de navegação
+  customLeftArrow={<CustomLeftArrow />}
+  customRightArrow={<CustomRightArrow />}
+>
+```
+
+**Responsividade (configurado em `styles`):**
+```typescript
+export const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4, // 4 logos visíveis
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 3, // 3 logos visíveis
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 2, // 2 logos visíveis
+  },
+};
+```
+
+#### Componentes de Navegação
+
+**Setas Customizadas:**
+```typescript
+const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
+  <S.ArrowButton $side="left" onClick={onClick}>
+    <ChevronLeft />
+  </S.ArrowButton>
+);
+
+const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
+  <S.ArrowButton $side="right" onClick={onClick}>
+    <ChevronRight />
+  </S.ArrowButton>
+);
+```
+
+- **Ícones**: `lucide-react` (ChevronLeft, ChevronRight)
+- **Posicionamento**: Via prop `$side` (transient prop do styled-components)
+- **Interatividade**: Controles manuais + autoplay
+
+#### Gerenciamento de Assets
+
+**Importação de Imagens:**
+```typescript
+import csn from '../../assets/images/clientes/CSN.png';
+import usiminas from '../../assets/images/clientes/USIMINAS.png';
+// ... demais imports
+```
+
+**Estrutura de Pastas:**
+```
+src/
+└── assets/
+    └── images/
+        └── clientes/
+            ├── CSN.png
+            ├── USIMINAS.png
+            ├── ARCELORMITTAL.png
+            └── ...
+```
+
+#### Como Adicionar Novos Clientes
+
+1. **Adicione a imagem** em `src/assets/images/clientes/`
+2. **Importe no componente:**
+```typescript
+   import novoCliente from '../../assets/images/clientes/NovoCliente.png';
+```
+3. **Adicione ao array `logos`:**
+```typescript
+   const logos = [
+     // ... logos existentes
+     { src: novoCliente, alt: 'Novo Cliente' },
+   ];
+```
+
+#### Fluxo de Funcionamento
+```
+1. Carrossel inicia com autoPlay ativo
+2. A cada 3.5s, avança automaticamente
+3. Usuário pode navegar manualmente com as setas
+4. Loop infinito: ao chegar no final, retorna ao início
+5. Número de itens visíveis se ajusta ao breakpoint
+```
+
+#### Observações Importantes
+- **Acessibilidade**: Textos `alt` em todas as imagens
+- **Performance**: Imagens devem ser otimizadas (PNG/WebP)
+- **Design Pattern**: Separation of Concerns (dados separados da lógica)
+- **Transient Props**: `$side` evita passar props HTML inválidas ao DOM
+- **Infinite Loop**: Experiência contínua sem interrupções visuais
+
+#### Exemplo de Uso Completo
+```typescript
+// Na página Home
+import { SectionCarousel } from './components/SectionCarousel/SectionCarousel';
+import { ClientsCarousel } from './components/ClientsCarousel/ClientsCarousel';
+
+export const Home = () => {
+  return (
+    <main>
+      {/* ... outros componentes */}
+
+      <SectionCarousel title="Nossos Clientes">
+        <ClientsCarousel />
+      </SectionCarousel>
+
+      {/* ... outros componentes */}
+    </main>
+  );
+};
+```
+
+
