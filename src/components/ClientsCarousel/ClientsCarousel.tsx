@@ -58,6 +58,7 @@ export const ClientsCarousel: React.FC = () => {
           </S.Card>
         ))}
       </Carousel>
+      <S.Divider />
     </S.CarouselContainer>
   );
 };

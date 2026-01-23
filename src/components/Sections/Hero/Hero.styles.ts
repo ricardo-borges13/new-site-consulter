@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import heroBg from '../../assets/images/BannerPrincipal-Consulter.jpg'; // ajuste o caminho
+import heroBg from '../../../assets/images/BannerPrincipal-Consulter.jpg'; // ajuste o caminho
 
 export const HeroContainer = styled.section`
   width: 100%;

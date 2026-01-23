@@ -19,17 +19,17 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   min-height: 100%;
   font-family: 'Poppins', sans-serif;
-  /* background-color: #FFFFFF; */
-  /* background: linear-gradient(
+  background-color: #F9FAFB;
+  background: linear-gradient(
     180deg,
     #f6f6f6 0%,
     #eeeeee 100%,
-); */
-    background-color: #f4f4f4;
-    background-image: url('../../../public/images/background-color.jpg');
+);
+    
+    /* background-image: url('../../../public/images/background-color.jpg');
     background-repeat: repeat;
     background-size: auto;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 
   color: #1A1A1A;
   overflow-x: hidden;

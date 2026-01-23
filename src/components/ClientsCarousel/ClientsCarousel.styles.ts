@@ -62,3 +62,12 @@ export const ArrowButton = styled.button<{ $side: 'left' | 'right' }>`
     transform: translateY(-50%) scale(1.1);
   }
 `;
+
+export const Divider = styled.hr`
+  border: none;
+  height: 4px;
+  background: linear-gradient(to right, transparent, #0f0f0f, transparent);
+  margin: 1rem auto;
+  width: 80%;
+  border-radius: 2px;
+`;

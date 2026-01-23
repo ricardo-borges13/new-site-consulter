@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { Hero } from '../../components/Hero/hero';
-import image1 from '../../assets/images/Sobre-Consulter-New1-1.jpg';
-import image2 from '../../assets/images/Sobre-Consulter-New2-1.jpg';
+import { sobreData } from './Home.data';
+import { Hero } from '../../components/Sections/Hero/hero';
 import imageProdouct1 from '../../assets/images/Borrachas.png';
 import imageProduct2 from '../../assets/images/eletrica.png';
 import imageProduct3 from '../../assets/images/Acessorios.png';
@@ -10,36 +9,14 @@ import icone1 from '../../assets/images/icone-tubo-preto.png';
 import icone2 from '../../assets/images/icone-raio-preto.png';
 import icone3 from '../../assets/images/icone-acessorios.png';
 import icone4 from '../../assets/images/icone-paineis-preto.png';
-import {
-  SectionInfo,
-  type SectionInfoProps,
-} from '../../components/SectionsSobre/SectionInfo';
-
+import { SectionInfo } from '../../components/Sections/SectionInfo/SectionInfo';
 import { ProductGroup } from '../../components/ProductGroup/ProdutctGroup';
 import { SectionsContactus } from '../../components/SectionsContactUs/SectionsContactUs';
-import { contactData } from '../../components/Header';
+import { contactData } from '../../components/Layout/Header';
 import { ClientsCarousel } from '../../components/ClientsCarousel/ClientsCarousel';
 import { SectionCarousel } from '../../components/SectionCarousel/SectionCarousel';
 
-const sobreData: SectionInfoProps = {
-  title: 'Por que escolher a Consulter?',
-  description: `
-    <p>
-      Há mais de <strong>10 anos</strong> fornecendo
-      <strong> materiais elétricos, borrachas industriais e automação</strong>
-      para os principais segmentos da indústria brasileira.
-    </p>
-    <p>
-      A <strong>Consulter Soluções</strong> é parceira de indústrias
-      siderúrgicas, petroquímicas, mineradoras e automotivas, oferecendo
-      <strong> qualidade, agilidade e confiança</strong> em cada projeto.
-    </p>
-  `,
-  image1,
-  image2,
-  buttonText: 'Saiba mais',
-  path: '/quem-somos',
-};
+import { SectionMap } from '../../components/Sections/SectionMap/SectionMap';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -54,7 +31,7 @@ export const Home = () => {
         onPrimaryClick={() => navigate('/contato')}
         onSecondaryClick={() => navigate('/empresa')}
       />
-<SectionInfo {...sobreData} />
+      <SectionInfo {...sobreData} />
 
       <ProductGroup
         title="Nossas linhas de produto"
@@ -70,9 +47,10 @@ export const Home = () => {
 
       <SectionsContactus {...contactData} />
 
-       <SectionCarousel title="Parceiros">
+      <SectionCarousel title="Parceiros">
         <ClientsCarousel />
       </SectionCarousel>
+       <SectionMap />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import * as S from './SectionInfo.styles';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../Button/Button';
+import { Button } from '../../Button/Button';
 
 export type SectionInfoProps = {
   title: string;

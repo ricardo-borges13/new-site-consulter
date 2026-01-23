@@ -1,4 +1,3 @@
-// src/components/Hero/Hero.tsx
 import * as S from './Hero.styles';
 
 interface HeroProps {

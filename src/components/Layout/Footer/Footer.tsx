@@ -1,10 +1,10 @@
 import * as S from './Footer.styles';
 import { BiSolidPhoneOutgoing } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
-import logo from '../../assets/images/Consulter_logo.png';
+import logo from '../../../assets/images/Consulter_logo.png';
 import { Link } from 'react-router-dom';
-import { APP_VERSION } from '../../version';
-import type { ContactInfo } from '../../types/contact';
+import { APP_VERSION } from '../../../version';
+import type { ContactInfo } from '../../../types/contact';
 import { menuItems } from '../Menu/menuData';
 
 export const Footer = ({ phone, phone2, email }: ContactInfo) => {
@@ -72,8 +72,8 @@ export const Footer = ({ phone, phone2, email }: ContactInfo) => {
       </S.FooterContent>
       <S.FooterBottom>
         <span>
-          © {new Date().getFullYear()} Grupo JPM Borrachas e Materiais
-          Elétricos – Todos os direitos reservados. | Desenvolvido por Invetec
+          © {new Date().getFullYear()} Grupo JPM Borrachas e Materiais Elétricos
+          – Todos os direitos reservados. | Desenvolvido por Invetec
         </span>
         <br />
         <small>Versão {APP_VERSION}</small>

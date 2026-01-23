@@ -1,7 +1,7 @@
 import * as S from './HeaderTopo.styles';
 import { LiaPhoneAltSolid } from 'react-icons/lia';
 import { AiOutlineMail } from 'react-icons/ai';
-import type { ContactInfo } from '../../types/contact';
+import type { ContactInfo } from '../../../types/contact';
 
 export const HeaderTop = ({ text, phone, email }: ContactInfo) => {
   const phoneHref = `tel:${phone.replace(/[^\d+]/g, '')}`;

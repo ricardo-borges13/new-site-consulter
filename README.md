@@ -122,47 +122,68 @@ Componente responsável por **definir o layout global da aplicação**, envolven
 
 ----------------------------------------------------------------------------------
 
-### Componente `Hero`
+### Componente `Hero` (Atualizado)
 
-Componente de banner principal (hero section) utilizado na página inicial do site. Apresenta título, subtítulo e botões de call-to-action sobre uma imagem de fundo impactante.
-
-#### Local de Uso
-- Importado e utilizado na page Home (`Home.tsx`)
-
-#### 🎨 Características
-
-- **Responsivo**: Adaptado para desktop, tablet e mobile
-- **Background dinâmico**: Imagem de fundo com overlay escuro para melhor legibilidade
-- **Botões interativos**: Efeitos hover e active states
-- **Tipografia escalável**: Tamanhos de fonte ajustados por breakpoint
-- **Acessível**: Estrutura semântica com `<section>` e headings adequados
-- **Imagem**: A imagem é inserida no arquivo de styled component (`heto.styles.ts`)
-
--------------------------------------------------------------------------------
-
-### Componente `SectionInfo`
-Componente responsável para informar sobre a empresa que é utilizado na página inicial do site.
-Apresenta um título, descrição, foto(s) e um botão "Saiba mais" que direciona para outra página com mais detalhes sobre a empresa.
+Componente responsável pelo **banner principal (Hero Section)** da página inicial do site.
+Apresenta um título de destaque, subtítulo e botões de call-to-action sobre uma imagem de fundo impactante, com foco em conversão e apresentação institucional.
 
 #### Local de Uso
 - Importado e utilizado na page Home (`Home.tsx`)
 
 #### Estrutura de Props
+
+```tsx
+type HeroProps = {
+  title: string;                  // Título principal (obrigatório)
+  subtitle: string;               // Subtítulo de apoio (obrigatório)
+  primaryButtonText: string;      // Texto do botão principal
+  secondaryButtonText: string;    // Texto do botão secundário
+  onPrimaryClick?: () => void;    // Ação do botão principal
+  onSecondaryClick?: () => void;  // Ação do botão secundário
+};
+
+#### 🎨 Características
+
+Responsivo: Adaptado para desktop, tablet e mobile
+
+-Imagem de fundo fixa: Definida no arquivo de styled-components (`Hero.styles.ts`)
+-Overlay escuro: Garante legibilidade do texto sobre a imagem
+-Botões interativos: Estados de hover e foco para melhor UX
+-Tipografia escalável: Ajustes automáticos por breakpoint
+-Acessível: Estrutura semântica utilizando <section> e headings adequados
+
+-------------------------------------------------------------------------------
+
+### Componente `SectionInfo` (Atualizado)
+
+Componente responsável por **apresentar informações institucionais sobre a empresa**, utilizado principalmente na página inicial do site.
+
+Exibe um título, uma descrição textual, uma ou duas imagens e, opcionalmente, um botão de ação (“Saiba mais”) que direciona para outra página com mais detalhes.
+
+---
+
+#### Local de Uso
+- Importado e utilizado na página Home (`Home.tsx`)
+
+---
+
+#### Estrutura de Props
+
 ```tsx
 const sobreData: SectionInfoProps = {
-  title: 'Por que escolher a Consulter?',        // Título da seção
-  description: `Texto com HTML`,  // Descrição (aceita HTML)
-  image1,                                         // Imagem principal (obrigatória)
-  image2,                                         // Segunda imagem (opcional)
-  buttonText: 'Saiba mais',                      // Texto do botão (opcional)
-  path: '/quem-somos',                           // Rota de destino (opcional)
+  title: 'Por que escolher a Consulter?',   // Título da seção
+  description: `Texto com HTML`,            // Descrição (aceita HTML)
+  image1,                                   // Imagem principal (obrigatória)
+  image2,                                   // Segunda imagem (opcional)
+  buttonText: 'Saiba mais',                 // Texto do botão (opcional)
+  path: '/quem-somos',                      // Rota de destino (opcional)
 };
 ```
 
 #### Como Usar
-1. Importe a imagem no `Home.tsx`: `import image1 from '@/assets/images/foto.jpg'`
-2. Crie o objeto `sobreData` com as informações desejadas
-3. Passe as props: `<SectionInfo {...sobreData} />`
+1. Crie o objeto de dados (sobreData) no arquivo Home.data.ts, dentro da pasta da página Home.
+2. Importe o componente SectionInfo em Home.tsx.
+3. Passe as props utilizando spread: `<SectionInfo {...sobreData} />`
 
 #### Responsividade
 - **Desktop**: Layout horizontal (texto à esquerda, imagens à direita)
@@ -170,10 +191,10 @@ const sobreData: SectionInfoProps = {
 - **Tablets (< 1050px)**: Imagens ficam ocultas
 
 #### Observações
-- As props do componente vêm da constante `sobreData` no Home
-- A descrição aceita HTML (use `<p>` e `<strong>`)
-- Se não passar `buttonText`, o botão não aparece
-- Pode usar 1 ou 2 imagens conforme necessário
+- As props do componente são definidas no arquivo Home.data.ts
+- A propriedade description aceita HTML `(ex: <p>, <strong>)`
+- Se a prop buttonText não for informada, o botão não será renderizado
+- O componente pode ser utilizado com uma ou duas imagens, conforme a necessidade da seção
 
 ------------------------------------------------------------------------------
 ### Componente `CardProduct`
@@ -621,5 +642,67 @@ export const Home = () => {
   );
 };
 ```
+-------------------------------------------------------------------------
+
+### Componente `Map` (Atualizado)
+Componente técnico responsável por **renderizar o mapa do Google Maps** através de um iframe incorporado.
+Não possui conteúdo institucional nem título — sua função é exclusivamente técnica e reutilizável.
+
+#### Localização
+- **Caminho**: `src/components/Sections/Map/Map.tsx`
+- **Usado em**: Componente `SectionMap`
+- **OBS**: Não é chamado diretamente pela página (home e etc).
+
+#### Props
+```typescript
+type MapProps = {
+  src: string; // URL de incorporação (embed) do Google Maps
+};
+
+```
+#### Responsividade
+- Desktop: altura padrão de 400px
+- Mobile (< 768px): altura reduzida para melhor visualização
+- O iframe se ajusta automaticamente ao container
+
+#### Como Usar
+- Renderiza um <iframe> com o mapa incorporado do Google Maps
+- Recebe a URL do mapa via prop src
+- Ocupa 100% da largura e altura do container pai
+- Possui bordas arredondadas e sombra para efeito de “card”
 
 
+#### Observações Importantes
+- **src**: deve ser obtido através da opção “Incorporar um mapa” do Google Maps
+- Não utilizar links do tipo maps.app.goo.gl (não funcionam em iframe)
+- O componente não define fundo nem espaçamento externo
+- Ideal para reutilização em outras seções ou páginas, se necessário
+
+-------------------------------------------------------------------------------
+### Componente `SectionMap` (Atualizado)
+Componente responsável por **organizar a seção institucional de localização**, combinando texto explicativo e o componente **Map**.
+
+Define **layout, espaçamento, fundo da seção e contexto visual**, enquanto o Map cuida apenas da renderização do mapa.
+
+#### Localização
+- **Caminho**: `src/components/Sections/SectionMap/SectionMap.tsx`
+- **Usado em**: Importado e utilizado na página `Home`
+
+
+#### Como Funciona
+- Possui um Wrapper que ocupa 100% da largura da viewport e aplica o fundo da seção
+- Utiliza um Container interno com largura limitada e centralizada
+- Define internamente a constante MAP_SRC, contendo a URL de incorporação do Google Maps
+- Passa o MAP_SRC para o componente Map
+
+#### Responsividade
+- Desktop: layout centralizado, mapa em destaque
+- Tablet e Mobile: layout fluido com espaçamento lateral reduzido
+- O mapa se ajusta automaticamente ao tamanho da tela
+
+#### Observações Importantes
+- O componente SectionMap é responsável por qual mapa será exibido
+- O componente Map é responsável apenas por como o mapa é renderizado
+- A página Home deve utilizar apenas o SectionMap, nunca o Map diretamente
+
+--------------------------------------------------------------------------
