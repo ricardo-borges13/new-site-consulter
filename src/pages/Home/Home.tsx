@@ -11,12 +11,13 @@ import icone3 from '../../assets/images/icone-acessorios.png';
 import icone4 from '../../assets/images/icone-paineis-preto.png';
 import { SectionInfo } from '../../components/Sections/SectionInfo/SectionInfo';
 import { ProductGroup } from '../../components/ProductGroup/ProdutctGroup';
-import { SectionsContactus } from '../../components/SectionsContactUs/SectionsContactUs';
-import { contactData } from '../../components/Layout/Header';
+// import { SectionsContactus } from '../../components/SectionsContactUs/SectionsContactUs';
+// import { contactData } from '../../components/Layout/Header';
 import { ClientsCarousel } from '../../components/ClientsCarousel/ClientsCarousel';
 import { SectionCarousel } from '../../components/SectionCarousel/SectionCarousel';
 
 import { SectionMap } from '../../components/Sections/SectionMap/SectionMap';
+import { CTASection } from '../../components/Sections/CTASection/CTASection';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -44,10 +45,10 @@ export const Home = () => {
         icone3={icone3}
         icone4={icone4}
       />
+       <CTASection />
+      {/* <SectionsContactus {...contactData} /> */}
 
-      <SectionsContactus {...contactData} />
-
-      <SectionCarousel title="Parceiros">
+      <SectionCarousel title="Clientes Atendidos">
         <ClientsCarousel />
       </SectionCarousel>
        <SectionMap />

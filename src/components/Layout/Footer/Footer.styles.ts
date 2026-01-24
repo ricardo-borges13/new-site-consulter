@@ -1,86 +1,84 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  background-color: #e3b021;
-  color: #000;
+  background-color: #0f0f0f;
+  color: #fff;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  margin-top: 4rem;
   caret-color: transparent;
-  padding-bottom: 0; /* reduz espaçamento geral */
-  overflow-x: hidden;
 `;
 
-export const FooterContent = styled.div`
+export const FooterTop = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
-  align-items: start;
-  padding: 1rem 3rem 0rem 3rem;
-  gap: 1rem;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
 
-  @media (max-width: 915px) {
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    text-align: center;
-  }
-
-  /* mobile */
-  @media (max-width: 600px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    justify-items: center;
     text-align: center;
   }
 `;
 
-export const LogoArea = styled.div`
+export const Brand = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 1rem;
 
   img {
-    width: 200px;
-    margin-bottom: 0.5rem;
+    width: 180px;
+  }
 
-    @media (max-width: 900px) {
-      width: 150px;
-    }
+  p {
+    font-size: 0.95rem;
+    color: #ccc;
+    max-width: 320px;
+  }
 
-    @media (max-width: 730px) {
-      width: 120px;
+  @media (max-width: 900px) {
+    align-items: center;
+
+    p {
+      max-width: none;
     }
   }
 `;
 
-export const FooterColumn = styled.div`
+export const LinksArea = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const Block = styled.div`
   h4 {
-    color: #fff;
     font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    position: relative;
-    text-shadow: 2px 2px 2px black;
+    font-weight: 600;
+    color: #94c11f;
+    margin-bottom: 1rem;
+  }
 
-    &::after {
-      content: '';
-      display: block;
-      width: 200px;
-      height: 2px;
-      background-color: #fff;
-      margin-top: 4px;
+  ul {
+    list-style: none;
+    padding: 0;
 
-      @media (max-width: 1050px) {
-        width: 100px;
-        justify-content: center;
-      }
+    li {
+      margin-bottom: 0.5rem;
 
-      @media (max-width: 916px) {
-        width: 220px;
-        justify-content: center;
-      }
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9rem;
 
-      @media (max-width: 600px) {
-        width: 250px;
-        justify-content: center;
+        &:hover {
+          color: #94c11f;
+        }
       }
     }
   }
@@ -88,92 +86,51 @@ export const FooterColumn = styled.div`
   address {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
     font-style: normal;
-    line-height: 1.4;
-    align-items: start;
+    font-size: 0.9rem;
 
-    @media (max-width: 915px) {
+    span {
+      display: flex;
       align-items: center;
+      gap: 6px;
     }
 
     a {
       color: inherit;
       text-decoration: none;
-      font-size: 0.9rem;
 
       &:hover {
-        color: #f8f5edff; /* cor de destaque */
+        color: #94c11f;
       }
     }
 
-    span {
-      @media (max-width: 840px) {
-        font-size: 12px;
-      }
-
-      span {
-        @media (max-width: 725px) {
-          font-size: 11px;
-        }
-      }
+    svg {
+      font-size: 1.1rem;
+      color: #94c11f;
     }
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 0.3rem;
-
-    li {
-      margin: 0.4rem 0;
-
-      a {
-        color: #000;
-        text-decoration: none;
-        transition: opacity 0.2s;
-
-        &:hover {
-          color: #f8f5edff;
-        }
-
-        @media (max-width: 730px) {
-          font-size: 0.85rem;
-        }
-      }
-    }
-  }
-  svg {
-    font-size: 1rem;
   }
 `;
 
 export const FooterBottom = styled.div`
-  text-align: center;
-  border-top: 2px solid #fff;
-  font-size: 0.85rem;
-  margin-top: 0.5rem; /* ↓ estava alto, reduza aqui */
-  padding-top: 0.5rem; /* ↓ reduz espaço interno */
-  line-height: 1.3;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
 
-  @media (max-width: 730px) {
-    font-size: 0.75rem;
-    padding: 0.5rem 0.5rem;
-    margin-bottom: 3rem; /* ainda mais compacto no mobile */
-  }
-`;
-
-export const Icone = styled.span`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 4px;
 
-  svg {
-    font-size: 1.2rem; /* ← aqui você controla o tamanho do ícone */
-    color: #000; /* pode mudar a cor se quiser */
+  font-size: 0.8rem;
+  color: #aaa;
 
-    @media (max-width: 840px) {
-      font-size: 1rem;
-    }
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
   }
 `;
+
+

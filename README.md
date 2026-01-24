@@ -706,3 +706,63 @@ Define **layout, espaçamento, fundo da seção e contexto visual**, enquanto o 
 - A página Home deve utilizar apenas o SectionMap, nunca o Map diretamente
 
 --------------------------------------------------------------------------
+### Componente `CTASection`
+
+Componente responsável por exibir uma **seção de chamada para ação (Call To Action)**, utilizada para incentivar o usuário a entrar em contato com a empresa.
+
+Apresenta um texto de impacto, um botão de ação e uma imagem de fundo fixa, criando destaque visual entre as seções da página.
+
+---
+
+#### Local de Uso
+- Importado e utilizado na página Home (`Home.tsx`)
+- Geralmente posicionado antes do Footer, como CTA final da página
+
+---
+
+#### Estrutura de Props
+
+> Este componente **não recebe props no momento**.
+> Os textos, imagem de fundo e rota de navegação são definidos internamente.
+
+---
+
+#### Como Funciona
+- Utiliza uma imagem de fundo aplicada via `styled-components`
+- Aplica um **overlay escuro** para garantir a legibilidade do texto
+- Exibe um título principal, um subtítulo e um botão de ação
+- O botão redireciona o usuário para a página de contato (`/contato`)
+- A imagem de fundo utiliza o efeito de **background fixo** (`background-attachment: fixed`) para criar uma leve sensação de profundidade ao rolar a página
+
+---
+
+#### Layout e Estilo
+- Seção em largura total (`width: 100%`)
+- Altura controlada por viewport (`vh`) com valor mínimo definido
+- Texto centralizado vertical e horizontalmente
+- Botão com destaque visual seguindo a identidade da marca
+- Overlay aplicado para contraste entre texto e imagem
+
+---
+
+#### Responsividade
+- **Desktop**: imagem de fundo fixa com efeito visual ao rolar a página
+- **Mobile e Tablets**: o efeito de background fixo é desativado automaticamente, garantindo melhor desempenho e compatibilidade
+- O conteúdo se adapta ao tamanho da tela mantendo legibilidade
+
+---
+
+#### Observações
+- O efeito visual é intencionalmente **sutil**, evitando distrações
+- Caso seja necessário tornar o componente mais dinâmico, ele pode evoluir para receber props (título, subtítulo, imagem e rota)
+- O componente segue o padrão arquitetural do projeto:
+  - `SectionX` → seção completa de página (layout + conteúdo)
+  - Componentes técnicos ficam fora da pasta `Sections`
+
+---
+
+#### Padrão Arquitetural Aplicado
+
+```txt
+CTASection → seção de chamada para ação (layout + conteúdo)
+Home       → composição das seções
