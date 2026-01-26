@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 export const wrapper = styled.div`
-  /* background: #ce8383; */
   caret-color: transparent;
   width: 80%;
   max-width: 1350px;
   margin: 0 auto;
-  padding: 0 20px; /* só nas laterais */
+  padding: 20px 20px;
 
   h2 {
     display: flex;

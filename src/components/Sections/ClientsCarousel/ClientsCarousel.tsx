@@ -2,15 +2,15 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import * as S from './ClientsCarousel.styles';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import csn from '../../assets/images/clientes/CSN.png';
-import usiminas from '../../assets/images/clientes/USIMINAS.png';
-import arcelor from '../../assets/images/clientes/ARCELORMITTAL.png';
-import belgo from '../../assets/images/clientes/Belgo.png';
-import alvoar from '../../assets/images/clientes/alvoar-lacteos.png';
-import magnesita from '../../assets/images/clientes/Magnesita.png';
-import petrobras from '../../assets/images/clientes/Petrobras.png';
-import vallourec from '../../assets/images/clientes/Vallourec.png';
-import gerdau from '../../assets/images/clientes/Gerdau.png';
+import csn from '../../../assets/images/clientes/CSN.png';
+import usiminas from '../../../assets/images/clientes/USIMINAS.png';
+import arcelor from '../../../assets/images/clientes/ARCELORMITTAL.png';
+import belgo from '../../../assets/images/clientes/Belgo.png';
+import alvoar from '../../../assets/images/clientes/alvoar-lacteos.png';
+import magnesita from '../../../assets/images/clientes/Magnesita.png';
+import petrobras from '../../../assets/images/clientes/Petrobras.png';
+import vallourec from '../../../assets/images/clientes/Vallourec.png';
+import gerdau from '../../../assets/images/clientes/Gerdau.png';
 
 
   const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
