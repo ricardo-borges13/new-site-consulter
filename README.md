@@ -771,3 +771,51 @@ Apresenta um texto de impacto, um botão de ação e uma imagem de fundo fixa, c
 ```txt
 CTASection → seção de chamada para ação (layout + conteúdo)
 Home       → composição das seções
+```
+
+------------------------------------------------------------------------
+
+### Componente `PageHeroSection` (Atualizado)
+
+Componente responsável por exibir o **banner principal das páginas internas** do site, utilizando uma imagem de fundo em largura total com texto sobreposto.
+
+É utilizado para apresentar o título da página, um subtítulo opcional e criar um impacto visual inicial consistente, mantendo alinhamento com a identidade visual do projeto.
+
+---
+
+#### Local de Uso
+- Utilizado em páginas internas, como:
+  - Trabalhe Conosco
+  - Institucional
+  - Portfólio
+  - Outras páginas que necessitam de um hero visual
+- Importado diretamente nas pages correspondentes (ex: `TrabalheConosco.tsx`)
+
+---
+
+#### Estrutura de Props
+
+```tsx
+{
+  title: string;              // Título principal da página
+  subTitle?: string;          // Subtítulo opcional
+  image: string;              // Imagem de fundo do banner
+  children?: React.ReactNode; // Conteúdo adicional renderizado abaixo do banner
+}
+```
+#### Como Funciona
+
+- Renderiza uma seção (section) em largura total com imagem de fundo
+- Aplica um overlay em gradiente para melhorar a legibilidade do texto
+- Exibe o título e o subtítulo sobre a imagem
+- Aplica uma faixa decorativa na parte inferior, reforçando a identidade visual
+- Utiliza animações suaves com framer-motion para entrada do conteúdo
+- Renderiza o conteúdo adicional (children) logo abaixo do banner principal
+
+#### Observações
+
+- O componente é genérico e pode ser reutilizado em diferentes páginas
+- Não possui regras de navegação internas
+- O conteúdo textual é totalmente controlado pelas props
+- O layout e os efeitos visuais são definidos no arquivo PageHeroSection.styles.ts
+- O uso de children permite compor o restante da página mantendo consistência visual
