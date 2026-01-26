@@ -1,6 +1,6 @@
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
 import image from '../../assets/images/Banner-TrabalheConosco.jpg';
-import * as S from './TrabalheConosco';
+import * as S from './TrabalheConosco.styles';
 
 export const TrabalheConosco = () => {
   return (
