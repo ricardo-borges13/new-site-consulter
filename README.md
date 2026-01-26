@@ -102,6 +102,7 @@ Componente responsável por **resetar o scroll da página ao trocar de rota**.
 - Evitar que novas páginas carreguem com scroll anterior
 
 ------------------------------------------------------------------------------
+## ESTRUTURA DO SITE
 
 ### Componente `Layout`
 Componente responsável por **definir o layout global da aplicação**, envolvendo todas as páginas que compartilham estrutura visual comum.
@@ -141,7 +142,7 @@ type HeroProps = {
   onPrimaryClick?: () => void;    // Ação do botão principal
   onSecondaryClick?: () => void;  // Ação do botão secundário
 };
-
+```
 #### 🎨 Características
 
 Responsivo: Adaptado para desktop, tablet e mobile
@@ -197,26 +198,27 @@ const sobreData: SectionInfoProps = {
 - O componente pode ser utilizado com uma ou duas imagens, conforme a necessidade da seção
 
 ------------------------------------------------------------------------------
-### Componente `CardProduct`
-Componente responsável por criar os cards de produtos que são utilizados dentro do componente ProductGroup.
-Apresenta um título, descrição, duas imagens (ícone e imagem principal) e dois botões ("Saiba mais" como texto e seta verde "→") que direcionam para a página de detalhes do produto.
+### Componente `CardProduct` (Atualizado)
+Componente responsável por **renderizar um card individual de produto**, utilizado para representar as linhas de produtos da empresa dentro da seção de produtos.
+Exibe um título, uma descrição, um ícone, uma imagem principal e dois botões de ação (texto e ícone), ambos direcionando para a página de detalhes do produto.
 
 #### Local de Uso
-- Importado e utilizado no componente ProductGroup (`ProductGroup.tsx`) que está presente na Home (`Home.tsx`).
+- Utilizado exclusivamente pelo componente (`SectionProduct.tsx`)
+- Renderizado na página Home (Home.tsx) por meio do `SectionProduct`
 
 #### Estrutura de Props
 ```tsx
 {
-  title: 'Borrachas',                              // Título do produto
-  description: 'Borrachas industriais...',         // Descrição do produto
-  images: [icone1, image1],                        // [0] = ícone, [1] = imagem principal
-  buttonText: 'Saiba mais',                        // Texto do botão
-  onButtonClick: () => navigate('/produtos/borrachas')  // Função ao clicar
+  title: string;                 // Título do produto
+  description: string;           // Descrição do produto
+  images: [string, string];      // [0] Ícone | [1] Imagem principal
+  buttonText: string;            // Texto do botão ("Saiba mais")
+  onButtonClick?: () => void;    // Função executada ao clicar no card/botões
 }
 ```
 
 #### Como Usar
-1. Importe as imagens no arquivo que usa `ProductGroup`. OBS: O caminho da imagem é na `Home`
+1. Importe as imagens no arquivo que usa `SectionProduct`. OBS: O caminho da imagem é na `Home`
 2. Passe as props ao chamar o componente:
 ```tsx
 <CardProduct
@@ -233,17 +235,22 @@ Apresenta um título, descrição, duas imagens (ícone e imagem principal) e do
 - A primeira imagem (`images[0]`) é o ícone que aparece ao lado do título
 - A segunda imagem (`images[1]`) é a imagem principal do card
 - Os dois botões executam a mesma função `onButtonClick`
-- O caminho das imagens é definido na página que importa o `ProductGroup`
+- O caminho das imagens é definido na página que importa o `SectionProduct`
 
 
 ------------------------------------------------------------------------------
 
-### Componente `ProductGroup`
-Componente responsável por receber os cards do `CardProduct`
-Apresenta um título, quatro imagens e quatro ícones que representa as "LINHAS DE PRODUTOS" da empresa representado pelos cards.
+### Componente `SectionProduct` (Atualizado)
+Componente responsável por **exibir as linhas de produtos da empresa** em formato de cards, utilizando internamente o componente `CardProduct`.
 
-Componente responsável por exibir as linhas de produtos da empresa em formato de cards.
-Apresenta um título da seção e quatro cards fixos (usando o componente `CardProduct`) que representam as categorias: Borrachas, Material Elétrico, Acessórios e Soluções Industriais.
+
+A seção apresenta um título e **quatro cards fixos**, representando as categorias:
+- Borrachas
+- Material Elétrico
+- Acessórios
+- Soluções Industriais
+
+Os dados visuais (imagens e ícones) são definidos externamente no arquivo `Home.data.ts`, mantendo o componente desacoplado de conteúdo específico.
 
 
 #### Local de Uso
@@ -265,17 +272,15 @@ Apresenta um título da seção e quatro cards fixos (usando o componente `CardP
 ```
 
 #### Como Usar
-1. Importe as imagens (ícones e imagens principais) no `Home.tsx`:
-```tsx
-import imageProduto1 from '@/assets/images/borrachas.jpg';
-import icone1 from '@/assets/images/icone-borrachas.svg';
-// ... repita para os outros 3 produtos
-```
+- Importe e utilize o componente na página `Home`
+<SectionProduct {...productSectionData} />
+- As imagens e ícones são definidos no arquivo `Home.data.ts`:
+- Cada card é renderizado utilizando o componente `CardProduct`
+- As informações de título, descrição e rota de navegação de cada card são definidas internamente no componente
+- A navegação é realizada utilizando o hook useNavigate do react-router-dom
 
-2. Passe as props ao chamar o componente:
-```tsx
 
-```
+
 #### Cards Renderizados
 O componente renderiza **4 cards fixos** com as seguintes informações:
 
@@ -285,11 +290,11 @@ O componente renderiza **4 cards fixos** com as seguintes informações:
 4. **Soluções Industriais**: "Soluções personalizadas para processos e sistemas industriais."
 
 #### Observações
-- O componente recebe apenas as **imagens** via props; os títulos e descrições são fixos no código
+- O conteúdo visual é gerenciado externamente no **Home.data.ts**
 - Todos os cards navegam para sua respectiva página (ex: `/produtos/acessorios`) ao clicar (ajustar rotas conforme necessário)
 - Cada card usa internamente o componente `CardProduct`
 - As imagens são organizadas em pares `[ícone, imagemPrincipal]` antes de serem passadas ao `CardProduct`
-- O layout dos cards é controlado pelo `ProductGroup.styles.ts`
+- O layout, grid e responsividade são controlados pelo arquivo`SectionProduct.styles.ts`
 
 
 -----------------------------------------------------------

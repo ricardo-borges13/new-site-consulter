@@ -1,5 +1,5 @@
-import { CardProduct } from '../CardProduct/CardProduct';
-import * as S from './ProductGroup.styles';
+import { CardProduct } from './CardProduct/CardProduct';
+import * as S from './SectionProduct.styles';
 import { useNavigate } from 'react-router-dom';
 
 type ProductProps = {
@@ -14,7 +14,7 @@ type ProductProps = {
   icone4: string;
 };
 
-export const ProductGroup = ({
+export const SectionProduct = ({
   title,
   image1,
   image2,
@@ -37,15 +37,14 @@ export const ProductGroup = ({
           buttonText="Saiba mais"
           onButtonClick={() => navigate('/produtos/acessorios')}
         />
-          <CardProduct
+        <CardProduct
           title="Material Elétrico"
           description="Componentes elétricos industriais para automação, manutenção e infraestrutura."
-
           images={[icone2, image2]}
           buttonText="Saiba mais"
           onButtonClick={() => navigate('/produtos/acessorios')}
         />
-         <CardProduct
+        <CardProduct
           title="Acessórios"
           description="Acessórios industriais para suporte, fixação e montagem de sistemas."
           images={[icone3, image3]}

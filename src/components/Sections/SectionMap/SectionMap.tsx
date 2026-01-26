@@ -1,5 +1,5 @@
 import * as S from './SectionMap.styles';
-import { Map } from '../Map/Map';
+import { Map } from './Map/Map';
 import { MapPin } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
 

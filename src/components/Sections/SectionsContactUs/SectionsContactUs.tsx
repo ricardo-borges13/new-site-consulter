@@ -1,11 +1,11 @@
-import { FormContact } from '../FormContact/FormContact';
+import { FormContact } from '../../FormContact/FormContact';
 import * as S from './SectionContactUs.styles';
 import { MdEmail } from 'react-icons/md';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { FaPhone } from 'react-icons/fa6';
 import { FaUserTie } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
-import type { ContactInfo } from '../../types/contact';
+import type { ContactInfo } from '../../../types/contact';
 
 export const SectionsContactus = ({
   phone,
