@@ -13,16 +13,17 @@ export const Contato = () => {
           <header>
             <h2>Envie sua Mensagem</h2>
             <p>
-              Tem alguma dúvida, precisa de um orçamento ou deseja falar com nosso time?
-Utilize o formulário ou escolha um de nossos canais de atendimento. Estamos prontos para atender você.
+              Tem alguma dúvida, precisa de um orçamento ou deseja falar com
+              nosso time? Utilize o formulário ou escolha um de nossos canais de
+              atendimento. Estamos prontos para atender você.
             </p>
           </header>
         </S.Container>
         <S.Form>
-            <SectionsContactus {...contactData} />
+          <SectionsContactus {...contactData} />
         </S.Form>
-       <S.Divider />
-       <SectionMap />
+        <S.Divider />
+        <SectionMap />
       </PageHeroSection>
     </>
   );

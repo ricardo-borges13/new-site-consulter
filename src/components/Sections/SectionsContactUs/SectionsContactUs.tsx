@@ -6,7 +6,7 @@ import { FaPhone } from 'react-icons/fa6';
 import { FaUserTie } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
 import type { ContactInfo } from '../../../types/contact';
-import { FormOrcamento } from '../../../Form/FormOrcamento/FormOrcamento';
+
 
 export const SectionsContactus = ({
   phone,
@@ -64,8 +64,7 @@ export const SectionsContactus = ({
         </S.InfoArea>
 
         <S.FormWrapper>
-          {/* <FormContact /> */}
-          <FormOrcamento />
+          <FormContact />
         </S.FormWrapper>
       </S.Content>
     </S.Container>

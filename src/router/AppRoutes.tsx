@@ -4,6 +4,7 @@ import { Home } from "../pages/Home/Home";
 import { QuemSomos } from "../pages/QuemSomos/QuemSomos";
 import { TrabalheConosco } from "../pages/TrabalheConosco/TrabalheConosco";
 import { Contato } from "../pages/Contato/Contato";
+import { Orcamento } from "../pages/Orcamento/Orcamento";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
         {
         path: "/contato",
         element: <Contato />,
+      },
+        {
+        path: "/orcamento",
+        element: <Orcamento />,
       }
     ]
   }

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
-  background-color: #94c11f;
+  background: linear-gradient(180deg, #9bc82a 0%, #94c11f 100%);
+box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+
   padding: 2rem;
   border-radius: 12px;
   width: 100%;
@@ -26,7 +28,7 @@ export const FormContainer = styled.div`
 
   label {
     font-weight: 500;
-    color: #fff;
+    color: #f2f7eb;
     display: block;
     margin-bottom: 0.3rem;
   }
