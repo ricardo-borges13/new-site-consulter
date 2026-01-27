@@ -376,8 +376,9 @@ type FormInputs = {
 #### Notificações (Toast)
 - **Posição**: Centro da tela
 - **Estilo**: Dark mode com bordas arredondadas
-- **Duração**: 9s (sucesso) / 4s (erro)
+- **Duração**: 5s em produção 9s em teste (sucesso) / 4s (erro)
 - Instalado biblioteca react-hot-toast para personalizar o alert.
+- Componente `Toaster` é o que define a posição da mensagem, cor, tempo e etc. 
 
 #### Integração com Backend
 O código atual possui simulação de envio. Para integrar com Formspree (ou outro serviço), descomente a função `onSubmitTeste`:

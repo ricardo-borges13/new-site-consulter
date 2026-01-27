@@ -1,41 +1,44 @@
 import { useForm } from 'react-hook-form';
-import * as S from './FormContact.styles';
+import * as S from './FormOrcamento.styles';
 import toast, { Toaster } from 'react-hot-toast';
 import { Button } from '../../components/Button/Button';
 
-type FormInputs = {
+type FormOrcamentoInputs = {
   nome: string;
   empresa: string;
-  telefone?: string;
+  telefone: string;
   email: string;
-  assunto?: string;
-  mensagem: string;
+  tipoNecessidade: string;
+  produtoServico?: string;
+  quantidade?: string;
+  prazo?: string;
+  observacoes?: string;
 };
 
-export const FormContact = () => {
+export const FormOrcamento = () => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<FormInputs>();
+  } = useForm<FormOrcamentoInputs>();
 
-
-  // Toast de teste (simulação)
-  const onSubmitMock = async (data: FormInputs) => {
+  const onSubmitMock = async (data: FormOrcamentoInputs) => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success(
-        'Mensagem enviada com sucesso! (MODO TESTE)',
-        { duration: 9000 }
+        'Solicitação de orçamento enviada com sucesso! (MODO TESTE)',
+        { duration: 6000 }
       );
       reset();
-    } catch (error) {
-      toast.error('Erro ao enviar (MODO TESTE).', { duration: 4000 });
+    } catch {
+      toast.error('Erro ao enviar solicitação. (MODO TESTE)', {
+        duration: 4000,
+      });
     }
   };
 
-  const onSubmitReal = async (data: FormInputs) => {
+  const onSubmitReal = async (data: FormOrcamentoInputs) => {
     try {
       const response = await fetch('https://formspree.io/f/mldpvpbd', {
         method: 'POST',
@@ -60,9 +63,9 @@ export const FormContact = () => {
     }
   };
 
-//Verifica qual ambiente o código está rodando (teste ou produção)
-const isDev = import.meta.env.DEV;
-const submitHandler = isDev ? onSubmitMock : onSubmitReal;
+  //Verifica qual ambiente o código está rodando (teste ou produção)
+  const isDev = import.meta.env.DEV;
+  const submitHandler = isDev ? onSubmitMock : onSubmitReal;
 
   return (
     <S.FormContainer>
@@ -88,38 +91,45 @@ const submitHandler = isDev ? onSubmitMock : onSubmitReal;
       />
 
       <form>
+        {/* Nome e Empresa */}
         <S.FieldGroup>
           <div style={{ flex: 1 }}>
             <label>Nome *</label>
-            <S.Input
-              placeholder="Nome"
-              {...register('nome', { required: 'O nome é obrigatório.' })}
-            />
+            <S.Input {...register('nome', { required: 'Campo obrigatório' })} />
             {errors.nome && (
               <S.ErrorMessage>{errors.nome.message}</S.ErrorMessage>
             )}
           </div>
 
           <div style={{ flex: 1 }}>
-            <label>Empresa</label>
-            <S.Input placeholder="Empresa" {...register('empresa')} />
+            <label>Empresa *</label>
+            <S.Input
+              {...register('empresa', { required: 'Campo obrigatório' })}
+            />
+            {errors.empresa && (
+              <S.ErrorMessage>{errors.empresa.message}</S.ErrorMessage>
+            )}
           </div>
         </S.FieldGroup>
 
         {/* Telefone e Email */}
         <S.FieldGroup>
           <div style={{ flex: 1 }}>
-            <label>Telefone</label>
-            <S.Input placeholder="Telefone" {...register('telefone')} />
+            <label>Telefone *</label>
+            <S.Input
+              {...register('telefone', { required: 'Campo obrigatório' })}
+            />
+            {errors.telefone && (
+              <S.ErrorMessage>{errors.telefone.message}</S.ErrorMessage>
+            )}
           </div>
 
           <div style={{ flex: 1 }}>
             <label>E-mail *</label>
             <S.Input
-              placeholder="E-mail"
               type="email"
               {...register('email', {
-                required: 'O e-mail é obrigatório.',
+                required: 'Campo obrigatório',
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                   message: 'E-mail inválido.',
@@ -132,39 +142,45 @@ const submitHandler = isDev ? onSubmitMock : onSubmitReal;
           </div>
         </S.FieldGroup>
 
-        {/* Assunto */}
+        {/* Tipo de necessidade */}
         <S.Assunto>
-          <label>Assunto *</label>
+          <label>Tipo de necessidade *</label>
           <S.Input
-            placeholder="Assunto"
-            {...register('assunto', { required: 'O Assunto é obrigatório' })}
+            placeholder="Ex: Materiais elétricos, Borrachas, Automação"
+            {...register('tipoNecessidade', { required: 'Campo obrigatório' })}
           />
-          {errors.assunto && (
-            <S.ErrorMessage>{errors.assunto.message}</S.ErrorMessage>
-          )}
+          {errors.tipoNecessidade && (
+              <S.ErrorMessage>{errors.tipoNecessidade.message}</S.ErrorMessage>
+            )}
         </S.Assunto>
 
-        {/* Mensagem */}
+        {/* Produto / Serviço */}
+        <S.Assunto>
+          <label>Produto ou serviço</label>
+          <S.Input {...register('produtoServico')} />
+        </S.Assunto>
+
+        {/* Quantidade e Prazo */}
+        <S.FieldGroup>
+          <div style={{ flex: 1 }}>
+            <label>Quantidade estimada</label>
+            <S.Input {...register('quantidade')} />
+          </div>
+
+          <div style={{ flex: 1 }}>
+            <label>Prazo desejado</label>
+            <S.Input {...register('prazo')} />
+          </div>
+        </S.FieldGroup>
+
+        {/* Observações */}
         <S.Mensagem>
-          <label>Mensagem *</label>
-          <S.TextArea
-            placeholder="Mensagem"
-            rows={4}
-            {...register('mensagem', {
-              required: 'A mensagem é obrigatória.',
-              minLength: {
-                value: 5,
-                message: 'A mensagem deve ter pelo menos 5 caracteres.',
-              },
-            })}
-          />
-          {errors.mensagem && (
-            <S.ErrorMessage>{errors.mensagem.message}</S.ErrorMessage>
-          )}
+          <label>Observações técnicas</label>
+          <S.TextArea rows={4} {...register('observacoes')} />
         </S.Mensagem>
 
         <Button
-          text="Enviar"
+          text="Solicitar Orçamento"
           variant="secondary"
           paddingHeight="large"
           onClick={handleSubmit(submitHandler)}
