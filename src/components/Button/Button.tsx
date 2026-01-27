@@ -1,8 +1,10 @@
 import { StyledButton } from './Button.styles';
 
+
 type ButtonProps = {
   text: string;
   onClick?: () => void;
+  type?: string;
   variant?: 'primary' | 'secondary';
   paddingHeight?: 'small' | 'large';
   disabled?: boolean;

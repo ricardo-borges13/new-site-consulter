@@ -22,7 +22,7 @@ export const FormContact = () => {
 
 
   // Toast de teste (simulação)
-  const onSubmitMock = async (data: FormInputs) => {
+  const onSubmitMock = async (_data: FormInputs) => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success(
@@ -30,7 +30,7 @@ export const FormContact = () => {
         { duration: 9000 }
       );
       reset();
-    } catch (error) {
+    } catch {
       toast.error('Erro ao enviar (MODO TESTE).', { duration: 4000 });
     }
   };
@@ -87,7 +87,7 @@ const submitHandler = isDev ? onSubmitMock : onSubmitReal;
         }}
       />
 
-      <form>
+      <form onSubmit={handleSubmit(submitHandler)}>
         <S.FieldGroup>
           <div style={{ flex: 1 }}>
             <label>Nome *</label>
@@ -167,7 +167,7 @@ const submitHandler = isDev ? onSubmitMock : onSubmitReal;
           text="Enviar"
           variant="secondary"
           paddingHeight="large"
-          onClick={handleSubmit(submitHandler)}
+          type="submit"
           disabled={isSubmitting}
           loading={isSubmitting}
         />

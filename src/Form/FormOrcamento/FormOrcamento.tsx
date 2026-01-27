@@ -23,7 +23,7 @@ export const FormOrcamento = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormOrcamentoInputs>();
 
-  const onSubmitMock = async (data: FormOrcamentoInputs) => {
+  const onSubmitMock = async (_data: FormOrcamentoInputs) => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success(
@@ -90,7 +90,7 @@ export const FormOrcamento = () => {
         }}
       />
 
-      <form>
+      <form onSubmit={handleSubmit(submitHandler)}>
         {/* Nome e Empresa */}
         <S.FieldGroup>
           <div style={{ flex: 1 }}>
@@ -183,7 +183,7 @@ export const FormOrcamento = () => {
           text="Solicitar Orçamento"
           variant="secondary"
           paddingHeight="large"
-          onClick={handleSubmit(submitHandler)}
+          type="submit"
           disabled={isSubmitting}
           loading={isSubmitting}
         />

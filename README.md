@@ -318,10 +318,12 @@ O componente renderiza **4 cards fixos** com as seguintes informações:
 
 
 -----------------------------------------------------------
-## COMPONENTE DE CONTATO
+## COMPONENTE DE FORMULÁRIO
 
-### Componente `FormContact`
-Formulário de contato construído com React Hook Form para validação e gerenciamento de estado.
+### Componente `FormContact` (Atualizado)
+Formulário de contato institucional construído com **React Hook Form**, responsável por receber mensagens gerais de clientes, parceiros ou visitantes do site.
+
+É utilizado para **dúvidas, solicitações genéricas e primeiro contato**, com validação de campos, feedback visual e controle de ambiente (teste/produção).
 
 #### Dependências
 ```bash
@@ -329,7 +331,7 @@ npm install react-hook-form react-hot-toast
 ```
 
 #### Local de Uso
-- **Caminho**: `src/components/FormContact/FormContact.tsx`
+- **Caminho**: `src/components/Forms/FormContact/FormContact.tsx`
 - **Usado em**: `SectionContactUs`
 
 #### Estrutura de Dados
@@ -374,25 +376,124 @@ type FormInputs = {
 7. Após sucesso, executa `reset()` para limpar o formulário
 
 #### Notificações (Toast)
+- **Biblioteca**: react-hot-toast
 - **Posição**: Centro da tela
 - **Estilo**: Dark mode com bordas arredondadas
 - **Duração**: 5s em produção 9s em teste (sucesso) / 4s (erro)
 - Instalado biblioteca react-hot-toast para personalizar o alert.
-- Componente `Toaster` é o que define a posição da mensagem, cor, tempo e etc. 
+- Componente `Toaster` é o que define a posição da mensagem, cor, tempo e etc.
 
-#### Integração com Backend
-O código atual possui simulação de envio. Para integrar com Formspree (ou outro serviço), descomente a função `onSubmitTeste`:
-```typescript
-// Trocar onSubmit por onSubmitTeste no handleSubmit
-const onSubmitTeste = async (data: FormInputs) => {
-  const response = await fetch('https://formspree.io/f/SEU_ID', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
-  // ... tratamento de resposta
-};
+#### Ambiente de Execução (Teste X Produção)
+O formulário detecta automaticamente o ambiente usando o Vite:
+
 ```
+const isDev = import.meta.env.DEV;
+const submitHandler = isDev ? onSubmitMock : onSubmitReal;
+
+```
+
+**Desenvolvimento (npm run dev)**
+→ Executa função mock (simulação, sem envio real)
+
+**Produção (npm run build)**
+→ Executa envio real (ex: Formspree)
+
+Esse padrão evita envios acidentais durante testes.
+
+
+--------------------------------------------------------------------------------
+### Componente `FormOrcamento` (Atualizado)
+Formulário especializado para **solicitação de orçamento**, criado para qualificar leads e coletar informações técnicas mais detalhadas.
+
+Utiliza a **mesma base visual e estrutural do** `FormContact`, porém com campos específicos para orçamento.
+
+#### Dependências
+```bash
+npm install react-hook-form react-hot-toast
+```
+
+#### Local de Uso
+- **Caminho**: `src/components/Forms/FormOrcamento/FormOrcamento.tsx`
+- **Usado em**: `SectionOrcamento`
+
+#### Estrutura de Dados
+```typescript
+type FormOrcamentoInputs = {
+  nome: string;
+  empresa: string;
+  telefone: string;
+  email: string;
+  tipoNecessidade: string;
+  produtoServico?: string;
+  quantidade?: string;
+  prazo?: string;
+  observacoes?: string;
+};
+
+```
+**Validações implementadas:**
+- Nome: obrigatório
+- Empresa: obrigatório
+- Telefone: obrigatório
+- E-mail: obrigatório + validação de formato
+- Tipo de necessidade: obrigatório
+- Produto / Serviço: opcional
+- Quantidade estimada: opcional
+- Prazo desejado: opcional
+- Observações técnicas: opcional
+;
+
+#### Como Usar
+- Usuário informa dados básicos e técnicos
+- handleSubmit valida os campos obrigatórios
+- Sistema identifica automaticamente o ambiente:
+
+Dev → mock de envio
+
+Prod → envio real
+
+- Exibe toast de sucesso ou erro
+- Após sucesso, formulário é limpo com reset()
+
+**React Hook Form - Principais recursos:**
+
+| Hook/Método | Função |
+|-------------|--------|
+| `register` | Registra e valida campos do formulário |
+| `handleSubmit` | Processa o envio após validação |
+| `reset` | Limpa todos os campos e erros |
+| `formState.errors` | Exibe mensagens de erro por campo |
+| `formState.isSubmitting` | Controla estado de carregamento durante envio |
+
+**Fluxo de funcionamento:**
+1. Campos são registrados via `register`
+2. Usuário preenche o formulário
+3. Ao clicar em "Enviar", `handleSubmit` valida os dados
+4. Se houver erros, exibe mensagens via `formState.errors`
+5. Se válido, executa `onSubmit` com `isSubmitting = true`
+6. Exibe toast de sucesso/erro via `react-hot-toast`
+7. Após sucesso, executa `reset()` para limpar o formulário
+
+#### Notificações (Toast)
+- **Biblioteca**: react-hot-toast
+- **Posição**: Centro da tela
+- **Estilo**: Dark mode com bordas arredondadas
+- **Duração**: 5s em produção 9s em teste (sucesso) / 4s (erro)
+- Instalado biblioteca react-hot-toast para personalizar o alert.
+- Componente `Toaster` é o que define a posição da mensagem, cor, tempo e etc.
+
+#### Ambiente de Execução (Teste X Produção)
+O formulário detecta automaticamente o ambiente usando o Vite:
+
+const isDev = import.meta.env.DEV;
+
+**Desenvolvimento (npm run dev)**
+→ Executa função mock (simulação, sem envio real)
+
+**Produção (npm run build)**
+→ Executa envio real (ex: Formspree)
+
+Esse padrão evita envios acidentais durante testes.
 
 ------------------------------------------------------------------------------------------
 
