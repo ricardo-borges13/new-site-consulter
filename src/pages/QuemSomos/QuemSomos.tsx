@@ -1,8 +1,9 @@
-import { motion } from 'framer-motion';
 import image from '../../assets/images/Banner-TrabalheConosco.jpg';
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
 import * as S from './QuemSomos.styles';
 import Accordion from 'react-bootstrap/Accordion';
+import { MotionReveal } from '../../components/Motion/MotionReveal/MotionReveal';
+
 
 const atuacao = [
   {
@@ -50,26 +51,6 @@ const atuacao = [
   },
 ];
 
-const MotionCard = ({
-  children,
-  index,
-}: {
-  children: React.ReactNode;
-  index: number;
-}) => (
-  <motion.div
-    initial={{ y: 40, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{
-      duration: 0.6,
-      ease: 'easeOut',
-      delay: index * 0.1,
-    }}
-  >
-    {children}
-  </motion.div>
-);
 
 export const QuemSomos = () => {
   return (
@@ -134,12 +115,12 @@ export const QuemSomos = () => {
           <S.SectionTitle>Nossa Atuação</S.SectionTitle>
           <S.Grid>
             {atuacao.map((item, index) => (
-              <MotionCard key={item.title} index={index}>
+              <MotionReveal key={item.title} delay={index * 0.8}>
                 <S.Card>
                   <h3>{item.title}</h3>
                   <p>{item.content}</p>
                 </S.Card>
-              </MotionCard>
+              </MotionReveal>
             ))}
           </S.Grid>
         </S.Container>

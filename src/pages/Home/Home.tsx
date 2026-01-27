@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { sobreData , productSectionData } from './Home.data';
+import { sobreData, productSectionData } from './Home.data';
 import { Hero } from '../../components/Sections/Hero/hero';
 import { SectionInfo } from '../../components/Sections/SectionInfo/SectionInfo';
 import { SectionProduct } from '../../components/Sections/SectionProduct/SectionProduct';
@@ -22,12 +22,12 @@ export const Home = () => {
         onPrimaryClick={() => navigate('/contato')}
         onSecondaryClick={() => navigate('/empresa')}
       />
-      <SectionInfo {...sobreData} />
+
+        <SectionInfo {...sobreData} />
 
       <SectionProduct {...productSectionData} />
 
-      <CTASection />
-      {/* <SectionsContactus {...contactData} /> */}
+        <CTASection />
 
       <SectionCarousel title="Clientes Atendidos">
         <ClientsCarousel />

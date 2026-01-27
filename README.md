@@ -819,3 +819,116 @@ Componente responsável por exibir o **banner principal das páginas internas** 
 - O conteúdo textual é totalmente controlado pelas props
 - O layout e os efeitos visuais são definidos no arquivo PageHeroSection.styles.ts
 - O uso de children permite compor o restante da página mantendo consistência visual
+
+---------------------------------------------------------------------------------------------
+
+### Componente `MotionReveal` (Atualizado)
+
+Componente genérico responsável por aplicar **animação de entrada baseada no scroll** (scroll reveal) em qualquer conteúdo da aplicação.
+
+Utiliza a biblioteca **Framer Motion** para animar elementos quando eles entram na área visível da tela (viewport), criando uma experiência visual mais fluida e moderna.
+
+---
+
+#### Local de Uso
+- Pode ser utilizado em qualquer página ou seção do site
+- Usado atualmente em:
+  - Página **Quem Somos** (cards de Missão, Visão, Valores e Atuação)
+- Indicado para animação de:
+  - Cards
+  - Blocos de conteúdo
+  - Seções institucionais
+  - Listas e grids
+
+---
+
+#### Estrutura de Props
+
+```tsx
+{
+  children: React.ReactNode; // Conteúdo que será animado
+  delay?: number;            // Delay opcional da animação (em segundos)
+}
+```
+
+#### Como Usar
+
+```tsx
+{
+import { MotionReveal } from '@/components/Motion/MotionReveal';
+
+<MotionReveal delay={0.2}>
+  <Card>
+    <h3>Título</h3>
+    <p>Conteúdo animado ao entrar na tela.</p>
+  </Card>
+</MotionReveal>
+//Para listas ou grids, o delay pode ser calculado dinamicamente:
+{items.map((item, index) => (
+  <MotionReveal key={item.id} delay={index * 0.1}>
+    <Item>{item.content}</Item>
+  </MotionReveal>
+))}
+
+}
+```
+
+## 🎬 Padrão de Animações do Projeto
+
+O projeto utiliza animações de forma **pontual e controlada**, com o objetivo de melhorar a experiência do usuário sem comprometer a performance ou a leitura do conteúdo.
+
+As animações seguem um **padrão claro de responsabilidades**, dividido em dois níveis: animação global de página e animação local por bloco.
+
+---
+
+### 1️⃣ Animação Global de Página (`PageHeroSection`)
+
+O componente `PageHeroSection` aplica uma **animação leve de entrada** ao conteúdo principal da página quando ela é acessada.
+
+Essa animação:
+- é aplicada **uma única vez**, no carregamento da página
+- afeta todo o conteúdo passado via `children`
+- cria uma transição suave de opacidade e deslocamento vertical
+
+#### Objetivo
+- Melhorar a primeira impressão ao acessar páginas internas
+- Tornar a navegação mais fluida
+- Evitar carregamento visual brusco de grandes blocos de texto
+
+#### Comportamento
+- Tipo: fade + slide up
+- Executa apenas uma vez
+- Não depende de scroll
+
+Esse padrão é ideal para páginas institucionais como:
+- Quem Somos
+- Trabalhe Conosco
+- Páginas informativas com leitura contínua
+
+---
+
+### 2️⃣ Animação Local por Bloco (`MotionReveal`)
+
+O componente genérico `MotionReveal` é utilizado para aplicar animações **baseadas em scroll**, fazendo com que elementos apareçam conforme entram na área visível da tela.
+
+Essa animação:
+- é aplicada **individualmente por elemento**
+- executa apenas uma vez por item
+- pode ser escalonada com `delay` para criar efeito de stagger
+
+#### Objetivo
+- Destacar blocos específicos de conteúdo
+- Evitar sobrecarga visual
+- Guiar o olhar do usuário ao rolar a página
+
+#### Uso recomendado
+- Cards institucionais
+- Listas
+- Blocos de destaque
+- Seções longas com múltiplos elementos
+
+Exemplo de uso:
+```tsx
+<MotionReveal delay={0.2}>
+  <Card />
+</MotionReveal>

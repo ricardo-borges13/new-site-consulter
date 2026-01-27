@@ -1,6 +1,7 @@
 import * as S from './SectionInfo.styles';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../Button/Button';
+import { MotionReveal } from '../../Motion/MotionReveal/MotionReveal';
 
 export type SectionInfoProps = {
   title: string;
@@ -23,23 +24,24 @@ export const SectionInfo = ({
   return (
     <S.Container>
       <S.TextArea>
-        <h2>{title}</h2>
-        <p dangerouslySetInnerHTML={{ __html: description }} />
-        {buttonText && (
-          <Button
-            onClick={() => navigate(`${path}`)}
-            text={buttonText}
-            variant="primary"
-          />
-        )}
+        <MotionReveal delay={0.2}>
+          <h2>{title}</h2>
+          <p dangerouslySetInnerHTML={{ __html: description }} />
+          {buttonText && (
+            <Button
+              onClick={() => navigate(`${path}`)}
+              text={buttonText}
+              variant="primary"
+            />
+          )}
+        </MotionReveal>
       </S.TextArea>
-
-      <S.ImagesArea>
-
-        <img src={image1} alt="" />
-        {image2 && <img src={image2} alt="" />}
-
-      </S.ImagesArea>
+      <MotionReveal delay={0.5}>
+        <S.ImagesArea>
+          <img src={image1} alt="" />
+          {image2 && <img src={image2} alt="" />}
+        </S.ImagesArea>
+      </MotionReveal>
     </S.Container>
   );
 };
