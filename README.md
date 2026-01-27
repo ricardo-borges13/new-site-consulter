@@ -139,20 +139,40 @@ type HeroProps = {
   subtitle: string;               // Subtítulo de apoio (obrigatório)
   primaryButtonText: string;      // Texto do botão principal
   secondaryButtonText: string;    // Texto do botão secundário
-  onPrimaryClick?: () => void;    // Ação do botão principal
-  onSecondaryClick?: () => void;  // Ação do botão secundário
+  onPrimaryClick?: () => void;    // Callback do botão principal
+  onSecondaryClick?: () => void;  // Callback do botão secundário
 };
 ```
+#### Como Utilizar
+Na página Home, importe o componente Hero e informe as propriedades desejadas.
+A lógica de navegação ou qualquer outra ação dos botões deve ser definida na página, mantendo o componente desacoplado de regras de negócio.
+
+```tsx
+<Hero
+        title="Soluções industriais em borrachas e materiais elétricos"
+        subtitle="Atendendo indústrias com qualidade, agilidade e confiança"
+        primaryButtonText="Solicitar orçamento"
+        secondaryButtonText="Fale com um especialista"
+        onPrimaryClick={() => navigate('/contato')}
+        onSecondaryClick={() => navigate('/empresa')}
+      />
+};
+```
+
 #### 🎨 Características
 
-Responsivo: Adaptado para desktop, tablet e mobile
+- Responsivo: Adaptado para desktop, tablet e mobile
+- Imagem de fundo fixa: Definida no arquivo de styled-components (`Hero.styles.ts`)
+- Overlay escuro: Garante legibilidade do texto sobre a imagem
+- Botões interativos: Estados de hover e foco para melhor UX
+- Tipografia escalável: Ajustes automáticos por breakpoint
+- Acessível: Estrutura semântica utilizando <section> e headings adequados
+-
 
--Imagem de fundo fixa: Definida no arquivo de styled-components (`Hero.styles.ts`)
--Overlay escuro: Garante legibilidade do texto sobre a imagem
--Botões interativos: Estados de hover e foco para melhor UX
--Tipografia escalável: Ajustes automáticos por breakpoint
--Acessível: Estrutura semântica utilizando <section> e headings adequados
+#### Observação Importante
 
+O componente Hero não define rotas nem comportamentos internos.
+Todas as ações dos botões são passadas via callbacks, permitindo reutilização do componente em diferentes contextos sem acoplamento ao sistema de rotas.
 -------------------------------------------------------------------------------
 
 ### Componente `SectionInfo` (Atualizado)

@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout/Layout";
 import { Home } from "../pages/Home/Home";
 import { QuemSomos } from "../pages/QuemSomos/QuemSomos";
 import { TrabalheConosco } from "../pages/TrabalheConosco/TrabalheConosco";
+import { Contato } from "../pages/Contato/Contato";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: "/trabalheconosco",
         element: <TrabalheConosco />,
+      },
+        {
+        path: "/contato",
+        element: <Contato />,
       }
     ]
   }

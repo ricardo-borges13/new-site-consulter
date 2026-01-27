@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import * as S from './FormContact.styles';
 import toast, { Toaster } from 'react-hot-toast';
-import { Button } from '../Button/Button';
+import { Button } from '../../components/Button/Button';
 
 type FormInputs = {
   nome: string;

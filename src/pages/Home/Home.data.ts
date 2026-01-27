@@ -29,7 +29,7 @@ export const sobreData: SectionInfoProps = {
   image1,
   image2,
   buttonText: 'Saiba mais',
-  path: '/quem-somos',
+  path: '/quemsomos',
 };
 
 export const productSectionData = {

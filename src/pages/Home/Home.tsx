@@ -17,8 +17,8 @@ export const Home = () => {
       <Hero
         title="Soluções industriais em borrachas e materiais elétricos"
         subtitle="Atendendo indústrias com qualidade, agilidade e confiança"
-        primaryButtonText="Solicitar orçamento"
-        secondaryButtonText="Fale com um especialista"
+        primaryButtonText="Fale com um especialista"
+        secondaryButtonText="Solicitar Orçamento"
         onPrimaryClick={() => navigate('/contato')}
         onSecondaryClick={() => navigate('/empresa')}
       />

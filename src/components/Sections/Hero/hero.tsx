@@ -18,6 +18,8 @@ export const Hero = ({
   onPrimaryClick,
   onSecondaryClick,
 }: HeroProps) => {
+
+
   return (
     <S.HeroContainer>
       <S.HeroContent>

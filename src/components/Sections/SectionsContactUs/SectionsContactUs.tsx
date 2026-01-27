@@ -1,4 +1,4 @@
-import { FormContact } from '../../FormContact/FormContact';
+import { FormContact } from '../../../Form/FormContact/FormContact';
 import * as S from './SectionContactUs.styles';
 import { MdEmail } from 'react-icons/md';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
@@ -30,7 +30,7 @@ export const SectionsContactus = ({
     <S.Container>
       <S.Content>
         <S.InfoArea>
-          <h2>Entre em Contato</h2>
+          <h2>Fale Conosco</h2>
           <p>Ficou com alguma dúvida?</p>
           <FaArrowAltCircleRight size={28} className="icon" />
 

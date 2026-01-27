@@ -9,7 +9,7 @@ export const SectionMap = () => (
   <S.Wrapper>
     <S.Container>
       <header>
-        <h2>Localização</h2>
+        <h2>Nossa Localização</h2>
         <span>
           A Consulter Soluções está estrategicamente localizada em Belo
           Horizonte, com fácil acesso para clientes e parceiros. Visite-nos ou
