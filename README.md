@@ -1234,3 +1234,42 @@ Exemplo de uso:
   <Card />
 </MotionReveal>
 ```
+
+---
+
+### Componente `WhatsAppButton` (Atualizado)
+
+Componente responsável por exibir um **botão flutuante de contato via WhatsApp**, fixado no canto inferior direito da tela.
+
+Permite que o usuário inicie uma conversa diretamente no WhatsApp, com número e mensagem pré-definidos, reforçando o canal de atendimento rápido e aumentando a conversão.
+
+---
+
+#### Localização
+
+- **Caminho**: `src/components/Layout/WhatsApp/WhatsAppButton.tsx`
+- **Usado em**: Componente `Layout` (visível em todas as páginas do site)
+
+---
+
+#### Estrutura de Props
+
+```ts
+type WhatsAppButtonProps = {
+  phone: string; // Número do WhatsApp no formato internacional (ex: 5531999999999)
+  message?: string; // Mensagem inicial opcional
+};
+```
+
+#### Configuração via whatsApp.json
+
+As informações do botão são carregadas a partir de um arquivo JSON localizado na pasta `public`, facilitando manutenção sem alterar o código-fonte.
+
+- public/whatsApp.json
+
+#### Funcionamento:
+
+- O arquivo é carregado via fetch
+- O campo phone define o número de destino
+- O campo message define a mensagem inicial exibida no WhatsApp
+- Caso o JSON não seja carregado, o botão não é exibido

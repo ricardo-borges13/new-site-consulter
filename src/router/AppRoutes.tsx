@@ -5,6 +5,7 @@ import { QuemSomos } from "../pages/QuemSomos/QuemSomos";
 import { TrabalheConosco } from "../pages/TrabalheConosco/TrabalheConosco";
 import { Contato } from "../pages/Contato/Contato";
 import { Orcamento } from "../pages/Orcamento/Orcamento";
+import { NotFound } from "../pages/NotFound/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ export const router = createBrowserRouter([
         {
         path: "/orcamento",
         element: <Orcamento />,
-      }
+      },
+      {
+        path: '*',
+        element: <NotFound />,
+      },
     ]
   }
 ]);
