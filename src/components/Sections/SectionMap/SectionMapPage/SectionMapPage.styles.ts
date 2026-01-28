@@ -36,9 +36,16 @@ export const ContainerMap = styled.div`
     }
   }
 `;
+
 export const MapLink = styled.div`
   margin-top: 0.8rem;
+  display: inline-flex;
+  align-items: center;
   font-weight: 500;
   color: #1e7f4f;
-`;
+  text-decoration: none;
 
+  &:hover {
+    text-decoration: underline;
+  }
+`;

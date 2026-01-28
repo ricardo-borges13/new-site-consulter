@@ -2,9 +2,26 @@ import * as S from './SectionMapPage.styles'
 import { MapPin } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
 import { Map } from '../Map/Map.tsx'
-const MAP_SRC = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.995883219508!2d-43.98691072395563!3d-19.96667538143002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6962c7e5e1ac1%3A0xb533cca56954e97f!2zQ09OU1VMVEVSIFNPTFXDh8OVRVM!5e0!3m2!1spt-BR!2sbr!4v1768956474522!5m2!1spt-BR!2sbr';
+import { useEffect, useState } from 'react';
+
+type GoogleMapConfig = {
+  MAP_SRC: string;
+  href: string;
+};
 
 export const SectionMapPage = () => {
+const [mapConfig, setMapConfig] = useState<GoogleMapConfig | null>(null);
+
+  useEffect(() => {
+    fetch('/googleMap.json')
+      .then(res => res.json())
+      .then(data => setMapConfig(data))
+      .catch(err => console.error('Erro ao carregar mapa:', err));
+  }, []);
+
+  if (!mapConfig) return null;
+
+
   return (
     <>
       <S.ContainerMap>
@@ -15,9 +32,9 @@ export const SectionMapPage = () => {
                   regional e retirada de materiais quando necessário.
                 </p>
               </header>
-              <Map src={MAP_SRC} />
+              <Map src={mapConfig.MAP_SRC} />
               <a
-                href="https://maps.app.goo.gl/4dYJMt12GoXB3F3c9"
+                href={mapConfig.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="map-link"
