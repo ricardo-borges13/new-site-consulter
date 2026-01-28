@@ -24,7 +24,7 @@ export const menuItems = [
     showInFooter: true,
   },
    {
-    id: 4,
+    id: 5,
     title: 'Contato',
     path: '/contato',
     showInFooter: true,
