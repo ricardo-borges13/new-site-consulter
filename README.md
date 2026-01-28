@@ -776,8 +776,8 @@ Componente técnico responsável por **renderizar o mapa do Google Maps** atrav�
 Não possui conteúdo institucional nem título — sua função é exclusivamente técnica e reutilizável.
 
 #### Localização
-- **Caminho**: `src/components/Sections/Map/Map.tsx`
-- **Usado em**: Componente `SectionMap`
+- **Caminho**: `src/components/Sections/SectionMap/Map.tsx`
+- **Usado em**: Componente `SectionMapHome` ou `SectionMapPage`
 - **OBS**: Não é chamado diretamente pela página (home e etc).
 
 #### Props
@@ -806,13 +806,13 @@ type MapProps = {
 - Ideal para reutilização em outras seções ou páginas, se necessário
 
 -------------------------------------------------------------------------------
-### Componente `SectionMap` (Atualizado)
+### Componente `SectionMapHome` (Atualizado)
 Componente responsável por **organizar a seção institucional de localização**, combinando texto explicativo e o componente **Map**.
 
 Define **layout, espaçamento, fundo da seção e contexto visual**, enquanto o Map cuida apenas da renderização do mapa.
 
 #### Localização
-- **Caminho**: `src/components/Sections/SectionMap/SectionMap.tsx`
+- **Caminho**: `src/components/Sections/SectionMap/SectionMapHome`
 - **Usado em**: Importado e utilizado na página `Home`
 
 
@@ -828,16 +828,43 @@ Define **layout, espaçamento, fundo da seção e contexto visual**, enquanto o 
 - O mapa se ajusta automaticamente ao tamanho da tela
 
 #### Observações Importantes
-- O componente SectionMap é responsável por qual mapa será exibido
-- O componente Map é responsável apenas por como o mapa é renderizado
-- A página Home deve utilizar apenas o SectionMap, nunca o Map diretamente
+- O componente `SectionMapHome` é responsável por qual mapa será exibido
+- O componente `Map` é responsável apenas por como o mapa é renderizado
+- A página `Home` deve utilizar apenas o `SectionMapHome`, nunca o Map diretamente
+
+-------------------------------------------------------------------------
+### Componente `SectionMapPage` (Atualizado)
+Componente responsável por **organizar a seção institucional de localização**, combinando texto explicativo e o componente **Map**.
+
+Define **layout, espaçamento, fundo da seção e contexto visual**, enquanto o Map cuida apenas da renderização do mapa.
+
+#### Localização
+- **Caminho**: `src/components/Sections/SectionMap/SectionMapPage`
+- **Usado em**: Importado e utilizado na página `Contato` e `Orçamento`
+
+
+#### Como Funciona
+- Possui um Wrapper que ocupa 100% da largura da viewport e aplica o fundo da seção
+- Utiliza um Container interno com largura limitada e centralizada
+- Define internamente a constante MAP_SRC, contendo a URL de incorporação do Google Maps
+- Passa o MAP_SRC para o componente Map
+
+#### Responsividade
+- Desktop: layout centralizado, mapa em destaque
+- Tablet e Mobile: layout fluido com espaçamento lateral reduzido
+- O mapa se ajusta automaticamente ao tamanho da tela
+
+#### Observações Importantes
+- O componente `SectionMapPage` é responsável por qual mapa será exibido
+- O componente `Map` é responsável apenas por como o mapa é renderizado
+- A página `Contato` e `Orçamento` deve utilizar apenas o `SectionMapPage`, nunca o Map diretamente
 
 --------------------------------------------------------------------------
 ### Componente `CTASection`
 
 Componente responsável por exibir uma **seção de chamada para ação (Call To Action)**, utilizada para incentivar o usuário a entrar em contato com a empresa.
 
-Apresenta um texto de impacto, um botão de ação e uma imagem de fundo fixa, criando destaque visual entre as seções da página.
+Apresenta um texto de impacto, um botão de ação e **uma imagem de fundo fixa**, criando destaque visual entre as seções da página.
 
 ---
 

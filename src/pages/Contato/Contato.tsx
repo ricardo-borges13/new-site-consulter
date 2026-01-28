@@ -3,7 +3,7 @@ import image from '../../assets/images/Banner-TrabalheConosco.jpg';
 import * as S from './Contato.styles';
 import { SectionsContactus } from '../../components/Sections/SectionsContactUs/SectionsContactUs';
 import { contactData } from '../../components/Layout/Header';
-import { SectionMap } from '../../components/Sections/SectionMap/SectionMap';
+import { SectionMapPage } from '../../components/Sections/SectionMap/SectionMapPage/SectionMapPage';
 
 export const Contato = () => {
   return (
@@ -23,7 +23,7 @@ export const Contato = () => {
           <SectionsContactus {...contactData} />
         </S.Form>
         <S.Divider />
-        <SectionMap />
+        <SectionMapPage />
       </PageHeroSection>
     </>
   );

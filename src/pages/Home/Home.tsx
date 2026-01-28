@@ -6,7 +6,7 @@ import { SectionProduct } from '../../components/Sections/SectionProduct/Section
 import { ClientsCarousel } from '../../components/Sections/Carousel/ClientsCarousel/ClientsCarousel';
 import { SectionCarousel } from '../../components/Sections/Carousel/SectionCarousel/SectionCarousel';
 
-import { SectionMap } from '../../components/Sections/SectionMap/SectionMap';
+import { SectionMapHome } from '../../components/Sections/SectionMap/SectionMapHome/SectionMapHome';
 import { CTASection } from '../../components/Sections/CTASection/CTASection';
 
 export const Home = () => {
@@ -23,16 +23,16 @@ export const Home = () => {
         onSecondaryClick={() => navigate('/contato')}
       />
 
-        <SectionInfo {...sobreData} />
+      <SectionInfo {...sobreData} />
 
       <SectionProduct {...productSectionData} />
 
-        <CTASection />
+      <CTASection />
 
       <SectionCarousel title="Clientes Atendidos">
         <ClientsCarousel />
       </SectionCarousel>
-      <SectionMap />
+      <SectionMapHome />
     </>
   );
 };

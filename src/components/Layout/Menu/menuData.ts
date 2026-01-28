@@ -18,9 +18,15 @@ export const menuItems = [
   },
 
   {
-    id: 5,
+    id: 4,
     title: 'Trabalhe Conosco',
     path: '/trabalheconosco',
+    showInFooter: true,
+  },
+   {
+    id: 4,
+    title: 'Contato',
+    path: '/contato',
     showInFooter: true,
   },
 ];

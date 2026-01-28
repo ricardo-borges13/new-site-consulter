@@ -35,8 +35,8 @@ export const HeaderMain = () => {
           <S.MenuContainer $open={menuOpen}>
             <Menu onLinkClick={() => setMenuOpen(false)} />
           </S.MenuContainer>
-          <S.ContactButton onClick={() => navigate('/contato')}>
-            Contato
+          <S.ContactButton onClick={() => navigate('/orcamento')}>
+            Orçamento
             {<FaAngleRight size={16} className="arrow" />}
           </S.ContactButton>
         </S.MenuWrapper>

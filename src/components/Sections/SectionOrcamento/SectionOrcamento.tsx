@@ -1,5 +1,5 @@
 import * as S from './SectionOrcamento.styles';
-import { FormOrcamento } from '../../Form/FormOrcamento/FormOrcamento';
+import { FormOrcamento } from '../../../Form/FormOrcamento/FormOrcamento';
 
 export const SectionOrcamento = () => {
   return (
@@ -13,9 +13,7 @@ export const SectionOrcamento = () => {
           </p>
         </S.Header>
 
-       
-          <FormOrcamento />
-
+        <FormOrcamento />
       </S.Container>
     </S.Section>
   );
