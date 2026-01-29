@@ -7,22 +7,30 @@ import { ProductCategory } from '../../components/ProductCategory/ProductCategor
 export const Eletrica = () => {
   return (
     <>
-      <PageHeroSection title={'Materiais Elétrico'} image={image}>
+      <PageHeroSection
+        title={'Materiais Elétrico'}
+        subTitle="Soluções elétricas para automação, infraestrutura, segurança e aplicações industriais."
+        image={image}
+      >
         <S.Container>
           <header>
             <p>
-              A linha de <strong>Borrachas Industriais</strong> da{' '}
-              <strong>Consulter Soluções </strong>
-              atende aplicações que exigem <strong>resistência mecânica</strong>
-              , <strong>vedação eficiente </strong>e{' '}
-              <strong>desempenho contínuo </strong> em ambientes industriais
-              severos.
+              A linha de <strong>Materiais Elétricos </strong>da{' '}
+              <strong>Consulter Soluções </strong> atende aplicações industriais
+              que exigem{' '}
+              <strong>segurança, confiabilidade e desempenho contínuo</strong>{' '}
+              em sistemas elétricos e de automação.
             </p>
             <p>
-              Trabalhamos com soluções <strong>padronizadas</strong> e também
-              com <strong>desenvolvimento sob medida</strong>, conforme{' '}
+              Fornecemos soluções completas para{' '}
               <strong>
-                desenho técnico, amostra ou necessidade do processo
+                infraestrutura elétrica, manutenção industrial e projetos
+                técnicos
+              </strong>
+              , trabalhando com produtos padronizados e também com fornecimento
+              conforme{' '}
+              <strong>
+                especificação técnica, desenho ou necessidade operacional
               </strong>
               .
             </p>
