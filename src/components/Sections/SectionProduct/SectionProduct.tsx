@@ -35,17 +35,17 @@ export const SectionProduct = ({
           description="Borrachas industriais para vedação, isolamento e aplicações de alta resistência."
           images={[icone1, image1]}
           buttonText="Saiba mais"
-          onButtonClick={() => navigate('/produtos/acessorios')}
+          onButtonClick={() => navigate('/produtos/borrachas')}
         />
         <CardProduct
           title="Material Elétrico"
           description="Componentes elétricos industriais para automação, manutenção e infraestrutura."
           images={[icone2, image2]}
           buttonText="Saiba mais"
-          onButtonClick={() => navigate('/produtos/acessorios')}
+          onButtonClick={() => navigate('/produtos/eletrica')}
         />
         <CardProduct
-          title="Acessórios"
+          title="Acessórios para Manutenção"
           description="Acessórios industriais para suporte, fixação e montagem de sistemas."
           images={[icone3, image3]}
           buttonText="Saiba mais"
@@ -56,7 +56,7 @@ export const SectionProduct = ({
           description="Soluções personalizadas para processos e sistemas industriais."
           images={[icone4, image4]}
           buttonText="Saiba mais"
-          onButtonClick={() => navigate('/produtos/acessorios')}
+          onButtonClick={() => navigate('/produtos/solucoes-industriais')}
         />
       </S.ImagesArea>
     </S.wrapper>

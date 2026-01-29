@@ -62,7 +62,7 @@ export const QuemSomos = () => {
       >
         <S.Container>
           {/* TEXTO INTRODUTÓRIO (VERSÃO REDUZIDA) */}
-          <S.Intro>
+          <header>
             <p>
               A <strong>Consulter Soluções</strong> nasceu com o propósito de
               atuar como uma parceira estratégica para empresas que enfrentam
@@ -78,7 +78,7 @@ export const QuemSomos = () => {
               contribuindo diretamente para a eficiência e continuidade das
               operações.
             </p>
-          </S.Intro>
+          </header>
 
           <S.SectionTitle>Missão, Visão e Valores</S.SectionTitle>
           <S.AccordionWrapper>

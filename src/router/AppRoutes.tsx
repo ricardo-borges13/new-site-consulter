@@ -6,6 +6,10 @@ import { TrabalheConosco } from "../pages/TrabalheConosco/TrabalheConosco";
 import { Contato } from "../pages/Contato/Contato";
 import { Orcamento } from "../pages/Orcamento/Orcamento";
 import { NotFound } from "../pages/NotFound/NotFound";
+import { Borrachas } from "../pages/Borrachas/Borrachas";
+import { AcessoriosManutencao } from "../pages/Acessorios/AcessoriosManutencao";
+import { SolucoesIndustriais } from "../pages/SolucoesIndustriais/SolucoesIndustriais";
+import { Eletrica } from "../pages/Eletrica/Eletrica";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +23,10 @@ export const router = createBrowserRouter([
         path: "/quemsomos",
         element: <QuemSomos />,
       },
+      { path: '/produtos/eletrica', element: <Eletrica /> },
+      { path: '/produtos/borrachas', element: <Borrachas /> },
+      { path: '/produtos/acessorios', element: <AcessoriosManutencao /> },
+      { path: '/produtos/solucoes-industriais', element: <SolucoesIndustriais /> },
       {
         path: "/trabalheconosco",
         element: <TrabalheConosco />,

@@ -8,19 +8,20 @@ export const Container = styled.section`
   font-family: 'Poppins', sans-serif;
   color: #222;
   line-height: 1.6;
-`;
 
-/* TEXTO INTRODUTÓRIO */
-export const Intro = styled.div`
-  max-width: 760px;
-  margin-bottom: 2.5rem;
+  header {
+    margin-bottom: 2rem;
 
-  p {
-    font-size: 1.05rem;
-    color: #333;
-    margin-bottom: 1rem;
+    p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+      text-align: justify;
+      margin-bottom: 1.5rem;
+    }
   }
 `;
+
 
 /* TÍTULO DAS SEÇÕES */
 export const SectionTitle = styled.h2`
@@ -145,3 +146,4 @@ export const AccordionWrapper = styled.div`
     content: '–';
   }
 `;
+
