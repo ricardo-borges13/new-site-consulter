@@ -24,7 +24,7 @@ proteção e aplicações técnicas industriais."
             </p>
             <p>
               Trabalhamos com soluções <strong>padronizadas</strong> e também
-              com
+              com{' '}
               <strong>desenvolvimento sob medida</strong>, conforme{' '}
               <strong>
                 desenho técnico, amostra ou necessidade do processo

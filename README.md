@@ -1273,3 +1273,48 @@ As informações do botão são carregadas a partir de um arquivo JSON localizad
 - O campo phone define o número de destino
 - O campo message define a mensagem inicial exibida no WhatsApp
 - Caso o JSON não seja carregado, o botão não é exibido
+
+----
+### Componente `ProductCategory` (Atualizado)
+
+Componente responsável por **exibir categorias de produtos industriais** em formato de card, utilizado nas páginas internas de produtos (ex: *Borrachas Industriais*).
+
+Cada card apresenta:
+- Um **título destacado** com faixa visual
+- Um **ícone representativo da categoria**
+- Uma **lista de itens/produtos**
+- Uma **ação de call-to-action** para solicitação de orçamento
+
+---
+
+#### Localização
+- **Caminho**: `src/components/ProductCategory`
+- **Usado em**: Páginas de produtos (ex: `Borrachas.tsx`, `MaterialEletrico.tsx`, etc.)
+
+---
+
+#### Estrutura de Props
+
+```tsx
+type ProductCategoryProps = {
+  image: string;   // Ícone ou imagem representativa da categoria
+  title: string;   // Título da categoria (ex: "Correias")
+  items: string[]; // Lista de produtos/itens da categoria
+};
+
+```
+
+#### Como Funciona
+
+- Renderiza um card vertical com layout flexível
+- O cabeçalho do card utiliza gradiente escuro + verde institucional, criando destaque visual e alinhamento com o header do site
+- A lista de itens é renderizada dinamicamente a partir do array items
+- O botão "Solicitar orçamento" direciona o usuário para a página /orcamento
+- O card possui animação de hover (elevação e sombra) para melhor feedback visual
+
+
+#### Observações Importantes
+
+- Ideal para ser alimentado por arquivos de dados (ex: dataProductRubber.ts)
+- Pode ser reutilizado para outras linhas de produtos sem alteração de código
+- Mantém identidade visual consistente com o restante do site
