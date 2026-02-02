@@ -1329,3 +1329,97 @@ type ProductCategoryProps = {
 - Ideal para ser alimentado por arquivos de dados (ex: dataProductRubber.ts)
 - Pode ser reutilizado para outras linhas de produtos sem alteração de código
 - Mantém identidade visual consistente com o restante do site
+
+
+---
+
+### Componente `SEO`
+O componente **`SEO`** é responsável por **gerenciar dinamicamente as meta informações de cada página** do site, como título, descrição, imagem de compartilhamento e URL canônica.
+
+Ele substitui a necessidade de concentrar todas as informações de SEO no `index.html`, permitindo que **cada página defina suas próprias características**, melhorando a indexação nos mecanismos de busca (Google) e o compartilhamento em redes sociais (WhatsApp, LinkedIn, Facebook, etc.).
+
+### 🎯 Objetivo do Componente
+
+- Centralizar a lógica de SEO em um único componente reutilizável
+- Garantir **títulos e descrições únicas por página**
+- Controlar **Open Graph**, **Twitter Card**, **canonical URL** e **robots**
+- Facilitar manutenção e padronização do SEO em projetos futuros
+
+
+#### Localização
+- **Caminho**: `src/components/SEO`
+
+### 🧩 Dependência Global (`react-head`)
+o  componente SEO depende do **`HeadProvider`**, que deve envolver a aplicação no ponto de entrada (`main.tsx`).
+O HeadProvider permite a inserção dinâmica de <title>, <meta> e <link> no <head> do documento.
+
+```tsx
+import { HeadProvider } from 'react-head';
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <HeadProvider>
+      <App />
+    </HeadProvider>
+  </StrictMode>
+);
+
+```
+- **Usado em**: O componente SEO deve ser utilizado em todas as páginas do projeto, definindo informações específicas para cada rota.
+```tsx
+export const Empresa = () => {
+  return (
+    <>
+          <SEO
+        title="Quem Somos - Consulter Soluções"
+        description="A Consulter Soluções atua desde 2013 oferecendo materiais elétricos, borrachas industriais e soluções sob medida para diferentes segmentos da indústria, com foco em eficiência, confiabilidade e atendimento especializado."
+        image="https://www.consultersolucoes/images/SEO-QuemSomos.jpg"
+        url="https://www.consultersolucoes/quem-somos"
+        keywords="consulter soluções, quem somos consulter, materiais elétricos industriais, borrachas industriais, soluções industriais, a empresa"
+      />
+```
+
+
+#### Dimensões de imagens
+ - 1200 x 630 px - Padrão ouro (Facebook / Whatsapp / Linkedin)
+- ~150 KB → excelente (rápido, não compromete SEO)
+- Nome do arquivo: SEO-QuemSomos.jpg
+- Formato: .jpg ou .webp
+- Pasta: public/images
+
+#### Estrutura de Props
+
+```tsx
+type SEOProps = {
+  title: string; // O componente SEO deve ser utilizado em todas as páginas do projeto, definindo informações específicas para cada rota.
+  description: string; //Título que aparece no Google abaixo do título
+  image?: string; // O componente SEO deve ser utilizado em todas as páginas do projeto, definindo informações específicas para cada rota.
+  url?: string; // URL da página atual
+  keywords?: string; // Imagem de compartilhamento (Open Graph / Twitter Card)
+  noindex?: boolean; // Palavras-chave para SEO on-page (uso auxiliar)
+  nofollow?: boolean; //Impede indexação da página pelos buscadores
+};
+```
+
+#### Quando usar noindex e nofollow
+``noindex={true}`` //Impede que a página apareça nos resultados do Google
+``nofollow={true}`` //Impede que a página apareça nos resultados do Google
+
+- Página 404 / Página não encontrada
+- Página de erro
+- Pagina de Teste
+- Página temporária
+- Página que não tem valor de SEO
+- Página que não deve competir com outras no google
+
+#### Pode usar só noindex (sem nofollow) em alguns casos:
+``noindex={true}``
+``nofollow={false}``
+- Landing pages internas
+- Páginas duplicadas
+- Páginas de campanha temporária
+
+#### OBSERVAÇÕES IMPORTANTES
+- Cada página deve ter um title e description únicos
+- Evite reutilizar a mesma imagem de SEO entre páginas diferentes
+- Utilize noindex e nofollow apenas em páginas que não devem aparecer no Google
+- O index.html deve conter apenas SEO genérico de fallback, nunca específico de páginas

@@ -3,7 +3,7 @@ import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageH
 import * as S from './QuemSomos.styles';
 import Accordion from 'react-bootstrap/Accordion';
 import { MotionReveal } from '../../components/Motion/MotionReveal/MotionReveal';
-
+import { SEO } from '../../components/SEO/Seo';
 
 const atuacao = [
   {
@@ -51,16 +51,18 @@ const atuacao = [
   },
 ];
 
-
 export const QuemSomos = () => {
   return (
     <>
-      <PageHeroSection
-        title="Quem somos"
-        image={image}
-      >
+      <SEO
+        title="Quem Somos - Consulter Soluções"
+        description="A Consulter Soluções atua desde 2013 oferecendo materiais elétricos, borrachas industriais e soluções sob medida para diferentes segmentos da indústria, com foco em eficiência, confiabilidade e atendimento especializado."
+        image="https://www.consultersolucoes/images/SEO-QuemSomos.jpg"
+        url="https://www.consultersolucoes/quem-somos"
+        keywords="consulter soluções, quem somos consulter, materiais elétricos industriais, borrachas industriais, soluções industriais, a empresa"
+      />
+      <PageHeroSection title="Quem somos" image={image}>
         <S.Container>
-          {/* TEXTO INTRODUTÓRIO (VERSÃO REDUZIDA) */}
           <header>
             <p>
               A <strong>Consulter Soluções</strong> nasceu com o propósito de

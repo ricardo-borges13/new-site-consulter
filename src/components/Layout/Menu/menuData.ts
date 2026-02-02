@@ -1,6 +1,6 @@
 export const menuItems = [
   { id: 1, title: 'Home', path: '/', showInFooter: true },
-  { id: 2, title: 'Quem somos', path: '/quemsomos', showInFooter: true },
+  { id: 2, title: 'Quem somos', path: '/quem-somos', showInFooter: true },
   {
     id: 3,
     title: 'Produtos',
@@ -20,7 +20,7 @@ export const menuItems = [
   {
     id: 4,
     title: 'Trabalhe Conosco',
-    path: '/trabalheconosco',
+    path: '/trabalhe-conosco',
     showInFooter: true,
   },
    {

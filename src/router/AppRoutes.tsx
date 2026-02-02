@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/quemsomos",
+        path: "/quem-somos",
         element: <QuemSomos />,
       },
       { path: '/produtos/eletrica', element: <Eletrica /> },
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
       { path: '/produtos/acessorios', element: <AcessoriosManutencao /> },
       { path: '/produtos/solucoes-industriais', element: <SolucoesIndustriais /> },
       {
-        path: "/trabalheconosco",
+        path: "/trabalhe-conosco",
         element: <TrabalheConosco />,
       },
         {
