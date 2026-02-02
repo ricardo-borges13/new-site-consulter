@@ -1,16 +1,26 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { sobreData, productSectionData } from './Home.data';
 import { Hero } from '../../components/Sections/Hero/hero';
 import { SectionInfo } from '../../components/Sections/SectionInfo/SectionInfo';
 import { SectionProduct } from '../../components/Sections/SectionProduct/SectionProduct';
 import { ClientsCarousel } from '../../components/Sections/Carousel/ClientsCarousel/ClientsCarousel';
 import { SectionCarousel } from '../../components/Sections/Carousel/SectionCarousel/SectionCarousel';
-
 import { SectionMapHome } from '../../components/Sections/SectionMap/SectionMapHome/SectionMapHome';
 import { CTASection } from '../../components/Sections/CTASection/CTASection';
+import { useEffect } from 'react';
 
 export const Home = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo === 'produtos') {
+      const section = document.getElementById('produtos');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
 
   return (
     <>
@@ -24,9 +34,10 @@ export const Home = () => {
       />
 
       <SectionInfo {...sobreData} />
-
-      <SectionProduct {...productSectionData} />
-
+      
+      <section id='produtos'>
+        <SectionProduct {...productSectionData} />
+      </section>
       <CTASection />
 
       <SectionCarousel title="Clientes Atendidos">

@@ -14,6 +14,11 @@ export const Container = styled.section`
       text-align: justify;
       margin-bottom: 1rem;
     }
+
+    strong {
+    font-weight: 600;
+    color: #1e7f4f;
+  }
   }
 `
 
