@@ -4,6 +4,7 @@ import * as S from './Eletrica.styles';
 import { dataProductEletric } from './dataProductEletric';
 import { ProductCategory } from '../../components/ProductCategory/ProductCategory';
 
+
 export const Eletrica = () => {
   return (
     <>

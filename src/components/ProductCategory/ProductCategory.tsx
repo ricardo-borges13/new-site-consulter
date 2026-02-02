@@ -1,6 +1,7 @@
 import * as S from './ProductCategory.styles';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { MotionReveal } from '../Motion/MotionReveal/MotionReveal';
 
 type ProductCategoryProps = {
   image: string;
@@ -23,13 +24,13 @@ export const ProductCategory = ({
           <h3>{title}</h3>
         </S.CardHeader>
       </S.Header>
-
       <S.List>
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
+        <MotionReveal delay={0.8}>
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </MotionReveal>
       </S.List>
-
       <S.Action onClick={() => navigate('/orcamento')}>
         Solicitar orçamento
         <ArrowRight size={16} />
