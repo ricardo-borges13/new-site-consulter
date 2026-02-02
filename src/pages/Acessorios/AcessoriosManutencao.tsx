@@ -1,5 +1,5 @@
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
-import image from '../../assets/images/Banner-TrabalheConosco.jpg';
+import image from '../../assets/images/PagesHeroAcessorios.jpg';
 import { dataAcessoriosManut } from './dataAcessoriosManut';
 import { ProductCategory } from '../../components/ProductCategory/ProductCategory';
 import * as S from './AcessoriosManutencao.styles';

@@ -1,5 +1,5 @@
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
-import image from '../../assets/images/Banner-TrabalheConosco.jpg';
+import image from '../../assets/images/PageHeroTrabalheConosco2.jpg';
 import * as S from './TrabalheConosco.styles';
 import { MotionReveal } from '../../components/Motion/MotionReveal/MotionReveal';
 

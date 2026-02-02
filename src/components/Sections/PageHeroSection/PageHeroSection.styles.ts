@@ -3,8 +3,7 @@ import styled from 'styled-components';
 export const HeroWrapper = styled.section<{ $image: string }>`
   position: relative;
   width: 100%;
-  height: 60vh;
-  min-height: 340px;
+  height: clamp(340px, 60vh, 500px);
 
   background-image: url(${({ $image }) => $image});
   background-size: cover;
@@ -13,7 +12,6 @@ export const HeroWrapper = styled.section<{ $image: string }>`
 
   display: flex;
   align-items: center;
-
   padding-top: clamp(120px, 12vh, 160px);
   caret-color: transparent;
   overflow: hidden;
@@ -64,12 +62,10 @@ export const Content = styled.div`
   margin-left: 6%;
   color: #222;
 
-
-
   transform: translateY(-60px); /* 👈 sobe o conteúdo */
 
   h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 3.2vw, 3rem);
     font-weight: 700;
     margin-bottom: 0.8rem;
     text-transform: uppercase;
@@ -84,7 +80,6 @@ export const Content = styled.div`
   @media (max-width: 768px) {
     margin-left: 0;
     text-align: center;
-    color: #fff;
   }
 `;
 

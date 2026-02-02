@@ -1,5 +1,5 @@
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
-import image from '../../assets/images/Banner-TrabalheConosco.jpg';
+import image from '../../assets/images/PagesHero-Contato.jpg';
 import * as S from './Contato.styles';
 import { SectionsContactus } from '../../components/Sections/SectionsContactUs/SectionsContactUs';
 import { contactData } from '../../components/Layout/Header';

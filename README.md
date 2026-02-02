@@ -183,13 +183,18 @@ A lógica de navegação ou qualquer outra ação dos botões deve ser definida 
 
 #### 🎨 Características
 
-- Responsivo: Adaptado para desktop, tablet e mobile
+- Responsivo: Adaptado para desktop, tablet e mobile ( height: clamp(400px, 55vh, 620px);)
 - Imagem de fundo fixa: Definida no arquivo de styled-components (`Hero.styles.ts`)
 - Overlay escuro: Garante legibilidade do texto sobre a imagem
 - Botões interativos: Estados de hover e foco para melhor UX
 - Tipografia escalável: Ajustes automáticos por breakpoint
 - Acessível: Estrutura semântica utilizando <section> e headings adequados
--
+
+#### Tamanho da Imagem
+- 1920 x 900 pixels
+- Peso Ideal: 150 x 250 KB
+- Formato recomendado: JPG (Salvar para Web no photoShopp. Porcentagem (%) da qualidade de forma que fique no tamanho do peso ideal)
+
 
 #### Observação Importante
 
@@ -1103,6 +1108,12 @@ Componente responsável por exibir o **banner principal das páginas internas** 
 - Utiliza animações suaves com framer-motion para entrada do conteúdo
 - Renderiza o conteúdo adicional (children) logo abaixo do banner principal
 
+#### Tamanho da imagem
+- 1920 (largura) x 1000 (altura) pixel
+- Peso ideal: 1500-3000 KB
+- Formato recomendado: JPG (Salvar para Web no photoShopp. Porcentagem (%) da qualidade de forma que fique no tamanho do peso ideal)
+
+
 #### Observações
 
 - O componente é genérico e pode ser reutilizado em diferentes páginas
@@ -1125,7 +1136,7 @@ Utiliza a biblioteca **Framer Motion** para animar elementos quando eles entram 
 
 - Pode ser utilizado em qualquer página ou seção do site
 - Usado atualmente em:
-  - Página **Quem Somos** (cards de Missão, Visão, Valores e Atuação)
+  - Todas as páginas com exceção do Home.
 - Indicado para animação de:
   - Cards
   - Blocos de conteúdo

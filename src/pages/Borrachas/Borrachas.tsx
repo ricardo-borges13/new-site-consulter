@@ -1,5 +1,5 @@
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
-import image from '../../assets/images/Banner-TrabalheConosco.jpg';
+import image from '../../assets/images/PagesHeroBorracha.jpg';
 import * as S from './Borrachas.styles.ts';
 import { ProductCategory } from '../../components/ProductCategory/ProductCategory.tsx';
 import { dataProductRubber } from './dataProductRubber.ts';

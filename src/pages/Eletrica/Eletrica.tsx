@@ -1,5 +1,5 @@
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
-import image from '../../assets/images/Banner-TrabalheConosco.jpg';
+import image from '../../assets/images/PagesHeroEletrica.jpg';
 import * as S from './Eletrica.styles';
 import { dataProductEletric } from './dataProductEletric';
 import { ProductCategory } from '../../components/ProductCategory/ProductCategory';

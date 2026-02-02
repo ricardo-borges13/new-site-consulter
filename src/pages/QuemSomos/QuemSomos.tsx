@@ -1,4 +1,4 @@
-import image from '../../assets/images/Banner-TrabalheConosco.jpg';
+import image from '../../assets/images/PageHeroEmpresa2.jpg';
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
 import * as S from './QuemSomos.styles';
 import Accordion from 'react-bootstrap/Accordion';
@@ -57,7 +57,6 @@ export const QuemSomos = () => {
     <>
       <PageHeroSection
         title="Quem somos"
-        subTitle="Conheça a Consulter Soluções"
         image={image}
       >
         <S.Container>

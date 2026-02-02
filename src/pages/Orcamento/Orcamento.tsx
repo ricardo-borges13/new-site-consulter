@@ -1,5 +1,5 @@
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
-import image from '../../assets/images/Banner-TrabalheConosco.jpg';
+import image from '../../assets/images/PagesHeroOrcamento2.jpg';
 import * as S from './Orcamento.styles';
 import { SectionOrcamento } from '../../components/Sections/SectionOrcamento/SectionOrcamento';
 import { SectionMapPage } from '../../components/Sections/SectionMap/SectionMapPage/SectionMapPage';

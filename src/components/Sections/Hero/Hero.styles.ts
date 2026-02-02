@@ -3,7 +3,7 @@ import heroBg from '../../../assets/images/BannerPrincipal-Consulter.jpg'; // aj
 
 export const HeroContainer = styled.section`
   width: 100%;
-  min-height: 600px;
+  height: clamp(400px, 55vh, 620px);
   background-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.7),
@@ -17,12 +17,7 @@ export const HeroContainer = styled.section`
   align-items: center;
   padding: 4rem 2rem;
 
-   @media (max-width: 1253px) {
-    min-height: 500px;
-  }
-
   @media (max-width: 768px) {
-    min-height: 400px;
     padding: 2rem 1rem;
   }
 `;
