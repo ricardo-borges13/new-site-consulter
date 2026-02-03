@@ -2,10 +2,19 @@ import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageH
 import image from '../../assets/images/PageHeroTrabalheConosco2.jpg';
 import * as S from './TrabalheConosco.styles';
 import { MotionReveal } from '../../components/Motion/MotionReveal/MotionReveal';
+import { SEO } from '../../components/SEO/Seo';
 
 export const TrabalheConosco = () => {
   return (
     <>
+      <SEO
+        title="Trabalhe Conosco - Consulter Soluções"
+        description="Faça parte da Consulter Soluções. Buscamos profissionais comprometidos com qualidade, inovação e soluções industriais em materiais elétricos, borrachas e acessórios."
+        image="https://www.consultersolucoes.com.br/images/SEO-TrabalheConosco.jpg"
+        url="https://www.consultersolucoes.com.br/trabalhe-conosco"
+        keywords="trabalhe conosco consulter, vagas indústria, carreira indústria, oportunidades consulter soluções"
+      />
+
       <PageHeroSection title="Trabalhe Conosco" image={image}>
         <S.Container>
           <header>

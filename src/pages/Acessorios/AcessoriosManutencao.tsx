@@ -3,9 +3,19 @@ import image from '../../assets/images/PagesHeroAcessorios.jpg';
 import { dataAcessoriosManut } from './dataAcessoriosManut';
 import { ProductCategory } from '../../components/ProductCategory/ProductCategory';
 import * as S from './AcessoriosManutencao.styles';
+import { SEO } from '../../components/SEO/Seo';
+
 export const AcessoriosManutencao = () => {
   return (
     <>
+      <SEO
+        title="Acessórios para Manutenção Industrial - Consulter Soluções"
+        description="Acessórios industriais para manutenção, fixação, montagem e suporte de sistemas, garantindo eficiência e segurança operacional."
+        image="https://www.consultersolucoes.com.br/images/SEO-Acessorios.jpg"
+        url="https://www.consultersolucoes.com.br/acessorios-industriais"
+        keywords="acessórios industriais, manutenção industrial, suprimentos industriais, fixação e montagem"
+      />
+
       <PageHeroSection
         title={'Acessórios para Manutenção'}
         subTitle={

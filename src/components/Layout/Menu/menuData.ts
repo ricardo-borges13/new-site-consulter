@@ -7,12 +7,12 @@ export const menuItems = [
     path: '/produtos',
     showInFooter: false,
     submenu: [
-      { title: 'Materiais Elétricos', path: '/produtos/eletrica' },
+      { title: 'Materiais Elétricos', path: '/produtos/material-eletrico' },
       {
         title: 'Borrachas',
-        path: '/produtos/borrachas',
+        path: '/produtos/borrachas-industriais',
       },
-      { title: 'Acessórios para Manutenção', path: '/produtos/acessorios' },
+      { title: 'Acessórios para Manutenção', path: '/produtos/acessorios-industriais' },
       { title: 'Soluções Industriais', path: '/produtos/solucoes-industriais' },
     ],
   },

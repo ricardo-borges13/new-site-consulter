@@ -8,6 +8,7 @@ import { SectionCarousel } from '../../components/Sections/Carousel/SectionCarou
 import { SectionMapHome } from '../../components/Sections/SectionMap/SectionMapHome/SectionMapHome';
 import { CTASection } from '../../components/Sections/CTASection/CTASection';
 import { useEffect } from 'react';
+import { SEO } from '../../components/SEO/Seo';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -24,6 +25,14 @@ export const Home = () => {
 
   return (
     <>
+      <SEO
+        title="Consulter Soluções | Materiais Elétricos, Borrachas Industriais e Soluções Industriais"
+        description="A Consulter Soluções oferece materiais elétricos, borrachas industriais, acessórios e soluções industriais sob medida, atendendo diversos segmentos da indústria com qualidade, agilidade e confiabilidade."
+        image="https://www.consultersolucoes.com.br/images/SEO-Home.jpg"
+        url="https://www.consultersolucoes.com.br/"
+        keywords="consulter soluções, materiais elétricos industriais, borrachas industriais, acessórios industriais, soluções industriais, indústria brasileira"
+      />
+
       <Hero
         title="Soluções industriais em borrachas e materiais elétricos"
         subtitle="Atendendo indústrias com qualidade, agilidade e confiança"
@@ -34,8 +43,8 @@ export const Home = () => {
       />
 
       <SectionInfo {...sobreData} />
-      
-      <section id='produtos'>
+
+      <section id="produtos">
         <SectionProduct {...productSectionData} />
       </section>
       <CTASection />

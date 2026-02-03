@@ -1378,7 +1378,6 @@ export const Empresa = () => {
       />
 ```
 
-
 #### Dimensões de imagens
  - 1200 x 630 px - Padrão ouro (Facebook / Whatsapp / Linkedin)
 - ~150 KB → excelente (rápido, não compromete SEO)

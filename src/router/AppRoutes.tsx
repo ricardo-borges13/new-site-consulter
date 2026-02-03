@@ -23,9 +23,9 @@ export const router = createBrowserRouter([
         path: "/quem-somos",
         element: <QuemSomos />,
       },
-      { path: '/produtos/eletrica', element: <Eletrica /> },
-      { path: '/produtos/borrachas', element: <Borrachas /> },
-      { path: '/produtos/acessorios', element: <AcessoriosManutencao /> },
+      { path: '/produtos/material-eletrico', element: <Eletrica /> },
+      { path: '/produtos/borrachas-industriais', element: <Borrachas /> },
+      { path: '/produtos/acessorios-industriais', element: <AcessoriosManutencao /> },
       { path: '/produtos/solucoes-industriais', element: <SolucoesIndustriais /> },
       {
         path: "/trabalhe-conosco",

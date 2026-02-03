@@ -3,11 +3,19 @@ import image from '../../assets/images/PagesHeroEletrica.jpg';
 import * as S from './Eletrica.styles';
 import { dataProductEletric } from './dataProductEletric';
 import { ProductCategory } from '../../components/ProductCategory/ProductCategory';
-
+import { SEO } from '../../components/SEO/Seo';
 
 export const Eletrica = () => {
   return (
     <>
+      <SEO
+        title="Material Elétrico Industrial - Consulter Soluções"
+        description="Linha completa de materiais elétricos industriais para automação, infraestrutura, painéis, comandos elétricos e manutenção industrial."
+        image="https://www.consultersolucoes.com.br/images/SEO-MaterialEletrico.jpg"
+        url="https://www.consultersolucoes.com.br/material-eletrico"
+        keywords="material elétrico industrial, componentes elétricos, automação industrial, infraestrutura elétrica"
+      />
+
       <PageHeroSection
         title={'Materiais Elétrico'}
         subTitle="Soluções elétricas para automação, infraestrutura, segurança e aplicações industriais."

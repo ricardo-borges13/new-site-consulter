@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import image from '../../assets/images/Banner-Pages-Erro404.jpg';
 import * as S from './NotFound.styles';
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
+import { SEO } from '../../components/SEO/Seo';
 
 export const NotFound = () => {
   const [visible, setVisible] = useState(false);
@@ -16,7 +17,15 @@ export const NotFound = () => {
 
   return (
     <>
-
+ <SEO
+        title="Página não encontrada - Consulter Soluções"
+        description="A página que você está tentando acessar não existe. Retorne à página inicial da JPM e encontre soluções em materiais elétricos e borrachas industriais."
+        image="https://www.consultersolucoes.com.br/images/error.jpg"
+        url="https://www.consultersolucoes.com.br/404"
+        keywords="erro 404, página não encontrada, JPM, materiais elétricos, borrachas industriais"
+        noindex={true} // 🔹 Impede o Google de indexar
+        nofollow={true} // 🔹 Impede o Google de seguir links desta página
+      />
       <PageHeroSection title="PÁGINA NÃO ENCONTRADA" image={image}>
         <S.Container>
           <div className="flex flex-col items-center justify-center h-screen text-center bg-gray-50 overflow-hidden">

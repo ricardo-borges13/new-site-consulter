@@ -35,21 +35,21 @@ export const SectionProduct = ({
           description="Borrachas industriais para vedação, isolamento e aplicações de alta resistência."
           images={[icone1, image1]}
           buttonText="Saiba mais"
-          onButtonClick={() => navigate('/produtos/borrachas')}
+          onButtonClick={() => navigate('/produtos/borrachas-industriais')}
         />
         <CardProduct
           title="Material Elétrico"
           description="Componentes elétricos industriais para automação, manutenção e infraestrutura."
           images={[icone2, image2]}
           buttonText="Saiba mais"
-          onButtonClick={() => navigate('/produtos/eletrica')}
+          onButtonClick={() => navigate('/produtos/material-eletrico')}
         />
         <CardProduct
           title="Acessórios para Manutenção"
           description="Acessórios industriais para suporte, fixação e montagem de sistemas."
           images={[icone3, image3]}
           buttonText="Saiba mais"
-          onButtonClick={() => navigate('/produtos/acessorios')}
+          onButtonClick={() => navigate('/produtos/acessorios-industriais')}
         />
         <CardProduct
           title="Soluções Industriais"
