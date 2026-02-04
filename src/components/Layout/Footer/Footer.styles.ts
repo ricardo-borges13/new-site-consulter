@@ -13,8 +13,8 @@ export const FooterTop = styled.div`
   padding: 3rem 1.5rem;
 
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
+  grid-template-columns: 1.7fr 1fr 1fr 1.5fr;
+  gap: 2rem;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
@@ -43,16 +43,6 @@ export const Brand = styled.div`
     p {
       max-width: none;
     }
-  }
-`;
-
-export const LinksArea = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
   }
 `;
 
@@ -86,7 +76,7 @@ export const Block = styled.div`
   address {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.7rem;
     font-style: normal;
     font-size: 0.9rem;
 
