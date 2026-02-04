@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AlertTriangle } from 'lucide-react';
-import image from '../../assets/images/Banner-Pages-Erro404.jpg';
+import image from '../../assets/images/PagesHero-Error.jpg';
 import * as S from './NotFound.styles';
 import { PageHeroSection } from '../../components/Sections/PageHeroSection/PageHeroSection';
 import { SEO } from '../../components/SEO/Seo';

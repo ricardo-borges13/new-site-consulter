@@ -1478,6 +1478,11 @@ Define os ícones exibidos:
 <link rel="manifest" href="/site.webmanifest" />
 
 ```
+## Ferramentas utilizadas
+Gera todos os formatos de imagens necessário para o projeto
+- **Favicons**: https://realfavicongenerator.net
+
+
 ### Canonical e hreflang
 - Evita conteúdo duplicado no Google
 - Define a URL oficial da Home
