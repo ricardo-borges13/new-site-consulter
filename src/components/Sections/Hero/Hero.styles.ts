@@ -20,6 +20,11 @@ export const HeroContainer = styled.section`
 
   @media (max-width: 768px) {
     padding: 2rem 1rem;
+
+  }
+
+   @media (max-width: 550px) {
+    width: 110%;
   }
 `;
 
@@ -44,6 +49,22 @@ export const HeroTitle = styled.h1`
   @media (max-height: 768px) {
     font-size: 2.5rem;
   }
+
+  @media (max-width: 540px) {
+    font-size: 2rem;
+  }
+
+   @media (max-width: 429px) {
+    font-size: 1.4rem;
+  }
+
+   @media (max-width: 414px) {
+    font-size: 1.3rem;
+  }
+
+   @media (max-width: 344px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const HeroSubtitle = styled.p`
@@ -55,6 +76,14 @@ export const HeroSubtitle = styled.p`
   @media (max-width: 768px) {
     font-size: 1rem;
   }
+
+    @media (max-width: 530px) {
+    font-size: 0.9rem;
+  }
+
+    @media (max-width: 431px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const ButtonGroup = styled.div`
@@ -64,7 +93,7 @@ export const ButtonGroup = styled.div`
 `;
 
 export const PrimaryButton = styled.button`
-  background-color: #8bc34a; /* Ajuste a cor verde conforme sua paleta */
+  background-color: #8bc34a;
   color: #fff;
   padding: 1rem 2rem;
   border: none;

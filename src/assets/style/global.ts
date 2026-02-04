@@ -25,11 +25,6 @@ export const GlobalStyle = createGlobalStyle`
     #f6f6f6 0%,
     #eeeeee 100%,
 );
-    
-    /* background-image: url('../../../public/images/background-color.jpg');
-    background-repeat: repeat;
-    background-size: auto;
-    background-attachment: fixed; */
 
   color: #1A1A1A;
   overflow-x: hidden;
