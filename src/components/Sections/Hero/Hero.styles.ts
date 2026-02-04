@@ -16,6 +16,7 @@ export const HeroContainer = styled.section`
   display: flex;
   align-items: center;
   padding: 4rem 2rem;
+   caret-color: transparent;
 
   @media (max-width: 768px) {
     padding: 2rem 1rem;

@@ -21,6 +21,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   text-align: center;
+  caret-color: transparent;
 
   h2 {
     font-size: 2.2rem;

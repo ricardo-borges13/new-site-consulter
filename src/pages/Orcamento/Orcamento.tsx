@@ -17,7 +17,6 @@ export const Orcamento = () => {
       />
 
       <PageHeroSection title={'ORÇAMENTO'} image={image}>
-        <S.Container></S.Container>
         <S.Form>
           <SectionOrcamento />
         </S.Form>

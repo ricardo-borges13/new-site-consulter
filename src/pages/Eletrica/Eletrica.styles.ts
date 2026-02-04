@@ -4,6 +4,7 @@ export const Container = styled.section`
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px 30px;
+  caret-color: transparent;
 
   header {
 
@@ -27,6 +28,7 @@ export const ContainerProduct = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   justify-content: center;
   gap: 32px;
+  
 
 
   @media (max-width: 900px) {

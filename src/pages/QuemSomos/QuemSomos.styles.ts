@@ -8,6 +8,7 @@ export const Container = styled.section`
   font-family: 'Poppins', sans-serif;
   color: #222;
   line-height: 1.6;
+   caret-color: transparent;
 
   header {
     margin-bottom: 2rem;

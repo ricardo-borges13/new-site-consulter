@@ -5,6 +5,7 @@ export const SectionWrapper = styled.section`
   max-width: clamp(320px, 90vw, 1200px);
   margin: 0 auto;
   padding: 50px 16px 0 16px;
+  caret-color: transparent;
 
   h2 {
     text-align: center;

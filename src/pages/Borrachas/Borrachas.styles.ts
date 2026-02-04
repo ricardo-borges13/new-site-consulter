@@ -4,6 +4,7 @@ export const Container = styled.section`
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px 30px;
+  caret-color: transparent;
 
   header {
 

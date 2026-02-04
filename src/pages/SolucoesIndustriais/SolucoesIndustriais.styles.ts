@@ -7,6 +7,7 @@ export const Container = styled.section`
   font-family: 'Poppins', sans-serif;
   color: #222;
   line-height: 1.6;
+  caret-color: transparent;
 `;
 
 export const Intro = styled.div`

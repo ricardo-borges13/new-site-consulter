@@ -12,6 +12,7 @@ export const Section = styled.section`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  caret-color: transparent;
 
   /* 🔥 PARALLAX SIMPLES */
   background-attachment: fixed;

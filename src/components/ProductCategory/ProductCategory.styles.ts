@@ -10,6 +10,7 @@ export const Card = styled.article`
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  caret-color: transparent;
 
   &:hover {
     transform: translateY(-6px);
