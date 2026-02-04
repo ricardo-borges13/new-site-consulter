@@ -2,10 +2,80 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- 🔹 Favicons -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- 🔹 Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>site-consulter</title>
+
+    <!-- 🔹 Canonical e hreflang (fallback da Home) -->
+    <link rel="canonical" href="https://www.consultersolucoes.com.br/" />
+    <link
+      rel="alternate"
+      href="https://www.consultersolucoes.com.br/"
+      hreflang="pt-BR"
+    />
+    <link
+      rel="alternate"
+      href="https://www.consultersolucoes.com.br/"
+      hreflang="x-default"
+    />
+
+    <!-- 🔹 Open Graph genérico (fallback da Home) -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Consulter Soluções | Materiais Elétricos, Borrachas Industriais e Soluções Industriais"
+    />
+    <meta
+      property="og:description"
+      content="A Consulter Soluções oferece materiais elétricos, borrachas industriais, acessórios e soluções industriais sob medida, atendendo diversos segmentos da indústria com qualidade e confiabilidade."
+    />
+    <meta
+      property="og:image"
+      content="https://www.consultersolucoes.com.br/images/SEO-Home.jpg"
+    />
+    <meta property="og:url" content="https://www.consultersolucoes.com.br/" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- 🔹 Schema.org - LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Consulter Soluções",
+        "url": "https://www.consultersolucoes.com.br/",
+        "logo": "https://www.consultersolucoes.com.br/images/logo.png",
+        "image": "https://www.consultersolucoes.com.br/images/SEO-Home.jpg",
+        "description": "Empresa especializada em materiais elétricos, borrachas industriais, acessórios e soluções industriais sob medida.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua das Canoas, 1180",
+          "addressLocality": "Belo Horizonte",
+          "addressRegion": "MG",
+          "postalCode": "30421-194",
+          "addressCountry": "BR"
+        },
+        "telephone": "+55 31 99286-3186",
+        "areaServed": "BR"
+      }
+    </script>
+
+    <!-- 🔹 Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 🔹 Compatibilidade -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

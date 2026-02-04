@@ -1,9 +1,8 @@
 # React + TypeScript + Vite
 
-# Nome do Projeto
+# CONSULTER SOLUÇÕES - SITE INSTITUCIONAL
 
-Arquivo limpo para iniciar um novo projeto.
-Foi criado as pastas mais importantes e já definido um layout no componente e rotas.
+Este é um site baseado em React para a Consulter, uma empresa que fornece soluções industriais. O projeto é construído com Vite e TypeScript, e usa React Router para navegação e Styled Components para estilização.
 
 ## 🚀 Tecnologias
 
@@ -1422,3 +1421,31 @@ type SEOProps = {
 - Evite reutilizar a mesma imagem de SEO entre páginas diferentes
 - Utilize noindex e nofollow apenas em páginas que não devem aparecer no Google
 - O index.html deve conter apenas SEO genérico de fallback, nunca específico de páginas
+
+------------
+
+
+# 📄 index.html — Estrutura Base & SEO Global
+
+Este arquivo `index.html` define a **base estrutural, semântica e de SEO global** do projeto da **Consulter Soluções**.
+Ele funciona como **fallback institucional** para mecanismos de busca e redes sociais, enquanto o componente `SEO.tsx` complementa e sobrescreve as informações de forma dinâmica por página.
+
+---
+
+## 🎯 Objetivo do index.html
+
+- Garantir **SEO técnico inicial** antes do carregamento do React
+- Definir **identidade global do site**
+- Fornecer **metadados de fallback** (Home)
+- Melhorar **indexação, compartilhamento social e SEO local**
+- Manter compatibilidade com SPA (React + Vite)
+
+---
+
+## 🔹 Estrutura Geral
+
+### 1️⃣ Metadados Básicos
+
+```html
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
