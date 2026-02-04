@@ -6,12 +6,24 @@ Este é um site baseado em React para a Consulter, uma empresa que fornece solu�
 
 ## 🚀 Tecnologias
 
-- React 18
-- TypeScript
-- Vite
-- React Router DOM
-- Styled-components
-- Bootstrap
+**Framework:** React
+**Ferramenta de Build:** Vite
+**Linguagem:** TypeScript
+**Roteamento:** React Router
+**Estilização:** Styled Components / Bootstrap
+**Linting:** ESLint
+**Gerenciador de Pacotes:** npm
+
+## Convenções de Desenvolvimento
+
+*   O projeto segue a estrutura padrão de projetos React.
+*   Os componentes estão localizados no diretório `src/components`.
+*   As páginas estão localizadas no diretório `src/pages`.
+*   O componente principal da aplicação é o `src/App.tsx`.
+*   O roteamento é definido em `src/router/AppRoutes.tsx`.
+*   Os estilos globais são definidos em `src/assets/style/global.ts`.
+
+
 
 ## 🏷️ Versionamento da Aplicação
 
@@ -1447,5 +1459,62 @@ Ele funciona como **fallback institucional** para mecanismos de busca e redes so
 ### 1️⃣ Metadados Básicos
 
 ```html
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" /> // Define a codificação de caracteres(ascentos, símbolos e idiomas)
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /> // Responsividade da página
+-
+```
+### Favicons e Identidade Visual
+Define os ícones exibidos:
+- Na aba do navegador
+- Em favoritos
+- Em atalhos mobile
+- Reforça a identidade visual da marca
+
+```html
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+```
+### Canonical e hreflang
+- Evita conteúdo duplicado no Google
+- Define a URL oficial da Home
+- Informa o idioma principal do site
+- Ajuda em SEO local e internacional
+
+```html
+<link rel="canonical" href="https://www.consultersolucoes.com.br/" />
+<link rel="alternate" href="https://www.consultersolucoes.com.br/" hreflang="pt-BR" />
+<link rel="alternate" href="https://www.consultersolucoes.com.br/" hreflang="x-default" />
+```
+
+### Open Graph — Fallback Global
+- Controla como o site aparece ao ser compartilhado:
+   **WhatsApp**
+   **Facebook**
+   **LinkedIn**
+- Serve como fallback da Home
+- É sobrescrito dinamicamente pelo componente SEO.tsx em cada página
+
+### Schema.org — SEO Estruturado
+- Ajuda o Google a entender o negócio
+- Fortalece SEO local
+- Pode gerar painel de conhecimento (Knowledge Panel)
+- Integra-se melhor com Google Maps
+
+### Google Fonts
+- Define tipografia global do projeto
+- Evita múltiplos carregamentos de fonte
+- Garante consistência visual
+- Melhora performance e UX
+
+### Compatibilidade e Bootstrap da SPA
+- Garante compatibilidade com navegadores modernos
+- Evita problemas de renderização legados
+
+```html
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+```
+
