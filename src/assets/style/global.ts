@@ -24,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
     180deg,
     #f6f6f6 0%,
     #eeeeee 100%,
+
 );
 
   color: #1A1A1A;

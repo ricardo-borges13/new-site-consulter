@@ -35,8 +35,7 @@ export const Nav = styled.nav`
     gap: 0.4rem;
   }
 
-
-  @media (max-width: 774px) {
+  @media (max-width: 1038px) {
     flex-direction: column; /* coloca os itens um abaixo do outro */
     align-items: flex-start; /* alinha à esquerda */
     gap: 1.2rem;
@@ -68,7 +67,7 @@ export const MenuItem = styled.div`
   }
 
   /* Ajuste para mobile */
-  @media (max-width: 774px) {
+  @media (max-width: 1038px) {
     display: block;
     width: 100%;
   }
@@ -101,7 +100,7 @@ export const MenuLink = styled(Link)`
     font-weight: 400;
   }
 
-  @media (max-width: 774px) {
+  @media (max-width: 1038px) {
     color: #ffffff;
     display: block;
     width: 100%;
@@ -109,8 +108,8 @@ export const MenuLink = styled(Link)`
     font-size: 1rem;
 
     &:hover {
-    color: #0c0c0c;
-  }
+      color: #0f0f0f;
+    }
   }
 `;
 
@@ -135,7 +134,7 @@ export const Submenu = styled.ul<{ $isOpen?: boolean }>`
   display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
 
   /* --- MODO MOBILE --- */
-  @media (max-width: 774px) {
+  @media (max-width: 1038px) {
     position: static;
     background: transparent;
     box-shadow: none;

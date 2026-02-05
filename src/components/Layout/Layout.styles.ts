@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const LayoutWrapper = styled.div`
 display: flex;
 flex-direction: column;
-min-height: 100vh; //faz o layout ocupar a altura toda da tela
+min-height: 100vh;
 `
 
 export const MainContent = styled.main`

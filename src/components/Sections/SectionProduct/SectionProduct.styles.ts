@@ -6,6 +6,7 @@ export const wrapper = styled.div`
   max-width: 1350px;
   margin: 0 auto;
   padding: 20px 20px;
+   overflow-x: hidden;
 
   h2 {
     display: flex;
@@ -36,6 +37,31 @@ export const ImagesArea = styled.div`
 
     > * {
       width: 100%; /* garante que cada card use toda a largura */
+    }
+  }
+
+   @media (max-width: 390px) {
+     margin-bottom: 3px;
+    > * {
+      width: 97%;
+
+    }
+  }
+   @media (max-width: 375px) {
+    > * {
+      width: 93%;
+    }
+  }
+
+   @media (max-width: 360px) {
+    > * {
+      width: 89%;
+    }
+  }
+
+   @media (max-width: 344px) {
+    > * {
+      width: 85%;
     }
   }
 `;

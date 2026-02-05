@@ -4,8 +4,7 @@ export const Card = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-
-  height: 220px;
+  /* min-height: 220px; */
   background: #ffff;
   border-radius: 20px;
   padding: 2rem;
@@ -25,8 +24,6 @@ export const Content = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-
-
 
    h3 {
     font-size: 1.4rem;
@@ -98,5 +95,29 @@ export const ImageArea = styled.div`
     max-width: 100%;
     max-height: 140px;
     object-fit: contain;
+  }
+
+    @media (max-width: 390px) {
+    > * {
+      width: 97%;
+
+    }
+  }
+   @media (max-width: 375px) {
+    > * {
+      width: 93%;
+    }
+  }
+
+  @media (max-width: 360px) {
+    > * {
+      width: 89%;
+    }
+  }
+
+   @media (max-width: 344px) {
+    > * {
+      width: 80%;
+    }
   }
 `;

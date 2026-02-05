@@ -28,7 +28,7 @@ export const Brand = styled.div`
   gap: 1rem;
 
   img {
-    width: 180px;
+    width: clamp(100px, 50vw, 200px);
   }
 
   p {

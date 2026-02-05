@@ -24,7 +24,11 @@ export const HeroContainer = styled.section`
   }
 
    @media (max-width: 550px) {
-    width: 110%;
+    width: 100%;
+  }
+
+    @media (max-width: 499px) {
+    width: 100%;
   }
 `;
 

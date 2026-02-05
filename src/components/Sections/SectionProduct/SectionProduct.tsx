@@ -45,7 +45,7 @@ export const SectionProduct = ({
           onButtonClick={() => navigate('/produtos/material-eletrico')}
         />
         <CardProduct
-          title="Acessórios para Manutenção"
+          title="Acessórios"
           description="Acessórios industriais para suporte, fixação e montagem de sistemas."
           images={[icone3, image3]}
           buttonText="Saiba mais"

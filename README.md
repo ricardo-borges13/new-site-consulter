@@ -1436,6 +1436,650 @@ type SEOProps = {
 
 ------------
 
+##### Componente ``HeaderTop``
+
+
+
+Barra de topo fixa com informações de contato (telefone e email) e texto institucional. Exibe links clicáveis que abrem diretamente o discador ou cliente de email.
+
+## 📋 Características
+
+- **Barra fixa no topo** da página (acima do HeaderMain)
+- **Links funcionais**: `tel:` para telefone e `mailto:` para email
+- **Layout responsivo** com reorganização em mobile
+- **Ícones React Icons** para telefone e email
+- **Hover effect** com cor de destaque (#94c11f)
+
+## 🎨 Comportamento Visual
+
+### Desktop (> 800px)
+- Layout horizontal com flexbox
+- Texto institucional à esquerda (ocupa espaço disponível)
+- Telefone e email à direita separados por "/"
+- Alinhamento: space-between
+
+### Mobile (≤ 800px)
+- Layout vertical centralizado
+- Itens empilhados um abaixo do outro
+- Separador "/" oculto
+- Espaçamento reduzido
+
+### Extra Small (≤ 550px)
+- Font-size reduzido: 0.8rem
+- Links com fonte 1.1rem para legibilidade
+
+## 🔧 Props (ContactInfo)
+
+| Prop | Tipo | Obrigatório | Descrição |
+|------|------|-------------|-----------|
+| `text` | `string` | Sim | Texto institucional/slogan exibido à esquerda |
+| `phone` | `string` | Sim | Número de telefone principal (formatado) |
+| `email` | `string` | Sim | Endereço de email de contato |
+
+### Exemplo de tipo ContactInfo
+```typescript
+// types/contact.ts
+export type ContactInfo = {
+  phone: string;
+  phone2?: string;
+  phone3?: string;
+  nome2?: string;
+  nome3?: string;
+  email: string;
+  text: string;
+};
+```
+
+**Nota:** O componente usa apenas `text`, `phone` e `email`. Os campos adicionais (`phone2`, `phone3`, etc.) são opcionais e podem ser usados em outros componentes.
+
+## 📦 Dependências
+```json
+{
+  "react": "^18.x",
+  "react-icons": "^4.x",
+  "styled-components": "^6.x"
+}
+```
+
+## 🚀 Uso
+```tsx
+import { HeaderTop } from './components/HeaderTop/HeaderTop';
+import { contactData } from './data/contactData';
+
+function App() {
+  return (
+    <>
+      <HeaderTop {...contactData} />
+      {/* HeaderMain e resto do conteúdo */}
+    </>
+  );
+}
+```
+
+### Uso com props diretas
+```tsx
+<HeaderTop
+  text="Especialistas em transformar desafios em soluções."
+  phone="(31) 3500-4797"
+  email="consulter@consultersolucoes.com.br"
+/>
+```
+
+## 📊 Estrutura de Dados
+```typescript
+// contactData.ts
+export const contactData: ContactInfo = {
+  phone: '(31) 3500-4797',
+  phone2: '(31) 9 9286-3186',
+  phone3: '(31) 9 8420-5131',
+  nome2: 'Heitor Marliere',
+  nome3: 'Fernando Perret',
+  email: 'consulter@consultersolucoes.com.br',
+  text: 'Especialistas em transformar desafios em soluções.',
+};
+```
+
+## 🎯 Funcionalidades
+
+### Links Clicáveis
+
+**Telefone:**
+```typescript
+const phoneHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
+// Input: "(31) 3500-4797"
+// Output: "tel:3135004797"
+```
+
+**Email:**
+```typescript
+const emailHref = `mailto:${email}`;
+// Output: "mailto:consulter@consultersolucoes.com.br"
+```
+
+### Comportamento ao Clicar
+
+- **Mobile**: Abre app nativo de telefone/email
+- **Desktop**: Abre cliente de email padrão / discador se configurado
+
+## 📱 Breakpoints
+
+| Breakpoint | Comportamento |
+|------------|---------------|
+| `800px` | Muda para layout vertical, oculta separador "/" |
+| `550px` | Reduz font-size para 0.8rem, links em 1.1rem |
+
+## 🎨 Styled Components
+
+### Header
+- `position: fixed` no topo (top: 0)
+- `z-index: 1100` (acima do HeaderMain que tem 100)
+- Background: #1a1a1a
+- Border bottom: 3px solid #94c11f
+- `caret-color: transparent` remove cursor de texto
+
+### Container
+- Max-width: 1200px centralizado
+- Padding: 6px 16px
+- Display: flex com space-between
+- Gap: 1.5rem (desktop) / 0 (mobile)
+
+**Elementos:**
+```css
+/* Texto institucional */
+> div:first-child {
+  flex: 1; /* ocupa espaço disponível */
+}
+
+/* Ícones */
+svg {
+  font-size: 1.5rem;
+  color: #94c11f;
+}
+
+/* Links */
+a:hover {
+  color: #94c11f;
+}
+```
+
+## 🎭 Animações e Transições
+
+- **Hover**: Transição de cor nos links (inherit → #94c11f)
+- **Responsivo**: Reorganização instantânea via media queries
+- **Ícones**: Cor fixa #94c11f (sem animação)
+
+## ⚠️ Observações Importantes
+
+1. **Z-index hierarchy**:
+   - HeaderTop: 1100
+   - HeaderMain: 100
+   - Garante que o topo fique sempre visível
+
+2. **Sanitização de telefone**:
+   - Remove todos os caracteres exceto dígitos e "+"
+   - Garante compatibilidade com protocolos `tel:`
+
+3. **Espaçamento**:
+   - Desktop: gap 1.5rem entre elementos
+   - Mobile: gap 0 para melhor uso vertical
+
+4. **Acessibilidade**:
+   - Links semânticos (`<a href="tel:">` e `<a href="mailto:">`)
+   - Ícones como indicadores visuais
+
+## 🔍 Estrutura HTML Renderizada
+```html
+<div> <!-- Header -->
+  <div> <!-- Container -->
+    <div>Especialistas em transformar...</div>
+
+    <div>
+      <svg><!-- Phone Icon --></svg>
+      <a href="tel:3135004797">(31) 3500-4797</a>
+    </div>
+
+    <span>/</span>
+
+    <div>
+      <svg><!-- Email Icon --></svg>
+      <a href="mailto:consulter@consultersolucoes.com.br">
+        consulter@consultersolucoes.com.br
+      </a>
+    </div>
+  </div>
+</div>
+```
+
+## 📝 Estrutura de Arquivos
+```
+HeaderTop/
+├── HeaderTop.tsx
+├── HeaderTop.styles.ts (ou HeaderTopo.styles.ts)
+
+
+data/
+└── contactData.ts
+
+types/
+└── contact.ts
+```
+
+## 🛠️ Customização Rápida
+
+**Mudar cor de destaque:**
+```typescript
+// HeaderTopo.styles.ts
+border-bottom: 3px solid #SUA_COR;
+color: #SUA_COR; // para ícones e hover
+```
+
+**Ajustar altura:**
+```typescript
+// Container
+padding: 10px 16px; // aumenta altura vertical
+```
+
+**Adicionar mais informações:**
+```tsx
+// HeaderTop.tsx
+<div>
+  <FaMapMarkerAlt />
+  <span>{address}</span>
+</div>
+```
+
+**Mudar breakpoint mobile:**
+```typescript
+// HeaderTopo.styles.ts
+@media (max-width: SEU_VALOR) {
+  flex-direction: column;
+}
+```
+
+## 🤝 Componentes Relacionados
+
+- **HeaderMain**: Header principal que fica logo abaixo
+- **contactData**: Arquivo de dados compartilhados
+- **ContactInfo type**: Tipagem TypeScript compartilhada
+
+## 💡 Boas Práticas
+
+- Sempre forneça números de telefone formatados para legibilidade
+- Use emails válidos para evitar erros no `mailto:`
+- Mantenha o texto institucional conciso (ideal: 1 linha)
+- Teste links em dispositivos móveis reais
+
+---
+
+
+
+
+------------
+
+### Componente `HeaderMain`
+
+Componente de cabeçalho principal da aplicação com navegação responsiva, efeito de scroll e menu mobile.
+
+## 📋 Características
+
+- **Header fixo** com efeito de redução ao rolar a página
+- **Menu responsivo** com toggle para dispositivos móveis
+- **Logo adaptável** que reduz de tamanho no scroll
+- **Botão de orçamento** com animação de seta
+- **Navegação integrada** com React Router
+
+## 🎨 Comportamento Visual
+
+### Desktop
+- Header inicia com 110px de altura
+- Ao rolar 30px, reduz para 70px
+- Logo ajusta de 100px para 60px
+- Menu horizontal sempre visível
+
+### Mobile (≤ 1038px) `MenuToggle`
+- Menu hambúrguer aparece
+- Menu se expande verticalmente ao clicar
+- Animação suave de abertura/fechamento
+- Botão de orçamento oculto em telas ≤ 550px
+
+## 🔧 Props
+
+Este componente não recebe props diretamente, mas o componente `Menu` interno aceita:
+
+| Prop | Tipo | Descrição |
+|------|------|-----------|
+| `onLinkClick` | `() => void` | Callback executado ao clicar em links do menu (fecha o menu mobile) |
+
+
+
+## 📱 Breakpoints
+
+| Breakpoint | Comportamento |
+|------------|---------------|
+| `1038px` | Menu hambúrguer ativado |
+| `900px` | Ajuste de altura do header e logo |
+| `775px` | Margem superior adicional |
+| `770px` | Redução de padding lateral |
+| `550px` | Botão de orçamento oculto |
+
+## 🎯 Funcionalidades
+
+### Scroll Behavior
+```tsx
+// Detecta scroll > 30px
+const handleScroll = () => {
+  setIsScrolled(window.scrollY > 30);
+};
+```
+
+### Menu Toggle
+- **Ícone**: Alterna entre `FiMenu` e `FiX`
+- **Estado**: Controla abertura/fechamento do menu mobile
+- **Auto-close**: Menu fecha automaticamente ao clicar em links
+- (≤ 1038px) Menu hamburguer aparece
+```JS
+@media (max-width: 1038px) {
+    display: block;
+  }
+  ```
+
+### Navegação
+- **Logo**: Link para home (`/`)
+- **Botão**: Navega para `/orcamento`
+- **Menu**: Links gerenciados pelo componente `Menu`
+
+## 🎨 Styled Components
+
+### HeaderContainer
+- `$isScrolled`: Prop transiente que controla altura e estilos
+
+## 🤝 Componentes Relacionados
+
+- **Menu**: Componente de navegação interna
+- **Logo**: Asset em `/assets/images/Logo-Header2.png`
+
+### Image (Logo)
+- 400 x 120 px
+- Formato PNG24 até 50-80KB
+- Altura dinâmica baseada em scroll
+- Transição suave de 0.3s
+
+### ContactButton
+- Gradiente verde (#94C11F → #AFC577)
+- Animação de seta no hover
+- Oculto em mobile
+- (≤ 550px) botão de orçamento ocultado
+
+### MenuContainer
+- Desktop: flex horizontal
+- Mobile: absolute, full-width, animação vertical
+- (≤ 1038px) Os menus descritivos desaparecem
+
+
+## 🔄 Estados
+```tsx
+const [isScrolled, setIsScrolled] = useState(false);
+const [menuOpen, setMenuOpen] = useState(false);
+```
+
+## ⚠️ Observações
+
+- O header tem `position: fixed` com `top: 34px` (desktop) e `top: 55px` (mobile)
+- `z-index: 100` garante que fique acima do conteúdo
+- `caret-color: transparent` remove o cursor de texto
+- Box-sizing global evita vazamento de conteúdo
+
+## 🎭 Animações
+
+- **Scroll**: 0.3s ease para altura e logo
+- **Menu mobile**: Transform Y com opacity
+- **Seta do botão**: translateX no hover
+- **Hover do botão**: opacity 0.9
+
+## 📝 Estrutura de Arquivos
+```
+HeaderMain/
+├── HeaderMain.tsx
+├── HeaderMain.styles.ts
+```
+---
+
+### Componente `Menu`
+
+Componente de navegação principal com suporte a submenus, comportamento responsivo adaptativo (hover no desktop, click no mobile) e scroll suave para seções.
+
+## 📋 Características
+
+- **Navegação híbrida**: Hover no desktop (> 1038px) e click no mobile (≤ 1038px)
+- **Submenus animados** com transições suaves
+- **Scroll inteligente** para seções da página (ex: "Produtos")
+- **Detecção automática** de viewport para alternar comportamentos
+- **Animação diferenciada** por plataforma (fade + transform no desktop, max-height no mobile)
+
+## 🎨 Comportamento por Plataforma
+
+### Desktop (> 1038px)
+- **Hover**: Submenu abre ao passar o mouse
+- **Menu "Produtos"**: Scroll suave até seção `#produtos` na home
+- **Outros menus**: Navegação normal via React Router
+- **Visual**: Submenu posicionado absolutamente abaixo do item
+
+### Mobile (≤ 1038px)
+- **Click**: Submenu abre/fecha ao clicar
+- **Menu "Produtos"**: Toggle do submenu (não navega)
+- **Outros menus**: Navegação normal + fecha menu mobile
+- **Visual**: Submenu inline com animação de altura
+
+## 🔧 Props
+
+| Prop | Tipo | Obrigatório | Descrição |
+|------|------|-------------|-----------|
+| `onLinkClick` | `() => void` | Não | Callback executado ao clicar em links (usado para fechar menu mobile no HeaderMain) |
+
+
+
+
+## 🚀 Uso
+```tsx
+import { Menu } from './components/Menu/Menu';
+
+// Uso básico
+<Menu />
+
+// Com callback (ex: fechar menu mobile)
+<Menu onLinkClick={() => setMenuOpen(false)} />
+```
+
+## 📊 Estrutura de Dados (menuData)
+```typescript
+// menuData.ts
+export const menuItems = [
+  {
+    id: 1,
+    title: 'Home',
+    path: '/'
+  },
+  {
+    id: 2,
+    title: 'Produtos',
+    path: '#', // não navega, faz scroll
+    submenu: [
+      { title: 'Produto A', path: '/produtos/a' },
+      { title: 'Produto B', path: '/produtos/b' }
+    ]
+  }
+];
+```
+
+## 🎯 Breakpoint Crítico
+```typescript
+// Linha 20 - Menu.tsx
+const handleResize = () => setIsMobile(window.innerWidth <= 1038);
+```
+
+**Este valor (1038px) controla a transição entre hover e click.**
+
+Para ajustar:
+- Menor (ex: 768px) → hover funciona em tablets
+- Maior (ex: 1200px) → força click em telas maiores
+
+## 📱 Breakpoints de Estilos
+
+| Breakpoint | Comportamento |
+|------------|---------------|
+| `1210px` | Redução progressiva de gaps (4rem → 1.9rem) |
+| `1112px` | Gap 1.8rem |
+| `1074px` | Gap 1.6rem |
+| `1020px` | Gap 1.3rem |
+| `1002px` | Gap 0.9rem |
+| `1038px` | **Modo mobile ativado** (layout vertical, fundo verde) |
+| `990px` | Font-weight reduzido (800 → 400) |
+| `774px` | Ajustes de cor para submenu mobile |
+
+## 🔄 Estados
+```typescript
+const [openMenu, setOpenMenu] = useState<number | null>(null);
+const [isMobile, setIsMobile] = useState(false);
+const [openSubmenuMobile, setOpenSubmenuMobile] = useState<number | null>(null);
+```
+
+- **openMenu**: ID do submenu aberto no desktop (hover)
+- **isMobile**: Detecta se largura ≤ 1038px
+- **openSubmenuMobile**: ID do submenu aberto no mobile (click)
+
+## ⚙️ Funções Principais
+
+### handleMenuClick
+Gerencia cliques em itens do menu:
+```typescript
+// Mobile
+- "Produtos" → Toggle submenu
+- Outros → Navega + fecha menu
+
+// Desktop
+- "Produtos" → Scroll para #produtos
+- Outros → Navega normalmente
+```
+
+### handleMouseEnter / handleMouseLeave
+Controla hover no desktop:
+```typescript
+if (!isMobile) setOpenMenu(id);
+```
+
+### handleSubmenuClick
+Clique em itens do submenu:
+- Fecha todos os submenus
+- Navega para o path
+- Executa `onLinkClick` callback
+
+## 🎨 Styled Components
+
+### Nav
+- Desktop: flex horizontal com gaps responsivos
+- Mobile (≤ 1038px): flex vertical, fundo #94c11f, padding 20px
+
+### MenuItem
+- Desktop: inline-block com hover effects
+- Mobile: block, width 100%
+
+### MenuLink
+- Underline animado no hover (barra verde de 4px)
+- Cor base: #f8f8f8ff
+- Hover: #94c11f (desktop) / #0f0f0f (mobile)
+- Font-weight: 800 (desktop) / 400 (< 990px)
+
+### Submenu
+**Desktop:**
+- Position: absolute
+- Background: #dfdedeff
+- Animação: opacity + translateY
+- Display controlado por `$isOpen`
+
+**Mobile:**
+- Position: static (inline)
+- Background: transparent
+- Animação: max-height (0 → 500px)
+- Sempre no DOM, altura controlada
+
+### SubmenuItem
+- Padding: 0.6rem 1rem (desktop)
+- Hover: background #f9f9f9, cor #94c11f
+- Mobile: texto branco, hover com fundo claro
+
+## 🔍 Lógica de Scroll para "Produtos"
+```typescript
+if (location.pathname === '/') {
+  // Já está na home → scroll direto
+  const section = document.getElementById('produtos');
+  if (section) section.scrollIntoView({ behavior: 'smooth' });
+} else {
+  // Em outra página → navega para home com state
+  navigate('/', { state: { scrollTo: 'produtos' } });
+}
+```
+
+**Requer:** Elemento com `id="produtos"` na página home.
+
+## ⚠️ Observações
+
+- Submenus têm `pointer-events: none` quando fechados
+- Animações diferentes por plataforma para melhor UX
+- Event listeners de resize são limpos no cleanup do useEffect
+- Z-index 1000 no submenu para ficar acima do conteúdo
+
+## 🎭 Animações
+
+| Elemento | Desktop | Mobile |
+|----------|---------|--------|
+| Submenu | opacity + translateY (-10px) | max-height (0 → 500px) |
+| Underline | width 0% → 100% (0.3s) | - |
+| Links | color transition (0.3s) | color transition (0.3s) |
+
+## 📝 Estrutura de Arquivos
+```
+Menu/
+├── Menu.tsx
+├── Menu.styles.ts
+├── menuData.ts
+└── README.md
+```
+
+## 🤝 Componentes Relacionados
+
+- **HeaderMain**: Container principal que usa Menu
+- **menuData**: Arquivo de configuração dos itens
+
+## 🛠️ Customização Rápida
+
+**Mudar breakpoint mobile:**
+```typescript
+// Menu.tsx, linha 20
+setIsMobile(window.innerWidth <= SEU_VALOR);
+```
+
+**Mudar cor do menu mobile:**
+```typescript
+// Menu.styles.ts, Nav component
+background-color: #SUA_COR;
+```
+
+**Adicionar novo item com submenu:**
+```typescript
+// menuData.ts
+{
+  id: 3,
+  title: 'Serviços',
+  path: '#',
+  submenu: [...]
+}
+```
+
+--------------------------------------
+
+
+
+
 
 # 📄 index.html — Estrutura Base & SEO Global
 

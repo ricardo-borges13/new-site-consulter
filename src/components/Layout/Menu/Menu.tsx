@@ -18,20 +18,20 @@ export const Menu = ({ onLinkClick }: MenuProps) => {
 
   // Detecta se é mobile
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 920);
+    const handleResize = () => setIsMobile(window.innerWidth <= 1038);
     handleResize(); // roda uma vez ao iniciar
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  function handleMenuClick(
+function handleMenuClick(
     e: React.MouseEvent,
     itemId: number,
     itemTitle: string
   ) {
     if (isMobile) {
       // 👉 No mobile, abre/fecha apenas o submenu desse item
-      if (itemTitle === 'Produtos' || itemTitle === 'Eventos') {
+      if (itemTitle === 'Produtos') {
         e.preventDefault();
         setOpenSubmenuMobile(prev => (prev === itemId ? null : itemId));
       } else {
@@ -50,10 +50,6 @@ export const Menu = ({ onLinkClick }: MenuProps) => {
           navigate('/', { state: { scrollTo: 'produtos' } });
         }
         onLinkClick?.();
-      } else if (itemTitle === 'Eventos') {
-        // 👉 No desktop, não faz nada (apenas mantém hover do submenu)
-        e.preventDefault();
-        return;
       } else {
         // 👉 Outros menus — permitem roteamento normal
         onLinkClick?.();

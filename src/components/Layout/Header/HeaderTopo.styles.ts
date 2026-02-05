@@ -5,10 +5,8 @@ export const Header = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  background: #1a1a1a; //0a0a0af5 666565f5
-
-   border-bottom: 3px solid #94c11f;
-
+  background: #1a1a1a;
+  border-bottom: 3px solid #94c11f;
   color: #f1f1efff;
   font-size: 1.02rem;
   z-index: 1100; /* acima do HeaderMain */
@@ -24,12 +22,13 @@ export const Container = styled.div`
   align-items: center;
   gap: 1.5rem;
 
+
   a {
     color: inherit;
     text-decoration: none;
 
     &:hover {
-      color: #94C11F; /* cor de destaque */
+      color: #94c11f; /* cor de destaque */
     }
   }
 
@@ -40,7 +39,7 @@ export const Container = styled.div`
 
     svg {
       font-size: 1.5rem;
-      color: #94C11F;
+      color: #94c11f;
     }
   }
 
@@ -49,12 +48,11 @@ export const Container = styled.div`
     flex: 1;
   }
 
-  @media (max-width: 768px) {
-    flex-direction: column;
+  @media (max-width: 800px) {
+  flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 0;
-    font-size: 0.7rem;
 
     > div {
       justify-content: center;
@@ -68,14 +66,6 @@ export const Container = styled.div`
     }
   }
 
-  @media (max-width: 770px) {
-    font-size: 0.6rem;
-
-    a {
-      font-size: 1rem;
-    }
-  }
-
   @media (max-width: 550px) {
     font-size: 0.8rem;
 
@@ -83,4 +73,6 @@ export const Container = styled.div`
       font-size: 1.1rem;
     }
   }
+
+
 `;

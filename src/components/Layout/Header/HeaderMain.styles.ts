@@ -14,20 +14,16 @@ export const HeaderContainer = styled.header<{ $isScrolled: boolean }>`
   /* muda a altura ao rolar */
   height: ${({ $isScrolled }) => ($isScrolled ? '70px' : '110px')};
 
-  @media (max-width: 957px) {
-    top: 48px;
+  @media (max-width: 1037px) {
+    top: 55px;
   }
 
   @media (max-width: 900px) {
     height: ${({ $isScrolled }) => ($isScrolled ? '100px' : '110px')};
   }
 
-  @media (max-width: 805px) {
-    top: 58px;
-  }
-
-  @media (max-width: 550px) {
-    top: 84px;
+  @media (max-width: 851px) {
+    top: 60px;
   }
 `;
 
@@ -35,7 +31,7 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1400px; // antes do novo logo 1200
   margin: 0 auto;
   padding: 0.5rem 2rem;
   width: 100%;
@@ -96,15 +92,6 @@ export const ContactButton = styled.button`
     opacity: 0.9;
   }
 
-  @media (max-width: 1051px) {
-    padding: 0.2rem 0.2rem;
-    font-weight: normal;
-    text-align: center;
-    font-size: 14px;
-    min-width: 180px;
-    white-space: nowrap;
-  }
-
   /* 📱 Ajuste para celular */
   @media (max-width: 550px) {
     display: none;
@@ -113,6 +100,8 @@ export const ContactButton = styled.button`
 
 export const Image = styled.img<{ $isScrolled: boolean }>`
   height: ${({ $isScrolled }) => ($isScrolled ? '60px' : '100px')};
+  max-height: 100px;
+  width: auto;
   margin-right: 40px;
   transition: height 0.3s ease;
 
@@ -147,9 +136,10 @@ export const MenuToggle = styled.button`
   color: #eceff1;
   cursor: pointer;
 
-  @media (max-width: 775px) {
+  @media (max-width: 1038px) {
     display: block;
   }
+  //documentado
 `;
 
 /* 🔹 Container do menu e botão */
@@ -157,8 +147,8 @@ export const MenuContainer = styled.div<{ $open: boolean }>`
   display: flex;
   align-items: center;
   gap: 54px;
-
-  @media (max-width: 775px) {
+  // Documentado
+  @media (max-width: 1038px) {
     position: absolute;
     top: 100%;
     right: 0;
