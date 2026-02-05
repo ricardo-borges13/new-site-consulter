@@ -11,7 +11,7 @@ export const NotFound = () => {
       <SEO
         title="Página não encontrada - Consulter Soluções"
         description="A página que você está tentando acessar não existe. Retorne à página inicial da JPM e encontre soluções em materiais elétricos e borrachas industriais."
-        image="https://www.consultersolucoes.com.br/images/error.jpg"
+        image="https://www.consultersolucoes.com.br/images/SEO-Error.jpg"
         url="https://www.consultersolucoes.com.br/404"
         keywords="erro 404, página não encontrada, JPM, materiais elétricos, borrachas industriais"
         noindex={true}
