@@ -1,28 +1,28 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 1100px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  max-width: ${({theme}) => theme.breakpoints.desktop};
+  margin: ${({theme}) => theme.spacing.large} auto;
+  padding: 0 ${({theme}) => theme.spacing.medium};
+  font-family: ${({theme}) => theme.fonts.body};
   line-height: 1.6;
-  color: #222;
+  color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.86)};
   caret-color: transparent;
 
   header {
-    margin-bottom: 2rem;
+    margin-bottom: ${({theme}) => theme.spacing.large};
 
     h2 {
-      font-size: 2rem;
+      font-size: ${({theme}) => theme.spacing.large};
       font-weight: 700;
-      color: #1e7f4f;
-      margin-bottom: 1rem;
+      color: ${({theme}) => theme.colors.success};
+      margin-bottom: ${({theme}) => theme.spacing.medium};
       text-transform: capitalize;
     }
 
     p {
-      font-size: 1rem;
-      color: #333;
+      font-size: ${({theme}) => theme.spacing.medium};
+      color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.8)};
       line-height: 1.6;
       text-align: justify;
       margin-bottom: 1.5rem;
@@ -34,12 +34,12 @@ h2::after {
   display: block;
   width: 60px;
   height: 3px;
-  background-color: #94c11f;
+  background-color: ${({theme}) => theme.colors.primary};
   margin-top: 6px;
 }
 
-  @media (max-width: 768px) {
-    padding: 0 1rem;
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletMedium}) {
+    padding: 0 ${({theme}) => theme.spacing.medium};
 
     header h2 {
       font-size: 1.6rem;
@@ -52,15 +52,15 @@ h2::after {
 `;
 
 export const Form = styled.div`
-  margin: 3rem auto 6rem auto;
-  max-width: 1100px;
+  margin: ${({theme}) => theme.spacing.large} auto 6rem auto;
+  max-width: ${({theme}) => theme.breakpoints.desktop};
 `;
 
 export const Divider = styled.hr`
   border: none;
   height: 4px;
-  background: linear-gradient(to right, transparent, #94c11f, transparent);
-  margin: 4rem auto;
+  background: linear-gradient(to right, transparent, ${({theme}) => theme.colors.primary}, transparent);
+  margin: ${({theme}) => theme.spacing.large} auto;
   width: 80%;
   border-radius: 2px;
 `;

@@ -12,22 +12,28 @@ import petrobras from '../../../../assets/images/clientes/Petrobras.png';
 import vallourec from '../../../../assets/images/clientes/Vallourec.png';
 import gerdau from '../../../../assets/images/clientes/Gerdau.png';
 
+const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
+  <S.ArrowButton $side="left" onClick={onClick}>
+    <ChevronLeft />
+  </S.ArrowButton>
+);
 
-  const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
-    <S.ArrowButton $side="left" onClick={onClick}>
-      <ChevronLeft />
-    </S.ArrowButton>
-  );
-
-  const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
-    <S.ArrowButton $side="right" onClick={onClick}>
-      <ChevronRight />
-    </S.ArrowButton>
-  );
+const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
+  <S.ArrowButton $side="right" onClick={onClick}>
+    <ChevronRight />
+  </S.ArrowButton>
+);
 
 
 // Componente principal
 export const ClientsCarousel: React.FC = () => {
+  // Define responsive object using standard pixel values
+  const responsive = {
+    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 5 },
+    tablet: { breakpoint: { max: 1024, min: 464 }, items: 3 },
+    mobile: { breakpoint: { max: 464, min: 0 }, items: 2 },
+  };
+
   const logos = [
     { src: csn, alt: 'CSN' },
     { src: usiminas, alt: 'Usiminas' },
@@ -44,7 +50,7 @@ export const ClientsCarousel: React.FC = () => {
   return (
     <S.CarouselContainer>
       <Carousel
-        responsive={S.responsive}
+        responsive={responsive} // Use the locally defined responsive object
         infinite
         autoPlay
         autoPlaySpeed={3500}

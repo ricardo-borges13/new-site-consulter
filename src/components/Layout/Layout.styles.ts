@@ -7,12 +7,12 @@ min-height: 100vh;
 `
 
 export const MainContent = styled.main`
-  flex: 1; /* empurra o footer para baixo. Só funciona se o pai tiver display flex*/
+  flex: 1;
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
+  padding-top: 100px; 
 
-    @media (max-width: 537px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.smallScreenMobile}) {
     padding-top: 180px;
   }
 `;

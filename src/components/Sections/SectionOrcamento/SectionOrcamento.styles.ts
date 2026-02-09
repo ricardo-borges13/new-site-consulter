@@ -4,19 +4,19 @@ export const Section = styled.section`
   width: 100%;
   background: linear-gradient(
     180deg,
-    #1e7f4f 0%,
-    #16613c 100%
-  ); /* verde mais técnico */
-  padding: 2rem 1rem;
+    ${({theme}) => theme.colors.technicalGreen} 0%,
+    ${({theme}) => theme.colors.technicalGreenDark} 100%
+  );
+  padding: ${({theme}) => theme.spacing.large} ${({theme}) => theme.spacing.medium};
 `;
 
 export const Container = styled.div`
-  max-width: 1100px;
+  max-width: ${({theme}) => theme.breakpoints.desktop};
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  color: #fff;
+  color: ${({theme}) => theme.colors.white};
 `;
 
 export const Header = styled.header`
@@ -31,17 +31,17 @@ export const Header = styled.header`
   p {
     max-width: 720px;
     margin: 0 auto;
-    font-size: 1rem;
+    font-size: ${({theme}) => theme.spacing.medium};
     line-height: 1.6;
-    color: #eaf3ee;
+    color: ${({theme}) => theme.colors.white};
   }
 `;
 
 export const Divider = styled.hr`
   border: none;
   height: 4px;
-  background: linear-gradient(to right, transparent, #16613c, transparent);
-  margin: 4rem auto;
+  background: linear-gradient(to right, transparent, ${({theme}) => theme.colors.technicalGreenDark}, transparent);
+  margin: ${({theme}) => theme.spacing.large} auto;
   width: 80%;
   border-radius: 2px;
 `;

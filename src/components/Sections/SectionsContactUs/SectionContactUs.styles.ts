@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  background-color: #2a2a2a;
-  color: #fff;
+  background-color: ${({theme}) => theme.colors.secondary};
+  color: ${({theme}) => theme.colors.white};
   display: flex;
   justify-content: center;
   position: relative;
-  overflow: visible; /* importante pra permitir que o form ultrapasse a borda */
+  overflow: visible;
   margin: 40px 0 30px 0;
 `;
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: ${({theme}) => theme.breakpoints.desktop};
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
 
   padding-left: 80px;
 
-  @media (max-width: 900px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
     text-align: center;
     padding: 0 10px 0 10px;
@@ -30,7 +30,7 @@ export const InfoArea = styled.div`
   caret-color: transparent;
 
   .icon {
-    color: #7dbb3a;
+    color: ${({theme}) => theme.colors.primaryDark};
   }
 
   h2 {
@@ -43,10 +43,6 @@ export const InfoArea = styled.div`
   a {
     color: inherit;
     text-decoration: none;
-
-    &:hover {
-      color: #7dbb3a;
-    }
   }
 
   p {
@@ -57,7 +53,7 @@ export const InfoArea = styled.div`
     gap: 10px;
   }
   .contact {
-  margin-top: 4rem;
+  margin-top: ${({theme}) => theme.spacing.large};
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
@@ -78,22 +74,22 @@ export const InfoArea = styled.div`
 .contact-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #bdbdbd;
+  color: ${({theme}) => theme.colors.text.contato};
   margin-bottom: 2px;
 }
 
 .contact-text a {
   font-size: 1.05rem;
-  color: #fff;
+  color: ${({theme}) => theme.colors.white};
   text-decoration: none;
 }
 
 .contact-text a:hover {
-  color: #7dbb3a;
+  color: ${({theme}) => theme.colors.primaryDark};
 }
 
 
-  @media (max-width: 900px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}) {
     h2 {
       margin-bottom: 0;
     }
@@ -112,10 +108,9 @@ export const FormWrapper = styled.div`
   justify-content: center;
   z-index: 2;
 
-  /* Faz o formulário “sair” da área azul para baixo */
   transform: translateY(30px);
 
-  @media (max-width: 900px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.tablet}) {
     transform: translateY(40px);
   }
 `;

@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
-  background: linear-gradient(180deg, #9bc82a 0%, #94c11f 100%);
-box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
-
-  padding: 2rem;
+  background: linear-gradient(
+    180deg,
+    ${({ theme }) => theme.colors.lightPrimary} 0%,
+    ${({ theme }) => theme.colors.primary} 100%
+  );
+  box-shadow: ${({ theme }) => theme.shadows.large};
+  padding: ${({ theme }) => theme.spacing.large};
   border-radius: 12px;
   width: 100%;
   max-width: 450px;
@@ -13,72 +16,15 @@ box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
   form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-  }
-
-  .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr;
-    }
+    gap: ${({ theme }) => theme.spacing.medium};
   }
 
   label {
     font-weight: 500;
-    color: #f2f7eb;
+    color: ${({ theme }) => theme.colors.text.form};
     display: block;
     margin-bottom: 0.3rem;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    padding: 0.6rem;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-  }
-
-  textarea {
-    min-height: 100px;
-    resize: vertical;
-  }
-
-  span {
-    color: #b30000;
-    font-size: 0.85rem;
-  }
-
-
-
-  button {
-    background-color: #2a2a2a;
-    color: white;
-    font-weight: 700;
-    border: none;
-    border-radius: 10px;
-    padding: 0.6rem 1.5rem;
-    cursor: pointer;
-    align-self: center;
-    transition: background 0.3s;
-
-    &:hover {
-      background-color: #9cb3a3;
-    }
-
-    &:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-  }
-
-  .success {
-    text-align: center;
-    color: #2a2a2a;
-    font-weight: 600;
+    caret-color: transparent; // ← Centralizado aqui
   }
 `;
 
@@ -86,40 +32,42 @@ export const FieldGroup = styled.div`
   display: flex;
   gap: 0.5rem;
 
-  label {
-    caret-color: transparent;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: column;
   }
 `;
 
 export const Input = styled.input`
-  flex: 1;
-  padding: 8px;
+  width: 100%;
+  padding: 0.6rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: ${({ theme }) => theme.spacing.medium};
 `;
 
 export const TextArea = styled.textarea`
   width: 100%;
-  padding: 8px;
+  padding: 0.6rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: ${({ theme }) => theme.spacing.medium};
+  min-height: 100px;
+  resize: vertical;
 `;
 
 export const ErrorMessage = styled.span`
-  color: #c00;
-  font-size: 0.8rem;
+  color: ${({ theme }) => theme.colors.error};
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: block;
 `;
-
-
 
 export const Assunto = styled.div`
-  label {
-    caret-color: transparent;
-  }
-`;
-export const Mensagem = styled.div`
-  label {
-    caret-color: transparent;
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
+export const Mensagem = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

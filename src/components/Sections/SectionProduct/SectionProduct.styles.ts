@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export const wrapper = styled.div`
   caret-color: transparent;
   width: 80%;
-  max-width: 1350px;
+  max-width: ${({theme}) => theme.breakpoints.largeDesktop};
   margin: 0 auto;
-  padding: 20px 20px;
+  padding: ${({theme}) => theme.spacing.medium} ${({theme}) => theme.spacing.medium}; /* 20px 20px */
    overflow-x: hidden;
 
   h2 {
@@ -15,7 +15,7 @@ export const wrapper = styled.div`
   }
 
   /* Quando chegar no mobile, ocupar toda a largura */
-  @media (max-width: 1031px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.mediumDesktop}) {
     width: 100%;
     max-width: 100%;
     padding: 0 10px;
@@ -28,38 +28,38 @@ export const ImagesArea = styled.div`
   gap: 40px;
 
 
-  @media (max-width: 961px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.smallTablet}) {
     grid-template-columns: 1fr;
   }
 
-  @media (max-width: 540px) {
-    justify-items: stretch; /* faz as imagens ocuparem toda a largura */
+  @media (max-width: ${({theme}) => theme.breakpoints.midMobile}) {
+    justify-items: stretch;
 
     > * {
-      width: 100%; /* garante que cada card use toda a largura */
+      width: 100%;
     }
   }
 
-   @media (max-width: 390px) {
+   @media (max-width: ${({theme}) => theme.breakpoints.tinyMobile}) {
      margin-bottom: 3px;
     > * {
       width: 97%;
 
     }
   }
-   @media (max-width: 375px) {
+   @media (max-width: ${({theme}) => theme.breakpoints.smallerMobile}) {
     > * {
       width: 93%;
     }
   }
 
-   @media (max-width: 360px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.smallestMobile}) {
     > * {
       width: 89%;
     }
   }
 
-   @media (max-width: 344px) {
+   @media (max-width: ${({theme}) => theme.breakpoints.microMobile}) {
     > * {
       width: 85%;
     }

@@ -4,6 +4,7 @@ import * as S from './Borrachas.styles.ts';
 import { ProductCategory } from '../../components/ProductCategory/ProductCategory.tsx';
 import { dataProductRubber } from './dataProductRubber.ts';
 import { SEO } from '../../components/SEO/Seo.tsx';
+
 export const Borrachas = () => {
   return (
     <>

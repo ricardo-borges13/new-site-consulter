@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 
-type ButtonVariant = 'primary' | 'secondary';
+type ButtonVariant = 'primary' | 'secondary' | 'outline-white';
 type HeightVariant = 'small' | 'large';
 
 export const StyledButton = styled.button<{
   $variant: ButtonVariant;
-  $heightVariant?: HeightVariant;
+  $heightVariant?: HeightVariant; // Props do componente styled
 }>`
   border: none;
   border-radius: 10px;
@@ -28,31 +28,47 @@ export const StyledButton = styled.button<{
           padding: 0.8rem 1.4rem;
         `}
 
-  ${({ $variant }) =>
-    $variant === 'primary'
-      ? css`
+  ${({ $variant, theme }) => {
+    switch ($variant) {
+      case 'primary':
+        return css`
           background: linear-gradient(
             32deg,
-            rgb(148, 193, 31) 0%,
-            rgba(175, 197, 119, 1) 100%
+            ${theme.colors.primary} 0%,
+            ${theme.hexToRgba(theme.colors.primary, 0.7)} 100%
           ) !important;
-          color: #fff;
+          color: ${theme.colors.white};
 
           &:hover {
-            background: #f4c27b;
-            color: #121212;
+            background: ${theme.colors.primaryDark};
+            color: ${theme.colors.darkGray};
           }
-        `
-      : css`
-          background-color: #001837;
-          color: #fffbfb;
+        `;
+      case 'secondary':
+        return css`
+          background-color: ${theme.colors.secondary};
+          color: ${theme.colors.white};
 
           &:hover {
-            background-color: #064391;
+            background-color: ${theme.hexToRgba(theme.colors.secondary, 0.8)};
           }
-        `}
+        `;
+      case 'outline-white': // New variant
+        return css`
+          background-color: transparent;
+          color: ${theme.colors.white};
+          border: 2px solid ${theme.colors.white};
 
-        @media (max-width: 550px) {
+          &:hover {
+            background-color: ${theme.hexToRgba(theme.colors.white, 0.1)};
+          }
+        `;
+      default:
+        return css``;
+    }
+  }}
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-weight: normal;
     font-size: 1.1rem;
     ${({ $heightVariant }) =>
@@ -66,6 +82,7 @@ export const StyledButton = styled.button<{
   }
 
   @media (max-width: 490px) {
+    /* This breakpoint is not in theme, keeping as is for now */
     font-weight: normal;
     font-size: 0.9rem;
     ${({ $heightVariant }) =>

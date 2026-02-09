@@ -18,17 +18,16 @@ export const GlobalStyle = createGlobalStyle`
   body {
   margin: 0;
   min-height: 100%;
-  font-family: 'Poppins', sans-serif;
-  background-color: #F9FAFB;
+  font-family: ${({theme}) => theme.fonts.body};
+  background-color: ${({theme}) => theme.colors.background.global};
   background: linear-gradient(
     180deg,
-    #f6f6f6 0%,
-    #eeeeee 100%,
+    ${props => (props.theme as any).colors.lightGray} 0%,
+    ${props => (props.theme as any).colors.mediumGray} 100%
 
 );
 
-  color: #1A1A1A;
+  color: ${({theme}) => theme.colors.darkGray};
   overflow-x: hidden;
   }
 `
-

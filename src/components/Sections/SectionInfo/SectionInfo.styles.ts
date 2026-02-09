@@ -6,13 +6,13 @@ export const Container = styled.section`
   align-items: center;
   gap: 40px;
   padding: 5rem 8%;
-  background: #eef5ea;
+  background: ${({theme}) => theme.colors.background.light};
   caret-color: transparent;
-  max-width: 1500px;
+  max-width: ${({theme}) => theme.breakpoints.largeDesktop};
   margin: 1.3rem auto;
   border-radius: 20px;
   box-shadow: 10px 10px 8px 1px #999;
-  @media (max-width: 1253px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.desktopSmallest}) {
     padding: 3rem 6%;
   }
 `;
@@ -25,13 +25,13 @@ export const TextArea = styled.div`
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #111;
+    color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.9)};
   }
 
   p {
-    font-size: 1rem;
+    font-size: ${({theme}) => theme.spacing.medium};
     line-height: 1.6;
-    color: #333;
+    color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.8)}; 
     margin-bottom: 30px;
   }
 `;
@@ -44,7 +44,7 @@ export const ImagesArea = styled.div`
     height: 450px;
     object-fit: cover;
     border-radius: 20px;
-    aspect-ratio: 16 / 9; /* ← Mantém proporção automática */
+    aspect-ratio: 16 / 9;
     width: 100%;
     transition:
       transform 0.3s ease,
@@ -52,7 +52,7 @@ export const ImagesArea = styled.div`
 
     &:hover {
       transform: scale(1.03);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px ${({theme}) => theme.hexToRgba(theme.colors.black, 0.2)};
     }
   }
 
@@ -60,7 +60,7 @@ export const ImagesArea = styled.div`
     max-width: 340px;
   }
 
-  @media (max-width: 1253px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.desktopSmallest}) {
     max-width: 600px;
 
     img {
@@ -68,7 +68,7 @@ export const ImagesArea = styled.div`
       height: clamp(360px, 40vw, 400px);
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: ${({theme}) => theme.breakpoints.smallTabletMobile}) {
       img:first-child {
         display: none;
       }
@@ -79,7 +79,7 @@ export const ImagesArea = styled.div`
     width: clamp(220px, 25vw, 260px);
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.midTablet}) {
     img:last-child {
       display: none;
     }

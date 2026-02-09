@@ -6,23 +6,25 @@ export const HeaderContainer = styled.header<{ $isScrolled: boolean }>`
   left: 0;
   width: 100%;
   caret-color: transparent;
-  background: #2a2a2a;
-  box-shadow: 0 4px 20px rgba(148, 193, 31, 0.15);
+  background: ${({ theme }) => theme.colors.secondary};
+  box-shadow: 0 4px 20px
+    ${({ theme }) => theme.hexToRgba(theme.colors.primary, 0.15)};
   transition: all 0.3s ease;
-  z-index: 100; /* mantém o header acima do conteúdo */
+  z-index: 100;
 
-  /* muda a altura ao rolar */
   height: ${({ $isScrolled }) => ($isScrolled ? '70px' : '110px')};
 
-  @media (max-width: 1037px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
+    /* Using mediumDesktop for 1037px */
     top: 55px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     height: ${({ $isScrolled }) => ($isScrolled ? '100px' : '110px')};
   }
 
   @media (max-width: 851px) {
+    /* Not in theme */
     top: 60px;
   }
 `;
@@ -31,27 +33,30 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1400px; // antes do novo logo 1200
+  max-width: ${({ theme }) => theme.breakpoints.largeDesktop};
   margin: 0 auto;
-  padding: 0.5rem 2rem;
+  padding: ${({ theme }) => theme.spacing.small}
+    ${({ theme }) => theme.spacing.large};
   width: 100%;
-  box-sizing: border-box; /* ✅ impede vazamento lateral */
+  box-sizing: border-box;
 
   @media (max-width: 970px) {
+    /* Not in theme */
     justify-content: space-between;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     margin-top: 25px;
   }
 
   @media (max-width: 775px) {
+    /* Not in theme */
     margin-top: 35px;
   }
 
-  /* 📱 Ajuste fino para telas muito pequenas */
   @media (max-width: 770px) {
-    padding: 0.5rem 6rem; /* ✅ reduz o padding lateral */
+    /* Not in theme */
+    padding: ${({ theme }) => theme.spacing.small} 6rem;
   }
 `;
 
@@ -63,10 +68,10 @@ export const ContactButton = styled.button`
   gap: 10px;
   background: linear-gradient(
     32deg,
-    rgb(148, 193, 31) 0%,
-    rgba(175, 197, 119, 1) 100%
+    ${({ theme }) => theme.colors.primary} 0%,
+    ${({ theme }) => theme.hexToRgba(theme.colors.primary, 0.7)} 100%
   ) !important;
-  color: #fffdfd;
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
   padding: 0.4rem 1.4rem;
   min-width: 120px;
@@ -75,25 +80,26 @@ export const ContactButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background: #f4c27b;
-    color: #121212;
+    background: ${({ theme }) =>
+      theme.colors.primaryDark}; /* Assuming f4c27b is a darker primary */
+    color: ${({ theme }) =>
+      theme.colors.darkGray}; /* Assuming 121212 is a dark color */
   }
 
   .arrow {
-    transform: translateX(2px); /* empurra levemente a seta à direita */
+    transform: translateX(2px);
     transition: transform 0.2s ease;
   }
 
   &:hover .arrow {
-    transform: translateX(6px); /* anima a seta ao passar o mouse */
+    transform: translateX(6px);
   }
 
   &:hover {
     opacity: 0.9;
   }
 
-  /* 📱 Ajuste para celular */
-  @media (max-width: 550px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.smallMobile}) {
     display: none;
   }
 `;
@@ -105,7 +111,7 @@ export const Image = styled.img<{ $isScrolled: boolean }>`
   margin-right: 40px;
   transition: height 0.3s ease;
 
-  @media (max-width: 900px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     height: ${({ $isScrolled }) => ($isScrolled ? '45px' : '60px')};
   }
 `;
@@ -113,17 +119,17 @@ export const Image = styled.img<{ $isScrolled: boolean }>`
 export const MenuWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 54px; /* <-- controle fino da distância entre menu e botão */
+  gap: 54px;
 
   @media (max-width: 1053px) {
-    gap: 2rem;
+    /* Not in theme */
+    gap: ${({ theme }) => theme.spacing.large};
   }
 
-  /* 📱 Versão mobile */
-  @media (max-width: 550px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.smallMobile}) {
     display: flex;
-    flex-direction: column; /* ✅ botão vai pra baixo do menu */
-    align-items: center; /* mantém o botão alinhado à direita */
+    flex-direction: column;
+    align-items: center;
     width: 100%;
   }
 `;
@@ -133,32 +139,31 @@ export const MenuToggle = styled.button`
   background: none;
   border: none;
   font-size: 2rem;
-  color: #eceff1;
+  color: #eceff1; /* Not in theme, keeping as is for now, close to lightGray */
   cursor: pointer;
 
-  @media (max-width: 1038px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
     display: block;
   }
-  //documentado
 `;
 
-/* 🔹 Container do menu e botão */
 export const MenuContainer = styled.div<{ $open: boolean }>`
   display: flex;
   align-items: center;
-  gap: 54px;
-  // Documentado
-  @media (max-width: 1038px) {
+  gap: 54px; /* Not in theme, keeping as is for now */
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
     position: absolute;
     top: 100%;
     right: 0;
-    background: #fff;
+    background: ${({ theme }) => theme.colors.white};
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    padding: 1rem 0;
-    gap: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: ${({ theme }) => theme.spacing.medium} 0;
+    gap: ${({ theme }) => theme.spacing.medium};
+    box-shadow: 0 4px 10px
+      ${({ theme }) => theme.hexToRgba(theme.colors.black, 0.1)};
     transition: all 0.3s ease;
     transform: ${({ $open }) =>
       $open ? 'translateY(0)' : 'translateY(-150%)'};

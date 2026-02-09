@@ -26,12 +26,12 @@ export const Section = styled.section`
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    background: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.55)};
     z-index: 1;
   }
 
   /* fallback mobile */
-  @media (max-width: 768px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletMedium}) {
     background-attachment: scroll;
   }
 `;
@@ -41,31 +41,31 @@ export const Content = styled.div`
   z-index: 2;
 
   text-align: center;
-  color: #fff;
-  padding: 0 1rem;
+  color: ${({theme}) => theme.colors.white};
+  padding: 0 ${({theme}) => theme.spacing.medium};
 
   span {
     font-size: 1.5rem;
     letter-spacing: 2px;
-    margin-bottom: 1rem;
+    margin-bottom: ${({theme}) => theme.spacing.medium};
     display: block;
-    color: #94c11f;
+    color: ${({theme}) => theme.colors.primary};
     font-weight: 600;
   }
 
   h2 {
     font-size: clamp(1.8rem, 4vw, 3rem);
     max-width: 900px;
-    margin-bottom: 2rem;
+    margin-bottom: ${({theme}) => theme.spacing.large};
     font-weight: 550;
   }
 `;
 
 export const Button = styled.button`
-  background-color: #2e7d32;
-  color: #fff;
+  background-color: ${({theme}) => theme.colors.ctaGreen};
+  color: ${({theme}) => theme.colors.white};
   border: none;
-  padding: 0.9rem 2rem;
+  padding: 0.9rem ${({theme}) => theme.spacing.large};
   font-size: 1.2rem;
   font-weight: 600;
   border-radius: 6px;
@@ -73,7 +73,7 @@ export const Button = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: #1b5e20;
+    background-color: ${({theme}) => theme.colors.ctaGreenDark};
     transform: translateY(-2px);
   }
 `;

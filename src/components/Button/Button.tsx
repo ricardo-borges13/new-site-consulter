@@ -5,7 +5,7 @@ type ButtonProps = {
   text: string;
   onClick?: () => void;
   type?: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'outline-white'; // Added 'outline-white'
   paddingHeight?: 'small' | 'large';
   disabled?: boolean;
   loading?: boolean;

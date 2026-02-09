@@ -1,28 +1,28 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 1100px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  max-width: ${({theme}) => theme.breakpoints.desktop};
+  margin: ${({theme}) => theme.spacing.large} auto;
+  padding: 0 ${({theme}) => theme.spacing.medium};
+  font-family: ${({theme}) => theme.fonts.body};
   line-height: 1.6;
-  color: #222;
+  color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.86)};
   caret-color: transparent;
 
   header {
-    margin-bottom: 2rem;
+    margin-bottom: ${({theme}) => theme.spacing.large}; 
 
     h1 {
-      font-size: 2rem;
+      font-size: ${({theme}) => theme.spacing.large};
       font-weight: 700;
-      color: #1e7f4f;
-      margin-bottom: 1rem;
+      color: ${({theme}) => theme.colors.success};
+      margin-bottom: ${({theme}) => theme.spacing.medium};
       text-transform: capitalize;
     }
 
     p {
-      font-size: 1rem;
-      color: #333;
+      font-size: ${({theme}) => theme.spacing.medium};
+      color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.8)};
       line-height: 1.6;
       text-align: justify;
       margin-bottom: 1.5rem;
@@ -32,13 +32,13 @@ export const Container = styled.div`
   section {
     margin-bottom: 2.5rem;
     padding: 1.5rem;
-    background: #edf5f1;
+    background: ${({theme}) => theme.colors.background.light};
     border-radius: 8px;
 
  h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1e7f4f;
+  color: ${({theme}) => theme.colors.success};
   margin-bottom: 0.5rem;
 }
 
@@ -47,7 +47,7 @@ h2::after {
   display: block;
   width: 60px;
   height: 3px;
-  background-color: #94c11f;
+  background-color: ${({theme}) => theme.colors.primary};
   margin-top: 6px;
 }
 
@@ -57,7 +57,7 @@ h2::after {
 
     ul {
       list-style: disc inside;
-      margin-left: 1rem;
+      margin-left: ${({theme}) => theme.spacing.medium};
 
       li {
         margin: 0.4rem 0;
@@ -65,23 +65,23 @@ h2::after {
     }
 
     dl {
-      margin-top: 1rem;
+      margin-top: ${({theme}) => theme.spacing.medium};
 
       dt {
         font-weight: 600;
-        color: #000;
+        color: ${({theme}) => theme.colors.black};
         margin-top: 0.6rem;
       }
 
       dd {
-        margin-left: 1rem;
-        color: #444;
+        margin-left: ${({theme}) => theme.spacing.medium};
+        color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.7)};
       }
     }
   }
 
-  @media (max-width: 768px) {
-    padding: 0 1rem;
+  @media (max-width: ${({theme}) => theme.breakpoints.tabletMedium}) {
+    padding: 0 ${({theme}) => theme.spacing.medium};
 
     header h1 {
       font-size: 1.6rem;
