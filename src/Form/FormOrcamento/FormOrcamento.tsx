@@ -40,7 +40,7 @@ export const FormOrcamento = () => {
 
   const onSubmitReal = async (data: FormOrcamentoInputs) => {
     try {
-      const response = await fetch('https://formspree.io/f/mldpvpbd', {
+      const response = await fetch('https://formspree.io/f/xaqdqqnk', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
