@@ -5,7 +5,8 @@ type ButtonVariant =
   | 'secondary'
   | 'outline-white'
   | 'lightPrimary'
-  | 'headerMain';
+  | 'headerMain'
+  | 'cta';
 
 export const StyledButton = styled.button<{
   $variant: ButtonVariant;
@@ -38,7 +39,7 @@ export const StyledButton = styled.button<{
             color: ${theme.colors.darkGray};
           }
 
-           &:active {
+          &:active {
             background-color: ${theme.colors.secondary};
             transform: scale(0.98);
           }
@@ -75,7 +76,7 @@ export const StyledButton = styled.button<{
             background-color: ${theme.hexToRgba(theme.colors.white, 0.2)};
           }
 
-           &:active {
+          &:active {
             background-color: ${theme.colors.secondary};
             transform: scale(0.98);
           }
@@ -90,13 +91,13 @@ export const StyledButton = styled.button<{
           border-radius: 30px;
           padding: 0.9rem 2.2rem;
           transition: all 0.25s ease;
-          
+
           &:hover {
             background-color: ${({ theme }) => theme.colors.primaryDark};
             transform: translateY(-2px);
           }
 
-           &:active {
+          &:active {
             background-color: ${theme.colors.secondary};
             transform: scale(0.98);
           }
@@ -133,6 +134,29 @@ export const StyledButton = styled.button<{
 
           @media (max-width: ${theme.breakpoints.smallMobile}) {
             display: none;
+          }
+        `;
+
+      case 'cta':
+        return css`
+          background-color: ${({ theme }) => theme.colors.ctaGreen};
+          color: ${({ theme }) => theme.colors.white};
+          border: none;
+          padding: 0.9rem ${({ theme }) => theme.spacing.large};
+          font-size: 1.2rem;
+          font-weight: 600;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background-color: ${({ theme }) => theme.colors.ctaGreenDark};
+            transform: translateY(-2px);
+          }
+
+          &:active {
+            background-color: ${theme.colors.secondary};
+            transform: scale(0.98);
           }
         `;
 

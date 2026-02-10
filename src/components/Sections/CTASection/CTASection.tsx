@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import * as S from './CTASection.styles';
 import { MotionReveal } from '../../Motion/MotionReveal/MotionReveal';
+import { CustomButton } from '../../CustomButton/CustomButton';
 
 export const CTASection = () => {
   const navigate = useNavigate();
@@ -14,9 +15,15 @@ export const CTASection = () => {
             Experimente inovação e qualidade de verdade com a Consulter Soluções
           </h2>
 
-          <S.Button onClick={() => navigate('/contato')}>
+          {/* <S.Button onClick={() => navigate('/contato')}>
             Entre em contato agora
-          </S.Button>
+          </S.Button> */}
+         <CustomButton
+              text="Entre em contato agora"
+              variant="cta"
+              type="submit"
+              onClick={() => navigate('/contato')}
+            />
         </MotionReveal>
       </S.Content>
     </S.Section>

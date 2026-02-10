@@ -71,7 +71,6 @@ export const SolucoesIndustriais = () => {
             <CustomButton
               text="Solicitar Orçamento"
               variant="lightPrimary"
-              paddingHeight="large"
               type="submit"
               onClick={() => navigate('/orcamento')}
             />

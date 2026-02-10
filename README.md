@@ -2126,7 +2126,7 @@ type ButtonProps = {
   children?: ReactNode;        // Conteúdo customizado (ícones, JSX, etc)
   onClick?: () => void;        // Função executada ao clicar
   type?: 'button' | 'submit' | 'reset';  // Tipo HTML do botão (padrão: 'button')
-  variant?: 'primary' | 'secondary' | 'outline-white' | 'lightPrimary' | 'headerMain';  // Variante de estilo (padrão: 'primary')
+   variant?: 'primary' | 'secondary' | 'outline-white' | 'lightPrimary' | 'headerMain' | 'cta';  // Variante de estilo (padrão: 'primary')
   disabled?: boolean;          // Desabilita o botão (padrão: false)
   loading?: boolean;           // Mostra estado de carregamento (padrão: false)
 };
@@ -2170,6 +2170,15 @@ Botão específico para **header com layout inline-flex**.
 - Min-width: 120px
 - Responsivo: **oculto em smallMobile**
 - Utilizado no `HeaderMain`
+
+### `cta` ⭐
+Botão de **Call-to-Action** com destaque visual para conversões.
+- Background: ctaGreen do tema
+- Font-size: 1.2rem (maior que outros botões)
+- Hover: ctaGreenDark + translateY(-2px)
+- Border-radius: 6px (mais suave)
+- Ideal para: botões de contato, compra, cadastro
+- Utilizado no componente `CTASection`
 
 ---
 
@@ -2320,6 +2329,7 @@ O componente espera um objeto `theme` com a seguinte estrutura:
 - Todas as variantes possuem **transições suaves** (0.2s - 0.3s ease)
 - O botão `headerMain` possui **display: inline-flex** e suporta ícones com gap automático
 - Estados `disabled` e `loading` **desabilitam** automaticamente a interação do botão
+- A variante `cta` possui **font-size maior** (1.2rem) para destacar a ação principal
 
 ----------------------------------
 

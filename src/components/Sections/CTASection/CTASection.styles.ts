@@ -60,20 +60,3 @@ export const Content = styled.div`
     font-weight: 550;
   }
 `;
-
-export const Button = styled.button`
-  background-color: ${({theme}) => theme.colors.ctaGreen};
-  color: ${({theme}) => theme.colors.white};
-  border: none;
-  padding: 0.9rem ${({theme}) => theme.spacing.large};
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background-color: ${({theme}) => theme.colors.ctaGreenDark};
-    transform: translateY(-2px);
-  }
-`;

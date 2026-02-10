@@ -6,7 +6,7 @@ type ButtonProps = {
   children?: ReactNode; // 👈 permite ícone, JSX, etc
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'primary' | 'secondary' | 'outline-white' | 'lightPrimary' | 'headerMain';
+  variant?: 'primary' | 'secondary' | 'outline-white' | 'lightPrimary' | 'headerMain' | 'cta';
    disabled?: boolean;
   loading?: boolean;
 };
