@@ -25,11 +25,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
 
-  h3 {
-    font-size: 1.4rem;
-    margin-left: 0.75rem;
-  }
-
   p {
     flex: 1;
     margin: 0.25rem 0;
@@ -118,5 +113,24 @@ export const ImageArea = styled.div`
     > * {
       width: 80%;
     }
+  }
+`;
+
+export const Title = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  padding-left: 0.75rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    width: 4px;
+    height: 1.2rem;
+    border-radius: 2px;
+    background: ${({ theme }) => theme.colors.primaryDark};
   }
 `;

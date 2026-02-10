@@ -2,11 +2,10 @@ import * as S from './Footer.styles';
 import { Link } from 'react-router-dom';
 import { BiSolidPhoneOutgoing } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
-import logo from '../../../assets/images/Logo-Footer2.png';
+import logo from '../../../assets/images/Logo-Footer-400-120-Cinza.png';
 import { APP_VERSION } from '../../../version';
 import type { ContactInfo } from '../../../types/contact';
 import { menuItems } from '../Menu/menuData';
-
 
 export const Footer = ({ phone, phone2, phone3, email }: ContactInfo) => {
   const footerItems = menuItems.filter(item => item.showInFooter);
@@ -80,7 +79,6 @@ export const Footer = ({ phone, phone2, phone3, email }: ContactInfo) => {
               Rua das Canoas, 1180, Loja 2 Bairro Estrela Dalva do Oriente
             </span>
             <span>Belo Horizonte - MG - CEP: 30580-040 </span>
-
           </address>
         </S.Block>
       </S.FooterTop>

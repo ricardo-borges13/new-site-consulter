@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { WhatsAppButton } from './WhatsApp/WhatsAppButton';
 
 export const Layout = () => {
-const [whatsApp, setWhatsApp] = useState<{
+  const [whatsApp, setWhatsApp] = useState<{
     phone?: string;
     message?: string;
   }>({});
@@ -19,7 +19,6 @@ const [whatsApp, setWhatsApp] = useState<{
       .catch(err => console.error('Erro ao carregar WhatsApp config:', err));
   }, []);
 
-
   return (
     <S.LayoutWrapper>
       <ScrollToTop />
@@ -30,7 +29,7 @@ const [whatsApp, setWhatsApp] = useState<{
         <Outlet />
       </S.MainContent>
 
-     {whatsApp.phone && (
+      {whatsApp.phone && (
         <WhatsAppButton
           phone={whatsApp.phone}
           message={whatsApp.message || ''}

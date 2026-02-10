@@ -7,7 +7,6 @@ import { FaUserTie } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
 import type { ContactInfo } from '../../../types/contact';
 
-
 export const SectionsContactus = ({
   phone,
   phone2,

@@ -33,7 +33,8 @@ export const HeaderContent = styled.div`
   align-items: center;
   max-width: ${({ theme }) => theme.breakpoints.largeDesktop};
   margin: 0 auto;
- padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.large};
+  padding: ${({ theme }) => theme.spacing.small}
+    ${({ theme }) => theme.spacing.large};
   width: 100%;
   box-sizing: border-box;
 
@@ -74,10 +75,8 @@ export const ContactButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${({ theme }) =>
-      theme.colors.primaryDark};
-    color: ${({ theme }) =>
-      theme.colors.darkGray};
+    background: ${({ theme }) => theme.colors.primaryDark};
+    color: ${({ theme }) => theme.colors.darkGray};
   }
 
   .arrow {
@@ -132,7 +131,7 @@ export const MenuToggle = styled.button`
   background: none;
   border: none;
   font-size: 2rem;
-  color: ${({ theme }) => theme.colors.white}; 
+  color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {

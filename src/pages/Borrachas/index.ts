@@ -1,1 +1,1 @@
-export { Borrachas as default } from "./Borrachas";
+export { Borrachas as default } from './Borrachas';

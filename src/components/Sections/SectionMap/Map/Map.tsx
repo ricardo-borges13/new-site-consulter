@@ -15,9 +15,6 @@ export function Map({ src }: { src: string }) {
           title="Mapa da empresa"
         />
       </S.MapWrapper>
-
     </S.Container>
   );
 }
-
-

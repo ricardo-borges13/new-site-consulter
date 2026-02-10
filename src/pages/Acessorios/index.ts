@@ -1,1 +1,1 @@
-export { AcessoriosManutencao as default } from "./AcessoriosManutencao";
+export { AcessoriosManutencao as default } from './AcessoriosManutencao';

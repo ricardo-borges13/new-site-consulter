@@ -16,7 +16,7 @@ export const theme = {
       contato: ' #bdbdbd',
       form: '#f2f7eb',
     },
-  
+
     primary: '#94c11f', // Main green color
     lightPrimary: '#9bc82a', // Added new color
     primaryDark: '#7cb342', // Darker primary for hover states
@@ -41,7 +41,7 @@ export const theme = {
     warningYellow: '#d49b09', // Added new color
     warningYellowDark: '#b8860b', // Added new color
     section: {
-       footer: '#2c2a2a',
+      footer: '#2c2a2a',
     },
   },
   fonts: {

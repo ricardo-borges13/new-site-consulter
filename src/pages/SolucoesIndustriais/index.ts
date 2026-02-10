@@ -1,1 +1,1 @@
-export { SolucoesIndustriais as default } from "./SolucoesIndustriais";
+export { SolucoesIndustriais as default } from './SolucoesIndustriais';

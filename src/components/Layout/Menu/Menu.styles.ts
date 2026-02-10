@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
-  gap: ${({theme}) => theme.spacing.large};
+  gap: ${({ theme }) => theme.spacing.large};
 
-  @media (max-width: ${({theme}) => theme.breakpoints.desktop}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     gap: 1.9rem;
   }
 
@@ -26,7 +26,7 @@ export const Nav = styled.nav`
     gap: 0.9rem;
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     gap: 0.2rem;
   }
 
@@ -35,18 +35,19 @@ export const Nav = styled.nav`
     gap: 0.4rem;
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoints.mediumDesktop}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.2rem;
-    background-color: ${({theme}) => theme.colors.primary};
-    padding: ${({theme}) => theme.spacing.medium} ${({theme}) => theme.spacing.medium};
-    color: ${({theme}) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.primary};
+    padding: ${({ theme }) => theme.spacing.medium}
+      ${({ theme }) => theme.spacing.medium};
+    color: ${({ theme }) => theme.colors.white};
     width: 100%;
   }
 
   @media (max-width: 400px) {
-    gap: ${({theme}) => theme.spacing.medium};
+    gap: ${({ theme }) => theme.spacing.medium};
   }
 
   @media (max-width: 350px) {
@@ -67,7 +68,7 @@ export const MenuItem = styled.div`
   }
 
   /* Ajuste para mobile */
-  @media (max-width: ${({theme}) => theme.breakpoints.mediumDesktop}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
     display: block;
     width: 100%;
   }
@@ -76,7 +77,7 @@ export const MenuItem = styled.div`
 export const MenuLink = styled(Link)`
   position: relative;
   text-decoration: none;
-  color: ${({theme}) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
 
   font-weight: 800;
   transition: color 0.3s;
@@ -88,38 +89,39 @@ export const MenuLink = styled(Link)`
     left: 0;
     width: 0%;
     height: 4px;
-    background-color: ${({theme}) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primary};
     transition: width 0.3s ease;
     border-radius: 2px;
   }
 
   &:hover {
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
   }
 
   @media (max-width: 990px) {
     font-weight: 400;
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoints.mediumDesktop}) {
-    color: ${({theme}) => theme.colors.white};
+  @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
+    color: ${({ theme }) => theme.colors.white};
     display: block;
     width: 100%;
     padding: 0.6rem 0;
     font-size: 1rem;
 
     &:hover {
-      color: ${({theme}) => theme.colors.secondary};
+      color: ${({ theme }) => theme.colors.secondary};
     }
   }
 `;
 
 export const Submenu = styled.ul<{ $isOpen?: boolean }>`
   list-style: none;
-  background: ${({theme}) => theme.hexToRgba(theme.colors.white, 0.9)};
+  background: ${({ theme }) => theme.hexToRgba(theme.colors.white, 0.9)};
   border-radius: 8px;
-  box-shadow: 0 8px 16px ${({theme}) => theme.hexToRgba(theme.colors.black, 0.15)};
-  padding: ${({theme}) => theme.spacing.small} 0;
+  box-shadow: 0 8px 16px
+    ${({ theme }) => theme.hexToRgba(theme.colors.black, 0.15)};
+  padding: ${({ theme }) => theme.spacing.small} 0;
   min-width: 220px;
   z-index: 1000;
   position: absolute;
@@ -135,7 +137,7 @@ export const Submenu = styled.ul<{ $isOpen?: boolean }>`
   display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
 
   /* --- MODO MOBILE --- */
-  @media (max-width: ${({theme}) => theme.breakpoints.mediumDesktop}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
     position: static;
     background: transparent;
     box-shadow: none;
@@ -143,8 +145,7 @@ export const Submenu = styled.ul<{ $isOpen?: boolean }>`
     padding: 0 20px;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    max-height: ${({ $isOpen }) =>
-      $isOpen ? '500px' : '0'};
+    max-height: ${({ $isOpen }) => ($isOpen ? '500px' : '0')};
     opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
     transform: none;
     display: block;
@@ -157,23 +158,23 @@ export const SubmenuItem = styled.li`
   a {
     display: block;
     padding: 0.6rem 1rem;
-    color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.8)};
+    color: ${({ theme }) => theme.hexToRgba(theme.colors.black, 0.8)};
     text-decoration: none;
     transition: background-color 0.4s ease;
 
     &:hover {
-      background: ${({theme}) => theme.colors.lightGray};
-      color: ${({theme}) => theme.colors.primary};
+      background: ${({ theme }) => theme.colors.lightGray};
+      color: ${({ theme }) => theme.colors.primary};
     }
 
     @media (max-width: 774px) {
-      color: ${({theme}) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.white};
       background: none;
       padding: 0.4rem 0;
 
       &:hover {
-        background: ${({theme}) => theme.colors.lightGray};
-        color: ${({theme}) => theme.colors.secondary}; 
+        background: ${({ theme }) => theme.colors.lightGray};
+        color: ${({ theme }) => theme.colors.secondary};
       }
     }
   }

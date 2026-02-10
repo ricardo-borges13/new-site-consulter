@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  background-color: ${({theme}) => theme.colors.secondary};
-  color: ${({theme}) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.white};
   display: flex;
   justify-content: center;
   position: relative;
@@ -12,14 +12,14 @@ export const Container = styled.section`
 
 export const Content = styled.div`
   width: 100%;
-  max-width: ${({theme}) => theme.breakpoints.desktop};
+  max-width: ${({ theme }) => theme.breakpoints.desktop};
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
 
   padding-left: 80px;
 
-  @media (max-width: ${({theme}) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
     text-align: center;
     padding: 0 10px 0 10px;
@@ -30,7 +30,7 @@ export const InfoArea = styled.div`
   caret-color: transparent;
 
   .icon {
-    color: ${({theme}) => theme.colors.primaryDark};
+    color: ${({ theme }) => theme.colors.primaryDark};
   }
 
   h2 {
@@ -53,43 +53,42 @@ export const InfoArea = styled.div`
     gap: 10px;
   }
   .contact {
-  margin-top: ${({theme}) => theme.spacing.large};
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
-}
+    margin-top: ${({ theme }) => theme.spacing.large};
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
 
-.contact-item {
-  display: grid;
-  grid-template-columns: 22px 1fr;
-  column-gap: 12px;
-  align-items: start;
-}
+  .contact-item {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    column-gap: 12px;
+    align-items: start;
+  }
 
-.contact-text {
-  display: flex;
-  flex-direction: column;
-}
+  .contact-text {
+    display: flex;
+    flex-direction: column;
+  }
 
-.contact-name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: ${({theme}) => theme.colors.text.contato};
-  margin-bottom: 2px;
-}
+  .contact-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.text.contato};
+    margin-bottom: 2px;
+  }
 
-.contact-text a {
-  font-size: 1.05rem;
-  color: ${({theme}) => theme.colors.white};
-  text-decoration: none;
-}
+  .contact-text a {
+    font-size: 1.05rem;
+    color: ${({ theme }) => theme.colors.white};
+    text-decoration: none;
+  }
 
-.contact-text a:hover {
-  color: ${({theme}) => theme.colors.primaryDark};
-}
+  .contact-text a:hover {
+    color: ${({ theme }) => theme.colors.primaryDark};
+  }
 
-
-  @media (max-width: ${({theme}) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     h2 {
       margin-bottom: 0;
     }
@@ -110,7 +109,7 @@ export const FormWrapper = styled.div`
 
   transform: translateY(30px);
 
-  @media (max-width: ${({theme}) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     transform: translateY(40px);
   }
 `;

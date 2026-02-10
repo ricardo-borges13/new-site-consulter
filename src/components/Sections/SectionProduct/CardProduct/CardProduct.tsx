@@ -3,7 +3,7 @@ import * as S from './CardProduct.styles';
 type CardProductProps = {
   title: string;
   description: string;
-  images: string[]; // até 2 imagens
+  images: string;
   buttonText: string;
   onButtonClick?: () => void;
 };
@@ -19,25 +19,20 @@ export const CardProduct = ({
     <S.Card>
       <S.Content>
         <S.IconTitle>
-          <img src={images[0]} alt={title} />
-          <h3>{title}</h3>
+          <S.Title>{title}</S.Title>
         </S.IconTitle>
 
         <p>{description}</p>
 
         <S.Footer>
-          <S.LinkButton onClick={onButtonClick}>
-            {buttonText} &gt;
-          </S.LinkButton>
+          <S.LinkButton onClick={onButtonClick}>{buttonText} &gt;</S.LinkButton>
 
-          <S.ActionButton onClick={onButtonClick}>
-            →
-          </S.ActionButton>
+          <S.ActionButton onClick={onButtonClick}>→</S.ActionButton>
         </S.Footer>
       </S.Content>
 
       <S.ImageArea>
-          <img  src={images[1]} alt={`${title} }`} />
+        <img src={images} alt={`${title} }`} />
       </S.ImageArea>
     </S.Card>
   );

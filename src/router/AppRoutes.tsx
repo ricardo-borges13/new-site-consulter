@@ -14,7 +14,6 @@ const AcessoriosManutencao = lazy(() => import('../pages/Acessorios'));
 const SolucoesIndustriais = lazy(() => import('../pages/SolucoesIndustriais'));
 const Eletrica = lazy(() => import('../pages/Eletrica'));
 
-
 export const router = createBrowserRouter([
   {
     element: <Layout />,

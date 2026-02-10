@@ -1,1 +1,1 @@
-export { Eletrica as default } from "./Eletrica";
+export { Eletrica as default } from './Eletrica';

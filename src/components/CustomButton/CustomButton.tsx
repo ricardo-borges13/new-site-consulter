@@ -6,8 +6,14 @@ type ButtonProps = {
   children?: ReactNode; // 👈 permite ícone, JSX, etc
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'primary' | 'secondary' | 'outline-white' | 'lightPrimary' | 'headerMain' | 'cta';
-   disabled?: boolean;
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'outline-white'
+    | 'lightPrimary'
+    | 'headerMain'
+    | 'cta';
+  disabled?: boolean;
   loading?: boolean;
 };
 
@@ -27,7 +33,7 @@ export const CustomButton = ({
       $variant={variant}
       disabled={disabled || loading}
     >
-      {loading ? 'Enviando...' : children ?? text}
+      {loading ? 'Enviando...' : (children ?? text)}
     </StyledButton>
   );
 };

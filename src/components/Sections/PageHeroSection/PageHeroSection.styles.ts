@@ -23,10 +23,10 @@ export const LightOverlay = styled.div`
   inset: 0;
   background: linear-gradient(
     to right,
-    ${({theme}) => theme.hexToRgba(theme.colors.white, 0.9)} 0%,
-    ${({theme}) => theme.hexToRgba(theme.colors.white, 0.75)} 35%,
-    ${({theme}) => theme.hexToRgba(theme.colors.white, 0.3)} 55%,
-    ${({theme}) => theme.hexToRgba(theme.colors.black, 0)} 70%
+    ${({ theme }) => theme.hexToRgba(theme.colors.white, 0.9)} 0%,
+    ${({ theme }) => theme.hexToRgba(theme.colors.white, 0.75)} 35%,
+    ${({ theme }) => theme.hexToRgba(theme.colors.white, 0.3)} 55%,
+    ${({ theme }) => theme.hexToRgba(theme.colors.black, 0)} 70%
   );
   z-index: 1;
 `;
@@ -38,7 +38,7 @@ export const BottomShape = styled.div`
   left: 0;
   width: 100%;
   height: 40px;
-  background-color: ${({theme}) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
 
   clip-path: polygon(
     0 40%,
@@ -57,10 +57,10 @@ export const BottomShape = styled.div`
 export const Content = styled.div`
   position: relative;
   z-index: 2;
-  max-width: ${({theme}) => theme.breakpoints.desktop};
-  padding: 0 ${({theme}) => theme.spacing.medium};
+  max-width: ${({ theme }) => theme.breakpoints.desktop};
+  padding: 0 ${({ theme }) => theme.spacing.medium};
   margin-left: 6%;
-  color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.86)};
+  color: ${({ theme }) => theme.hexToRgba(theme.colors.black, 0.86)};
 
   transform: translateY(-60px);
 
@@ -72,12 +72,12 @@ export const Content = styled.div`
   }
 
   p {
-    font-size: ${({theme}) => theme.spacing.medium};
+    font-size: ${({ theme }) => theme.spacing.medium};
     max-width: 520px;
     line-height: 1.5;
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoints.tabletMedium}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletMedium}) {
     margin-left: 0;
     text-align: center;
   }
@@ -85,8 +85,8 @@ export const Content = styled.div`
 
 /* Conteúdo abaixo do hero */
 export const ChildrenContent = styled.div`
-  max-width: ${({theme}) => theme.breakpoints.desktop};
+  max-width: ${({ theme }) => theme.breakpoints.desktop};
   margin: 60px auto;
-  padding: 0 ${({theme}) => theme.spacing.medium};
+  padding: 0 ${({ theme }) => theme.spacing.medium};
   line-height: 1.6;
 `;

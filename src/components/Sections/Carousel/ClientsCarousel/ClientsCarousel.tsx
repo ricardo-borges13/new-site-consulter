@@ -24,7 +24,6 @@ const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
   </S.ArrowButton>
 );
 
-
 // Componente principal
 export const ClientsCarousel: React.FC = () => {
   // Define responsive object using standard pixel values
@@ -45,7 +44,6 @@ export const ClientsCarousel: React.FC = () => {
     { src: vallourec, alt: 'Vallourec' },
     { src: gerdau, alt: 'Gerdau' },
   ];
-
 
   return (
     <S.CarouselContainer>

@@ -1,6 +1,6 @@
 import { Menu } from '../Menu/Menu';
 import * as S from './HeaderMain.styles';
-import logo from '../../../assets/images/Logo-Header2.png';
+import logo from '../../../assets/images/Logo-Header.png';
 import { useEffect, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaAngleRight } from 'react-icons/fa';
@@ -45,7 +45,6 @@ export const HeaderMain = () => {
             Orçamento
             <FaAngleRight size={16} className="arrow" />
           </CustomButton>
-
         </S.MenuWrapper>
       </S.HeaderContent>
     </S.HeaderContainer>

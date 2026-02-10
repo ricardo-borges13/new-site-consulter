@@ -16,14 +16,12 @@ Este é um site baseado em React para a Consulter, uma empresa que fornece solu�
 
 ## Convenções de Desenvolvimento
 
-*   O projeto segue a estrutura padrão de projetos React.
-*   Os componentes estão localizados no diretório `src/components`.
-*   As páginas estão localizadas no diretório `src/pages`.
-*   O componente principal da aplicação é o `src/App.tsx`.
-*   O roteamento é definido em `src/router/AppRoutes.tsx`.
-*   Os estilos globais são definidos em `src/assets/style/global.ts`.
-
-
+- O projeto segue a estrutura padrão de projetos React.
+- Os componentes estão localizados no diretório `src/components`.
+- As páginas estão localizadas no diretório `src/pages`.
+- O componente principal da aplicação é o `src/App.tsx`.
+- O roteamento é definido em `src/router/AppRoutes.tsx`.
+- Os estilos globais são definidos em `src/assets/style/global.ts`.
 
 ## 🏷️ Versionamento da Aplicação
 
@@ -163,6 +161,7 @@ Apresenta um título de destaque, subtítulo e botões de call-to-action sobre u
 - Importado e utilizado na page Home (`Home.tsx`)
 
 #### Estrutura de Props
+
 ```tsx
 type HeroProps = {
   title: string; // Título principal (obrigatório)
@@ -181,6 +180,7 @@ Na página Home, importe o componente Hero e informe as propriedades desejadas.
 A lógica de navegação ou qualquer outra ação dos botões deve ser definida na página, mantendo o componente desacoplado de regras de negócio.
 
 **Importante:** A imagem de fundo agora é passada via prop `image` diretamente no JSX.
+
 ```tsx
 <Hero
   title="Soluções industriais em borrachas e materiais elétricos"
@@ -215,6 +215,7 @@ A lógica de navegação ou qualquer outra ação dos botões deve ser definida 
 O componente utiliza **React.memo** para memoização, evitando re-renderizações desnecessárias.
 
 **Para garantir efetividade do React.memo**, as funções de callback devem ser estáveis no componente pai:
+
 ```tsx
 const handlePrimaryClick = useCallback(() => {
   navigate('/orcamento');
@@ -283,7 +284,7 @@ const sobreData: SectionInfoProps = {
 ### Componente `CardProduct` (Atualizado)
 
 Componente responsável por **renderizar um card individual de produto**, utilizado para representar as linhas de produtos da empresa dentro da seção de produtos.
-Exibe um título, uma descrição, um ícone, uma imagem principal e dois botões de ação (texto e ícone), ambos direcionando para a página de detalhes do produto.
+Exibe um título, uma descrição e uma imagem principal e dois botões de ação (texto e ícone), ambos direcionando para a página de detalhes do produto.
 
 #### Local de Uso
 
@@ -296,7 +297,7 @@ Exibe um título, uma descrição, um ícone, uma imagem principal e dois botõe
 {
   title: string;                 // Título do produto
   description: string;           // Descrição do produto
-  images: [string, string];      // [0] Ícone | [1] Imagem principal
+  images: string;                //Imagem principal
   buttonText: string;            // Texto do botão ("Saiba mais")
   onButtonClick?: () => void;    // Função executada ao clicar no card/botões
 }
@@ -304,14 +305,14 @@ Exibe um título, uma descrição, um ícone, uma imagem principal e dois botõe
 
 #### Como Usar
 
-1. Importe as imagens no arquivo que usa `SectionProduct`. OBS: O caminho da imagem é na `Home`
+1. Importe as imagens no arquivo que usa `SectionProduct`. OBS: O caminho da imagem é na `Home.data.ts`
 2. Passe as props ao chamar o componente:
 
 ```tsx
 <CardProduct
   title="Borrachas"
   description="Borrachas industriais e pró-indensça..."
-  images={[icone1, image1]}
+  images={image1}
   buttonText="Saiba mais"
   onButtonClick={() => navigate('/produtos/borrachas')}
 />
@@ -319,9 +320,7 @@ Exibe um título, uma descrição, um ícone, uma imagem principal e dois botõe
 
 #### Observações
 
-- O array `images` deve ter exatamente 2 imagens: `[ícone, imagemPrincipal]`
-- A primeira imagem (`images[0]`) é o ícone que aparece ao lado do título
-- A segunda imagem (`images[1]`) é a imagem principal do card
+- A primeira imagem (`images`) é a imagem principal do card
 - Os dois botões executam a mesma função `onButtonClick`
 - O caminho das imagens é definido na página que importa o `SectionProduct`
 
@@ -352,11 +351,7 @@ Os dados visuais (imagens e ícones) são definidos externamente no arquivo `Hom
   image1: imageProduto1,              // Imagem principal - Borrachas
   image2: imageProduto2,              // Imagem principal - Material Elétrico
   image3: imageProduto3,              // Imagem principal - Acessórios
-  image4: imageProduto4,              // Imagem principal - Soluções Industriais
-  icone1: iconeBorrachas,             // Ícone - Borrachas
-  icone2: iconeEletrico,              // Ícone - Material Elétrico
-  icone3: iconeAcessorios,            // Ícone - Acessórios
-  icone4: iconeSolucoes,              // Ícone - Soluções Industriais
+  image4: imageProduto4,              // Imagem principal - Soluções
 }
 ```
 
@@ -364,7 +359,7 @@ Os dados visuais (imagens e ícones) são definidos externamente no arquivo `Hom
 
 - Importe e utilize o componente na página `Home`
   <SectionProduct {...productSectionData} />
-- As imagens e ícones são definidos no arquivo `Home.data.ts`:
+- As imagens são definidos no arquivo `Home.data.ts`:
 - Cada card é renderizado utilizando o componente `CardProduct`
 - As informações de título, descrição e rota de navegação de cada card são definidas internamente no componente
 - A navegação é realizada utilizando o hook useNavigate do react-router-dom
@@ -383,7 +378,6 @@ O componente renderiza **4 cards fixos** com as seguintes informações:
 - O conteúdo visual é gerenciado externamente no **Home.data.ts**
 - Todos os cards navegam para sua respectiva página (ex: `/produtos/acessorios`) ao clicar (ajustar rotas conforme necessário)
 - Cada card usa internamente o componente `CardProduct`
-- As imagens são organizadas em pares `[ícone, imagemPrincipal]` antes de serem passadas ao `CardProduct`
 - O layout, grid e responsividade são controlados pelo arquivo`SectionProduct.styles.ts`
 
 ---
@@ -1138,10 +1132,10 @@ Componente responsável por exibir o **banner principal das páginas internas** 
 - Renderiza o conteúdo adicional (children) logo abaixo do banner principal
 
 #### Tamanho da imagem
+
 - 1920 (largura) x 1000 (altura) pixel
 - Peso ideal: 1500-3000 KB
 - Formato recomendado: JPG (Salvar para Web no photoShopp. Porcentagem (%) da qualidade de forma que fique no tamanho do peso ideal)
-
 
 #### Observações
 
@@ -1314,12 +1308,14 @@ As informações do botão são carregadas a partir de um arquivo JSON localizad
 - O campo message define a mensagem inicial exibida no WhatsApp
 - Caso o JSON não seja carregado, o botão não é exibido
 
-----
+---
+
 ### Componente `ProductCategory` (Atualizado)
 
-Componente responsável por **exibir categorias de produtos industriais** em formato de card, utilizado nas páginas internas de produtos (ex: *Borrachas Industriais*).
+Componente responsável por **exibir categorias de produtos industriais** em formato de card, utilizado nas páginas internas de produtos (ex: _Borrachas Industriais_, _Material Elétrico_, etc).
 
 Cada card apresenta:
+
 - Um **título destacado** com faixa visual
 - Um **ícone representativo da categoria**
 - Uma **lista de itens/produtos**
@@ -1328,6 +1324,7 @@ Cada card apresenta:
 ---
 
 #### Localização
+
 - **Caminho**: `src/components/ProductCategory`
 - **Usado em**: Páginas de produtos (ex: `Borrachas.tsx`, `MaterialEletrico.tsx`, etc.)
 
@@ -1337,11 +1334,10 @@ Cada card apresenta:
 
 ```tsx
 type ProductCategoryProps = {
-  image: string;   // Ícone ou imagem representativa da categoria
-  title: string;   // Título da categoria (ex: "Correias")
+  image: string; // Ícone ou imagem representativa da categoria
+  title: string; // Título da categoria (ex: "Correias")
   items: string[]; // Lista de produtos/itens da categoria
 };
-
 ```
 
 #### Como Funciona
@@ -1352,17 +1348,16 @@ type ProductCategoryProps = {
 - O botão "Solicitar orçamento" direciona o usuário para a página /orcamento
 - O card possui animação de hover (elevação e sombra) para melhor feedback visual
 
-
 #### Observações Importantes
 
 - Ideal para ser alimentado por arquivos de dados (ex: dataProductRubber.ts)
 - Pode ser reutilizado para outras linhas de produtos sem alteração de código
 - Mantém identidade visual consistente com o restante do site
 
-
 ---
 
 ### Componente `SEO`
+
 O componente **`SEO`** é responsável por **gerenciar dinamicamente as meta informações de cada página** do site, como título, descrição, imagem de compartilhamento e URL canônica.
 
 Ele substitui a necessidade de concentrar todas as informações de SEO no `index.html`, permitindo que **cada página defina suas próprias características**, melhorando a indexação nos mecanismos de busca (Google) e o compartilhamento em redes sociais (WhatsApp, LinkedIn, Facebook, etc.).
@@ -1374,12 +1369,13 @@ Ele substitui a necessidade de concentrar todas as informações de SEO no `inde
 - Controlar **Open Graph**, **Twitter Card**, **canonical URL** e **robots**
 - Facilitar manutenção e padronização do SEO em projetos futuros
 
-
 #### Localização
+
 - **Caminho**: `src/components/SEO`
 
 ### 🧩 Dependência Global (`react-head`)
-o  componente SEO depende do **`HeadProvider`**, que deve envolver a aplicação no ponto de entrada (`main.tsx`).
+
+o componente SEO depende do **`HeadProvider`**, que deve envolver a aplicação no ponto de entrada (`main.tsx`).
 O HeadProvider permite a inserção dinâmica de <title>, <meta> e <link> no <head> do documento.
 
 ```tsx
@@ -1391,9 +1387,10 @@ createRoot(document.getElementById('root')!).render(
     </HeadProvider>
   </StrictMode>
 );
-
 ```
+
 - **Usado em**: O componente SEO deve ser utilizado em todas as páginas do projeto, definindo informações específicas para cada rota.
+
 ```tsx
 export const Empresa = () => {
   return (
@@ -1408,7 +1405,8 @@ export const Empresa = () => {
 ```
 
 #### Dimensões de imagens
- - 1200 x 630 px - Padrão ouro (Facebook / Whatsapp / Linkedin)
+
+- 1200 x 630 px - Padrão ouro (Facebook / Whatsapp / Linkedin)
 - ~150 KB → excelente (rápido, não compromete SEO)
 - Nome do arquivo: SEO-QuemSomos.jpg
 - Formato: .jpg ou .webp
@@ -1429,8 +1427,9 @@ type SEOProps = {
 ```
 
 #### Quando usar noindex e nofollow
-``noindex={true}`` //Impede que a página apareça nos resultados do Google
-``nofollow={true}`` //Impede que a página apareça nos resultados do Google
+
+`noindex={true}` //Impede que a página apareça nos resultados do Google
+`nofollow={true}` //Impede que a página apareça nos resultados do Google
 
 - Página 404 / Página não encontrada
 - Página de erro
@@ -1440,23 +1439,24 @@ type SEOProps = {
 - Página que não deve competir com outras no google
 
 #### Pode usar só noindex (sem nofollow) em alguns casos:
-``noindex={true}``
-``nofollow={false}``
+
+`noindex={true}`
+`nofollow={false}`
+
 - Landing pages internas
 - Páginas duplicadas
 - Páginas de campanha temporária
 
 #### OBSERVAÇÕES IMPORTANTES
+
 - Cada página deve ter um title e description únicos
 - Evite reutilizar a mesma imagem de SEO entre páginas diferentes
 - Utilize noindex e nofollow apenas em páginas que não devem aparecer no Google
 - O index.html deve conter apenas SEO genérico de fallback, nunca específico de páginas
 
-------------
+---
 
-##### Componente ``HeaderTop``
-
-
+##### Componente `HeaderTop`
 
 Barra de topo fixa com informações de contato (telefone e email) e texto institucional. Exibe links clicáveis que abrem diretamente o discador ou cliente de email.
 
@@ -1471,30 +1471,34 @@ Barra de topo fixa com informações de contato (telefone e email) e texto insti
 ## 🎨 Comportamento Visual
 
 ### Desktop (> 800px)
+
 - Layout horizontal com flexbox
 - Texto institucional à esquerda (ocupa espaço disponível)
 - Telefone e email à direita separados por "/"
 - Alinhamento: space-between
 
 ### Mobile (≤ 800px)
+
 - Layout vertical centralizado
 - Itens empilhados um abaixo do outro
 - Separador "/" oculto
 - Espaçamento reduzido
 
 ### Extra Small (≤ 550px)
+
 - Font-size reduzido: 0.8rem
 - Links com fonte 1.1rem para legibilidade
 
 ## 🔧 Props (ContactInfo)
 
-| Prop | Tipo | Obrigatório | Descrição |
-|------|------|-------------|-----------|
-| `text` | `string` | Sim | Texto institucional/slogan exibido à esquerda |
-| `phone` | `string` | Sim | Número de telefone principal (formatado) |
-| `email` | `string` | Sim | Endereço de email de contato |
+| Prop    | Tipo     | Obrigatório | Descrição                                     |
+| ------- | -------- | ----------- | --------------------------------------------- |
+| `text`  | `string` | Sim         | Texto institucional/slogan exibido à esquerda |
+| `phone` | `string` | Sim         | Número de telefone principal (formatado)      |
+| `email` | `string` | Sim         | Endereço de email de contato                  |
 
 ### Exemplo de tipo ContactInfo
+
 ```typescript
 // types/contact.ts
 export type ContactInfo = {
@@ -1511,6 +1515,7 @@ export type ContactInfo = {
 **Nota:** O componente usa apenas `text`, `phone` e `email`. Os campos adicionais (`phone2`, `phone3`, etc.) são opcionais e podem ser usados em outros componentes.
 
 ## 📦 Dependências
+
 ```json
 {
   "react": "^18.x",
@@ -1520,6 +1525,7 @@ export type ContactInfo = {
 ```
 
 ## 🚀 Uso
+
 ```tsx
 import { HeaderTop } from './components/HeaderTop/HeaderTop';
 import { contactData } from './data/contactData';
@@ -1535,6 +1541,7 @@ function App() {
 ```
 
 ### Uso com props diretas
+
 ```tsx
 <HeaderTop
   text="Especialistas em transformar desafios em soluções."
@@ -1544,6 +1551,7 @@ function App() {
 ```
 
 ## 📊 Estrutura de Dados
+
 ```typescript
 // contactData.ts
 export const contactData: ContactInfo = {
@@ -1562,6 +1570,7 @@ export const contactData: ContactInfo = {
 ### Links Clicáveis
 
 **Telefone:**
+
 ```typescript
 const phoneHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
 // Input: "(31) 3500-4797"
@@ -1569,6 +1578,7 @@ const phoneHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
 ```
 
 **Email:**
+
 ```typescript
 const emailHref = `mailto:${email}`;
 // Output: "mailto:consulter@consultersolucoes.com.br"
@@ -1581,14 +1591,15 @@ const emailHref = `mailto:${email}`;
 
 ## 📱 Breakpoints
 
-| Breakpoint | Comportamento |
-|------------|---------------|
-| `800px` | Muda para layout vertical, oculta separador "/" |
-| `550px` | Reduz font-size para 0.8rem, links em 1.1rem |
+| Breakpoint | Comportamento                                   |
+| ---------- | ----------------------------------------------- |
+| `800px`    | Muda para layout vertical, oculta separador "/" |
+| `550px`    | Reduz font-size para 0.8rem, links em 1.1rem    |
 
 ## 🎨 Styled Components
 
 ### Header
+
 - `position: fixed` no topo (top: 0)
 - `z-index: 1100` (acima do HeaderMain que tem 100)
 - Background: #1a1a1a
@@ -1596,12 +1607,14 @@ const emailHref = `mailto:${email}`;
 - `caret-color: transparent` remove cursor de texto
 
 ### Container
+
 - Max-width: 1200px centralizado
 - Padding: 6px 16px
 - Display: flex com space-between
 - Gap: 1.5rem (desktop) / 0 (mobile)
 
 **Elementos:**
+
 ```css
 /* Texto institucional */
 > div:first-child {
@@ -1646,9 +1659,12 @@ a:hover {
    - Ícones como indicadores visuais
 
 ## 🔍 Estrutura HTML Renderizada
+
 ```html
-<div> <!-- Header -->
-  <div> <!-- Container -->
+<div>
+  <!-- Header -->
+  <div>
+    <!-- Container -->
     <div>Especialistas em transformar...</div>
 
     <div>
@@ -1669,6 +1685,7 @@ a:hover {
 ```
 
 ## 📝 Estrutura de Arquivos
+
 ```
 HeaderTop/
 ├── HeaderTop.tsx
@@ -1685,6 +1702,7 @@ types/
 ## 🛠️ Customização Rápida
 
 **Mudar cor de destaque:**
+
 ```typescript
 // HeaderTopo.styles.ts
 border-bottom: 3px solid #SUA_COR;
@@ -1692,12 +1710,14 @@ color: #SUA_COR; // para ícones e hover
 ```
 
 **Ajustar altura:**
+
 ```typescript
 // Container
 padding: 10px 16px; // aumenta altura vertical
 ```
 
 **Adicionar mais informações:**
+
 ```tsx
 // HeaderTop.tsx
 <div>
@@ -1707,6 +1727,7 @@ padding: 10px 16px; // aumenta altura vertical
 ```
 
 **Mudar breakpoint mobile:**
+
 ```typescript
 // HeaderTopo.styles.ts
 @media (max-width: SEU_VALOR) {
@@ -1729,10 +1750,7 @@ padding: 10px 16px; // aumenta altura vertical
 
 ---
 
-
-
-
-------------
+---
 
 ### Componente `HeaderMain`
 
@@ -1749,12 +1767,14 @@ Componente de cabeçalho principal da aplicação com navegação responsiva, ef
 ## 🎨 Comportamento Visual
 
 ### Desktop
+
 - Header inicia com 110px de altura
 - Ao rolar 30px, reduz para 70px
 - Logo ajusta de 100px para 60px
 - Menu horizontal sempre visível
 
 ### Mobile (≤ 1038px) `MenuToggle`
+
 - Menu hambúrguer aparece
 - Menu se expande verticalmente ao clicar
 - Animação suave de abertura/fechamento
@@ -1764,25 +1784,24 @@ Componente de cabeçalho principal da aplicação com navegação responsiva, ef
 
 Este componente não recebe props diretamente, mas o componente `Menu` interno aceita:
 
-| Prop | Tipo | Descrição |
-|------|------|-----------|
+| Prop          | Tipo         | Descrição                                                           |
+| ------------- | ------------ | ------------------------------------------------------------------- |
 | `onLinkClick` | `() => void` | Callback executado ao clicar em links do menu (fecha o menu mobile) |
-
-
 
 ## 📱 Breakpoints
 
-| Breakpoint | Comportamento |
-|------------|---------------|
-| `1038px` | Menu hambúrguer ativado |
-| `900px` | Ajuste de altura do header e logo |
-| `775px` | Margem superior adicional |
-| `770px` | Redução de padding lateral |
-| `550px` | Botão de orçamento oculto |
+| Breakpoint | Comportamento                     |
+| ---------- | --------------------------------- |
+| `1038px`   | Menu hambúrguer ativado           |
+| `900px`    | Ajuste de altura do header e logo |
+| `775px`    | Margem superior adicional         |
+| `770px`    | Redução de padding lateral        |
+| `550px`    | Botão de orçamento oculto         |
 
 ## 🎯 Funcionalidades
 
 ### Scroll Behavior
+
 ```tsx
 // Detecta scroll > 30px
 const handleScroll = () => {
@@ -1791,17 +1810,20 @@ const handleScroll = () => {
 ```
 
 ### Menu Toggle
+
 - **Ícone**: Alterna entre `FiMenu` e `FiX`
 - **Estado**: Controla abertura/fechamento do menu mobile
 - **Auto-close**: Menu fecha automaticamente ao clicar em links
 - (≤ 1038px) Menu hamburguer aparece
+
 ```JS
 @media (max-width: 1038px) {
     display: block;
   }
-  ```
+```
 
 ### Navegação
+
 - **Logo**: Link para home (`/`)
 - **Botão**: Navega para `/orcamento`
 - **Menu**: Links gerenciados pelo componente `Menu`
@@ -1809,6 +1831,7 @@ const handleScroll = () => {
 ## 🎨 Styled Components
 
 ### HeaderContainer
+
 - `$isScrolled`: Prop transiente que controla altura e estilos
 
 ## 🤝 Componentes Relacionados
@@ -1817,24 +1840,27 @@ const handleScroll = () => {
 - **Logo**: Asset em `/assets/images/Logo-Header2.png`
 
 ### Image (Logo)
+
 - 400 x 120 px
 - Formato PNG24 até 50-80KB
 - Altura dinâmica baseada em scroll
 - Transição suave de 0.3s
 
 ### ContactButton
+
 - Gradiente verde (#94C11F → #AFC577)
 - Animação de seta no hover
 - Oculto em mobile
 - (≤ 550px) botão de orçamento ocultado
 
 ### MenuContainer
+
 - Desktop: flex horizontal
 - Mobile: absolute, full-width, animação vertical
 - (≤ 1038px) Os menus descritivos desaparecem
 
-
 ## 🔄 Estados
+
 ```tsx
 const [isScrolled, setIsScrolled] = useState(false);
 const [menuOpen, setMenuOpen] = useState(false);
@@ -1855,11 +1881,13 @@ const [menuOpen, setMenuOpen] = useState(false);
 - **Hover do botão**: opacity 0.9
 
 ## 📝 Estrutura de Arquivos
+
 ```
 HeaderMain/
 ├── HeaderMain.tsx
 ├── HeaderMain.styles.ts
 ```
+
 ---
 
 ### Componente `Menu`
@@ -1877,12 +1905,14 @@ Componente de navegação principal com suporte a submenus, comportamento respon
 ## 🎨 Comportamento por Plataforma
 
 ### Desktop (> 1038px)
+
 - **Hover**: Submenu abre ao passar o mouse
 - **Menu "Produtos"**: Scroll suave até seção `#produtos` na home
 - **Outros menus**: Navegação normal via React Router
 - **Visual**: Submenu posicionado absolutamente abaixo do item
 
 ### Mobile (≤ 1038px)
+
 - **Click**: Submenu abre/fecha ao clicar
 - **Menu "Produtos"**: Toggle do submenu (não navega)
 - **Outros menus**: Navegação normal + fecha menu mobile
@@ -1890,14 +1920,12 @@ Componente de navegação principal com suporte a submenus, comportamento respon
 
 ## 🔧 Props
 
-| Prop | Tipo | Obrigatório | Descrição |
-|------|------|-------------|-----------|
-| `onLinkClick` | `() => void` | Não | Callback executado ao clicar em links (usado para fechar menu mobile no HeaderMain) |
-
-
-
+| Prop          | Tipo         | Obrigatório | Descrição                                                                           |
+| ------------- | ------------ | ----------- | ----------------------------------------------------------------------------------- |
+| `onLinkClick` | `() => void` | Não         | Callback executado ao clicar em links (usado para fechar menu mobile no HeaderMain) |
 
 ## 🚀 Uso
+
 ```tsx
 import { Menu } from './components/Menu/Menu';
 
@@ -1909,13 +1937,14 @@ import { Menu } from './components/Menu/Menu';
 ```
 
 ## 📊 Estrutura de Dados (menuData)
+
 ```typescript
 // menuData.ts
 export const menuItems = [
   {
     id: 1,
     title: 'Home',
-    path: '/'
+    path: '/',
   },
   {
     id: 2,
@@ -1923,13 +1952,14 @@ export const menuItems = [
     path: '#', // não navega, faz scroll
     submenu: [
       { title: 'Produto A', path: '/produtos/a' },
-      { title: 'Produto B', path: '/produtos/b' }
-    ]
-  }
+      { title: 'Produto B', path: '/produtos/b' },
+    ],
+  },
 ];
 ```
 
 ## 🎯 Breakpoint Crítico
+
 ```typescript
 // Linha 20 - Menu.tsx
 const handleResize = () => setIsMobile(window.innerWidth <= 1038);
@@ -1938,23 +1968,25 @@ const handleResize = () => setIsMobile(window.innerWidth <= 1038);
 **Este valor (1038px) controla a transição entre hover e click.**
 
 Para ajustar:
+
 - Menor (ex: 768px) → hover funciona em tablets
 - Maior (ex: 1200px) → força click em telas maiores
 
 ## 📱 Breakpoints de Estilos
 
-| Breakpoint | Comportamento |
-|------------|---------------|
-| `1210px` | Redução progressiva de gaps (4rem → 1.9rem) |
-| `1112px` | Gap 1.8rem |
-| `1074px` | Gap 1.6rem |
-| `1020px` | Gap 1.3rem |
-| `1002px` | Gap 0.9rem |
-| `1038px` | **Modo mobile ativado** (layout vertical, fundo verde) |
-| `990px` | Font-weight reduzido (800 → 400) |
-| `774px` | Ajustes de cor para submenu mobile |
+| Breakpoint | Comportamento                                          |
+| ---------- | ------------------------------------------------------ |
+| `1210px`   | Redução progressiva de gaps (4rem → 1.9rem)            |
+| `1112px`   | Gap 1.8rem                                             |
+| `1074px`   | Gap 1.6rem                                             |
+| `1020px`   | Gap 1.3rem                                             |
+| `1002px`   | Gap 0.9rem                                             |
+| `1038px`   | **Modo mobile ativado** (layout vertical, fundo verde) |
+| `990px`    | Font-weight reduzido (800 → 400)                       |
+| `774px`    | Ajustes de cor para submenu mobile                     |
 
 ## 🔄 Estados
+
 ```typescript
 const [openMenu, setOpenMenu] = useState<number | null>(null);
 const [isMobile, setIsMobile] = useState(false);
@@ -1968,7 +2000,9 @@ const [openSubmenuMobile, setOpenSubmenuMobile] = useState<number | null>(null);
 ## ⚙️ Funções Principais
 
 ### handleMenuClick
+
 Gerencia cliques em itens do menu:
+
 ```typescript
 // Mobile
 - "Produtos" → Toggle submenu
@@ -1980,13 +2014,17 @@ Gerencia cliques em itens do menu:
 ```
 
 ### handleMouseEnter / handleMouseLeave
+
 Controla hover no desktop:
+
 ```typescript
 if (!isMobile) setOpenMenu(id);
 ```
 
 ### handleSubmenuClick
+
 Clique em itens do submenu:
+
 - Fecha todos os submenus
 - Navega para o path
 - Executa `onLinkClick` callback
@@ -1994,38 +2032,46 @@ Clique em itens do submenu:
 ## 🎨 Styled Components
 
 ### Nav
+
 - Desktop: flex horizontal com gaps responsivos
 - Mobile (≤ 1038px): flex vertical, fundo #94c11f, padding 20px
 
 ### MenuItem
+
 - Desktop: inline-block com hover effects
 - Mobile: block, width 100%
 
 ### MenuLink
+
 - Underline animado no hover (barra verde de 4px)
 - Cor base: #f8f8f8ff
 - Hover: #94c11f (desktop) / #0f0f0f (mobile)
 - Font-weight: 800 (desktop) / 400 (< 990px)
 
 ### Submenu
+
 **Desktop:**
+
 - Position: absolute
 - Background: #dfdedeff
 - Animação: opacity + translateY
 - Display controlado por `$isOpen`
 
 **Mobile:**
+
 - Position: static (inline)
 - Background: transparent
 - Animação: max-height (0 → 500px)
 - Sempre no DOM, altura controlada
 
 ### SubmenuItem
+
 - Padding: 0.6rem 1rem (desktop)
 - Hover: background #f9f9f9, cor #94c11f
 - Mobile: texto branco, hover com fundo claro
 
 ## 🔍 Lógica de Scroll para "Produtos"
+
 ```typescript
 if (location.pathname === '/') {
   // Já está na home → scroll direto
@@ -2048,13 +2094,14 @@ if (location.pathname === '/') {
 
 ## 🎭 Animações
 
-| Elemento | Desktop | Mobile |
-|----------|---------|--------|
-| Submenu | opacity + translateY (-10px) | max-height (0 → 500px) |
-| Underline | width 0% → 100% (0.3s) | - |
-| Links | color transition (0.3s) | color transition (0.3s) |
+| Elemento  | Desktop                      | Mobile                  |
+| --------- | ---------------------------- | ----------------------- |
+| Submenu   | opacity + translateY (-10px) | max-height (0 → 500px)  |
+| Underline | width 0% → 100% (0.3s)       | -                       |
+| Links     | color transition (0.3s)      | color transition (0.3s) |
 
 ## 📝 Estrutura de Arquivos
+
 ```
 Menu/
 ├── Menu.tsx
@@ -2071,18 +2118,21 @@ Menu/
 ## 🛠️ Customização Rápida
 
 **Mudar breakpoint mobile:**
+
 ```typescript
 // Menu.tsx, linha 20
 setIsMobile(window.innerWidth <= SEU_VALOR);
 ```
 
 **Mudar cor do menu mobile:**
+
 ```typescript
 // Menu.styles.ts, Nav component
 background-color: #SUA_COR;
 ```
 
 **Adicionar novo item com submenu:**
+
 ```typescript
 // menuData.ts
 {
@@ -2093,7 +2143,7 @@ background-color: #SUA_COR;
 }
 ```
 
---------------------------------------
+---
 
 # Componente `CustomButton` - ok
 
@@ -2120,15 +2170,22 @@ Componente de botão reutilizável e estilizado construído com **React e Styled
 ---
 
 ## Estrutura de Props
+
 ```tsx
 type ButtonProps = {
-  text?: string;              // Texto do botão (opcional se usar children)
-  children?: ReactNode;        // Conteúdo customizado (ícones, JSX, etc)
-  onClick?: () => void;        // Função executada ao clicar
-  type?: 'button' | 'submit' | 'reset';  // Tipo HTML do botão (padrão: 'button')
-   variant?: 'primary' | 'secondary' | 'outline-white' | 'lightPrimary' | 'headerMain' | 'cta';  // Variante de estilo (padrão: 'primary')
-  disabled?: boolean;          // Desabilita o botão (padrão: false)
-  loading?: boolean;           // Mostra estado de carregamento (padrão: false)
+  text?: string; // Texto do botão (opcional se usar children)
+  children?: ReactNode; // Conteúdo customizado (ícones, JSX, etc)
+  onClick?: () => void; // Função executada ao clicar
+  type?: 'button' | 'submit' | 'reset'; // Tipo HTML do botão (padrão: 'button')
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'outline-white'
+    | 'lightPrimary'
+    | 'headerMain'
+    | 'cta'; // Variante de estilo (padrão: 'primary')
+  disabled?: boolean; // Desabilita o botão (padrão: false)
+  loading?: boolean; // Mostra estado de carregamento (padrão: false)
 };
 ```
 
@@ -2137,42 +2194,54 @@ type ButtonProps = {
 ## Variantes Disponíveis
 
 ### `primary`
+
 Botão principal com **gradiente**, ideal para ações primárias.
+
 - Background: gradiente do tema (primary)
 - Hover: muda cor de fundo e texto para darkGray
 - Active: escala reduzida (0.98) e cor secundária
 - Utilizado no primeiro botão do`Hero` e `SectionInfo`
 
 ### `secondary`
+
 Botão secundário **sólido** para ações alternativas.
+
 - Background: cor secundária do tema
 - Hover: opacidade reduzida (0.8)
 - Active: escala reduzida e cor secundária
 - Utilizado nos `Formulários`
 
 ### `outline-white`
+
 Botão com **borda branca e fundo transparente**, ótimo para fundos escuros.
+
 - Background: transparente
 - Border: 2px branco
 - Hover: fundo branco semi-transparente (0.2)
 - Utilizado no segundo botão do `Hero`
 
 ### `lightPrimary`
+
 Botão com **cor primária clara e bordas arredondadas** (30px).
+
 - Background: lightPrimary do tema
 - Hover: translateY(-2px) + primaryDark
 - Padding: 0.9rem 2.2rem
 - Utilizado na página `Soluções Industriais`
 
 ### `headerMain`
+
 Botão específico para **header com layout inline-flex**.
+
 - Display: inline-flex com gap de 10px
 - Min-width: 120px
 - Responsivo: **oculto em smallMobile**
 - Utilizado no `HeaderMain`
 
 ### `cta` ⭐
+
 Botão de **Call-to-Action** com destaque visual para conversões.
+
 - Background: ctaGreen do tema
 - Font-size: 1.2rem (maior que outros botões)
 - Hover: ctaGreenDark + translateY(-2px)
@@ -2187,33 +2256,30 @@ Botão de **Call-to-Action** com destaque visual para conversões.
 ## Como Usar
 
 ### Botão Simples com Texto
+
 ```tsx
-<CustomButton
-  text="Clique Aqui"
-  onClick={() => console.log('Clicado!')}
-/>
+<CustomButton text="Clique Aqui" onClick={() => console.log('Clicado!')} />
 ```
 
 ### Botão com Ícone
+
 ```tsx
 import { FaShoppingCart } from 'react-icons/fa';
 
 <CustomButton variant="primary">
   <FaShoppingCart />
   Adicionar ao Carrinho
-</CustomButton>
+</CustomButton>;
 ```
 
 ### Botão de Submissão em Formulário
+
 ```tsx
-<CustomButton
-  type="submit"
-  variant="secondary"
-  text="Enviar Formulário"
-/>
+<CustomButton type="submit" variant="secondary" text="Enviar Formulário" />
 ```
 
 ### Botão com Estado de Loading
+
 ```tsx
 <CustomButton
   variant="lightPrimary"
@@ -2225,15 +2291,13 @@ import { FaShoppingCart } from 'react-icons/fa';
 ```
 
 ### Botão Desabilitado
+
 ```tsx
-<CustomButton
-  text="Indisponível"
-  disabled={true}
-  variant="outline-white"
-/>
+<CustomButton text="Indisponível" disabled={true} variant="outline-white" />
 ```
 
 ### Botão de Header com Ícone
+
 ```tsx
 <CustomButton variant="headerMain">
   <FaUser />
@@ -2242,12 +2306,9 @@ import { FaShoppingCart } from 'react-icons/fa';
 ```
 
 ### Combinação: Ícone + Loading
+
 ```tsx
-<CustomButton
-  variant="primary"
-  loading={isSaving}
-  onClick={handleSubmit}
->
+<CustomButton variant="primary" loading={isSaving} onClick={handleSubmit}>
   <FaSave />
   Salvar Alterações
 </CustomButton>
@@ -2277,16 +2338,19 @@ O componente ajusta automaticamente seu estilo em diferentes breakpoints:
 ## Estados Visuais
 
 ### Disabled
+
 - Opacidade: **0.6**
 - Cursor: **not-allowed**
 - Interações desabilitadas
 
 ### Loading
+
 - Texto alterado para **"Enviando..."**
 - Botão automaticamente **desabilitado**
 - Mantém estilo da variante escolhida
 
 ### Active (ao clicar)
+
 - Transform: **scale(0.98)**
 - Background: cor **secundária** do tema
 - Feedback visual imediato
@@ -2296,6 +2360,7 @@ O componente ajusta automaticamente seu estilo em diferentes breakpoints:
 ## Requisitos de Tema
 
 O componente espera um objeto `theme` com a seguinte estrutura:
+
 ```typescript
 {
   colors: {
@@ -2331,7 +2396,7 @@ O componente espera um objeto `theme` com a seguinte estrutura:
 - Estados `disabled` e `loading` **desabilitam** automaticamente a interação do botão
 - A variante `cta` possui **font-size maior** (1.2rem) para destacar a ação principal
 
-----------------------------------
+---
 
 # 📄 index.html — Estrutura Base & SEO Global
 
@@ -2355,12 +2420,16 @@ Ele funciona como **fallback institucional** para mecanismos de busca e redes so
 ### 1️⃣ Metadados Básicos
 
 ```html
-<meta charset="UTF-8" /> // Define a codificação de caracteres(ascentos, símbolos e idiomas)
-<meta name="viewport" content="width=device-width, initial-scale=1.0" /> // Responsividade da página
--
+<meta charset="UTF-8" /> // Define a codificação de caracteres(ascentos,
+símbolos e idiomas)
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /> //
+Responsividade da página -
 ```
+
 ### Favicons e Identidade Visual
+
 Define os ícones exibidos:
+
 - Na aba do navegador
 - Em favoritos
 - Em atalhos mobile
@@ -2372,14 +2441,16 @@ Define os ícones exibidos:
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
-
 ```
+
 ## Ferramentas utilizadas
+
 Gera todos os formatos de imagens necessário para o projeto
+
 - **Favicons**: https://realfavicongenerator.net
 
-
 ### Canonical e hreflang
+
 - Evita conteúdo duplicado no Google
 - Define a URL oficial da Home
 - Informa o idioma principal do site
@@ -2387,35 +2458,46 @@ Gera todos os formatos de imagens necessário para o projeto
 
 ```html
 <link rel="canonical" href="https://www.consultersolucoes.com.br/" />
-<link rel="alternate" href="https://www.consultersolucoes.com.br/" hreflang="pt-BR" />
-<link rel="alternate" href="https://www.consultersolucoes.com.br/" hreflang="x-default" />
+<link
+  rel="alternate"
+  href="https://www.consultersolucoes.com.br/"
+  hreflang="pt-BR"
+/>
+<link
+  rel="alternate"
+  href="https://www.consultersolucoes.com.br/"
+  hreflang="x-default"
+/>
 ```
 
 ### Open Graph — Fallback Global
+
 - Controla como o site aparece ao ser compartilhado:
-   **WhatsApp**
-   **Facebook**
-   **LinkedIn**
+  **WhatsApp**
+  **Facebook**
+  **LinkedIn**
 - Serve como fallback da Home
 - É sobrescrito dinamicamente pelo componente SEO.tsx em cada página
 
 ### Schema.org — SEO Estruturado
+
 - Ajuda o Google a entender o negócio
 - Fortalece SEO local
 - Pode gerar painel de conhecimento (Knowledge Panel)
 - Integra-se melhor com Google Maps
 
 ### Google Fonts
+
 - Define tipografia global do projeto
 - Evita múltiplos carregamentos de fonte
 - Garante consistência visual
 - Melhora performance e UX
 
 ### Compatibilidade e Bootstrap da SPA
+
 - Garante compatibilidade com navegadores modernos
 - Evita problemas de renderização legados
 
 ```html
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 ```
-

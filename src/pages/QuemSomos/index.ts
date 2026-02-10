@@ -1,1 +1,1 @@
-export { QuemSomos as default } from "./QuemSomos";
+export { QuemSomos as default } from './QuemSomos';

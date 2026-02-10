@@ -12,7 +12,10 @@ export const menuItems = [
         title: 'Borrachas',
         path: '/produtos/borrachas-industriais',
       },
-      { title: 'Acessórios para Manutenção', path: '/produtos/acessorios-industriais' },
+      {
+        title: 'Acessórios para Manutenção',
+        path: '/produtos/acessorios-industriais',
+      },
       { title: 'Soluções Industriais', path: '/produtos/solucoes-industriais' },
     ],
   },
@@ -23,7 +26,7 @@ export const menuItems = [
     path: '/trabalhe-conosco',
     showInFooter: true,
   },
-   {
+  {
     id: 5,
     title: 'Contato',
     path: '/contato',

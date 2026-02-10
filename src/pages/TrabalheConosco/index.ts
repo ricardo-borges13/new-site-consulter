@@ -1,1 +1,1 @@
-export { TrabalheConosco as default } from "./TrabalheConosco";
+export { TrabalheConosco as default } from './TrabalheConosco';

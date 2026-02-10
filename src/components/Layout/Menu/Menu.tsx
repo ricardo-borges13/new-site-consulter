@@ -24,7 +24,7 @@ export const Menu = ({ onLinkClick }: MenuProps) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-function handleMenuClick(
+  function handleMenuClick(
     e: React.MouseEvent,
     itemId: number,
     itemTitle: string

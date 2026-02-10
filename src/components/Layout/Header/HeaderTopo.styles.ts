@@ -5,8 +5,8 @@ export const Header = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  background: ${({theme}) => theme.colors.darkGray};
-  border-bottom: 3px solid ${({theme}) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.darkGray};
+  border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
   color: #f1f1efff;
   font-size: 1.02rem;
   z-index: 1100;
@@ -14,7 +14,7 @@ export const Header = styled.div`
 `;
 
 export const Container = styled.div`
-  max-width: ${({theme}) => theme.breakpoints.desktop};
+  max-width: ${({ theme }) => theme.breakpoints.desktop};
   margin: 0 auto;
   padding: 6px 16px;
   display: flex;
@@ -22,24 +22,23 @@ export const Container = styled.div`
   align-items: center;
   gap: 1.5rem;
 
-
   a {
     color: inherit;
     text-decoration: none;
 
     &:hover {
-      color: ${({theme}) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.primary};
     }
   }
 
   > div {
     display: flex;
     align-items: center;
-    gap: ${({theme}) => theme.spacing.small};
+    gap: ${({ theme }) => theme.spacing.small};
 
     svg {
       font-size: 1.5rem;
-      color: ${({theme}) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.primary};
     }
   }
 
@@ -48,7 +47,7 @@ export const Container = styled.div`
     flex: 1;
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoints.extraSmallTablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.extraSmallTablet}) {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -66,7 +65,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoints.smallMobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.smallMobile}) {
     font-size: 0.8rem;
 
     a {

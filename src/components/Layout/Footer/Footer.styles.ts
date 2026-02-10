@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  background-color: ${({ theme }) => theme.hexToRgba((theme).colors.black, 0.94)}; /* #0f0f0f is close to black */
+  background-color: ${({ theme }) =>
+    theme.hexToRgba(theme.colors.black, 0.94)}; /* #0f0f0f is close to black */
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.body};
   caret-color: transparent;
@@ -10,7 +11,8 @@ export const FooterContainer = styled.footer`
 export const FooterTop = styled.div`
   max-width: ${({ theme }) => theme.breakpoints.desktop};
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing.large} ${({ theme }) => theme.spacing.medium}; /* 3rem 1.5rem */
+  padding: ${({ theme }) => theme.spacing.large}
+    ${({ theme }) => theme.spacing.medium}; /* 3rem 1.5rem */
 
   display: grid;
   grid-template-columns: 1.7fr 1fr 1fr 1.5fr;
@@ -28,12 +30,13 @@ export const Brand = styled.div`
   gap: ${({ theme }) => theme.spacing.medium}; /* 1rem */
 
   img {
-    width: clamp(100px, 50vw, 200px);
+    width: clamp(100px, 50vw, 250px);
   }
 
   p {
     font-size: 0.95rem;
-    color: ${({ theme }) => theme.hexToRgba((theme).colors.white, 0.8)}; /* #ccc */
+    color: ${({ theme }) =>
+      theme.hexToRgba(theme.colors.white, 0.8)}; /* #ccc */
     max-width: 320px;
   }
 
@@ -103,8 +106,10 @@ export const Block = styled.div`
 `;
 
 export const FooterBottom = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.hexToRgba(theme.colors.white, 0.1)};
-  padding: ${({ theme }) => theme.spacing.medium} ${({ theme }) => theme.spacing.medium}; /* 1rem 1.5rem */
+  border-top: 1px solid
+    ${({ theme }) => theme.hexToRgba(theme.colors.white, 0.1)};
+  padding: ${({ theme }) => theme.spacing.medium}
+    ${({ theme }) => theme.spacing.medium}; /* 1rem 1.5rem */
 
   display: flex;
   justify-content: space-between;

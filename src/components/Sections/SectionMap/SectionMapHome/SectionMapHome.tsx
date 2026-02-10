@@ -27,8 +27,8 @@ export const SectionMapHome = () => {
         <header>
           <h2>Nossa Localização</h2>
           <p>
-            Estamos estrategicamente localizados em Belo Horizonte – MG,
-            com fácil acesso para clientes e parceiros.
+            Estamos estrategicamente localizados em Belo Horizonte – MG, com
+            fácil acesso para clientes e parceiros.
           </p>
         </header>
 

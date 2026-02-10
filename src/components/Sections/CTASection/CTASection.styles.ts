@@ -26,12 +26,12 @@ export const Section = styled.section`
     content: '';
     position: absolute;
     inset: 0;
-    background: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.55)};
+    background: ${({ theme }) => theme.hexToRgba(theme.colors.black, 0.55)};
     z-index: 1;
   }
 
   /* fallback mobile */
-  @media (max-width: ${({theme}) => theme.breakpoints.tabletMedium}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletMedium}) {
     background-attachment: scroll;
   }
 `;
@@ -41,22 +41,22 @@ export const Content = styled.div`
   z-index: 2;
 
   text-align: center;
-  color: ${({theme}) => theme.colors.white};
-  padding: 0 ${({theme}) => theme.spacing.medium};
+  color: ${({ theme }) => theme.colors.white};
+  padding: 0 ${({ theme }) => theme.spacing.medium};
 
   span {
     font-size: 1.5rem;
     letter-spacing: 2px;
-    margin-bottom: ${({theme}) => theme.spacing.medium};
+    margin-bottom: ${({ theme }) => theme.spacing.medium};
     display: block;
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     font-weight: 600;
   }
 
   h2 {
     font-size: clamp(1.8rem, 4vw, 3rem);
     max-width: 900px;
-    margin-bottom: ${({theme}) => theme.spacing.large};
+    margin-bottom: ${({ theme }) => theme.spacing.large};
     font-weight: 550;
   }
 `;

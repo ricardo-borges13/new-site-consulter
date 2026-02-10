@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import { normalize } from 'styled-normalize'
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -18,8 +18,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
   margin: 0;
   min-height: 100%;
-  font-family: ${({theme}) => theme.fonts.body};
-  background-color: ${({theme}) => theme.colors.background.global};
+  font-family: ${({ theme }) => theme.fonts.body};
+  background-color: ${({ theme }) => theme.colors.background.global};
   background: linear-gradient(
     180deg,
     ${props => (props.theme as any).colors.lightGray} 0%,
@@ -27,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
 
 );
 
-  color: ${({theme}) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   overflow-x: hidden;
   }
-`
+`;

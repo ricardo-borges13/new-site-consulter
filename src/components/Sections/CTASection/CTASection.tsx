@@ -18,12 +18,12 @@ export const CTASection = () => {
           {/* <S.Button onClick={() => navigate('/contato')}>
             Entre em contato agora
           </S.Button> */}
-         <CustomButton
-              text="Entre em contato agora"
-              variant="cta"
-              type="submit"
-              onClick={() => navigate('/contato')}
-            />
+          <CustomButton
+            text="Entre em contato agora"
+            variant="cta"
+            type="submit"
+            onClick={() => navigate('/contato')}
+          />
         </MotionReveal>
       </S.Content>
     </S.Section>
