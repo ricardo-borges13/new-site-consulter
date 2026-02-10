@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaAngleRight } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
+import { CustomButton } from '../../CustomButton/CustomButton';
 
 export const HeaderMain = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,10 +36,18 @@ export const HeaderMain = () => {
           <S.MenuContainer $open={menuOpen}>
             <Menu onLinkClick={() => setMenuOpen(false)} />
           </S.MenuContainer>
-          <S.ContactButton onClick={() => navigate('/orcamento')}>
+
+          <CustomButton
+            text="Orçamento"
+            variant="headerMain"
+            paddingHeight="small"
+            type="button"
+            onClick={() => navigate('/orcamento')}
+          >
             Orçamento
-            {<FaAngleRight size={16} className="arrow" />}
-          </S.ContactButton>
+            <FaAngleRight size={16} className="arrow" />
+          </CustomButton>
+
         </S.MenuWrapper>
       </S.HeaderContent>
     </S.HeaderContainer>

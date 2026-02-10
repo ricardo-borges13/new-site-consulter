@@ -1,6 +1,6 @@
 import * as S from './SectionInfo.styles';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../Button/Button';
+import { CustomButton } from '../../CustomButton/CustomButton';
 import { MotionReveal } from '../../Motion/MotionReveal/MotionReveal';
 
 export type SectionInfoProps = {
@@ -28,7 +28,7 @@ export const SectionInfo = ({
           <h2>{title}</h2>
           <p dangerouslySetInnerHTML={{ __html: description }} />
           {buttonText && (
-            <Button
+            <CustomButton
               onClick={() => navigate(`${path}`)}
               text={buttonText}
               variant="primary"

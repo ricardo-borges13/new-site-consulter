@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import * as S from './FormContact.styles';
 import toast, { Toaster } from 'react-hot-toast';
-import { Button } from '../../components/Button/Button';
+import { CustomButton } from '../../components/CustomButton/CustomButton';
 
 type FormInputs = {
   nome: string;
@@ -20,15 +20,13 @@ export const FormContact = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormInputs>();
 
-
   // Toast de teste (simulação)
   const onSubmitMock = async (_data: FormInputs) => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
-      toast.success(
-        'Mensagem enviada com sucesso! (MODO TESTE)',
-        { duration: 9000 }
-      );
+      toast.success('Mensagem enviada com sucesso! (MODO TESTE)', {
+        duration: 9000,
+      });
       reset();
     } catch {
       toast.error('Erro ao enviar (MODO TESTE).', { duration: 4000 });
@@ -60,9 +58,9 @@ export const FormContact = () => {
     }
   };
 
-//Verifica qual ambiente o código está rodando (teste ou produção)
-const isDev = import.meta.env.DEV;
-const submitHandler = isDev ? onSubmitMock : onSubmitReal;
+  //Verifica qual ambiente o código está rodando (teste ou produção)
+  const isDev = import.meta.env.DEV;
+  const submitHandler = isDev ? onSubmitMock : onSubmitReal;
 
   return (
     <S.FormContainer>
@@ -163,7 +161,7 @@ const submitHandler = isDev ? onSubmitMock : onSubmitReal;
           )}
         </S.Mensagem>
 
-        <Button
+        <CustomButton
           text="Enviar"
           variant="secondary"
           paddingHeight="large"

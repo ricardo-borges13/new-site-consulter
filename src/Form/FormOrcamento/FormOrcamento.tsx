@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import * as S from './FormOrcamento.styles';
 import toast, { Toaster } from 'react-hot-toast';
-import { Button } from '../../components/Button/Button';
+import { CustomButton } from '../../components/CustomButton/CustomButton';
 
 type FormOrcamentoInputs = {
   nome: string;
@@ -150,8 +150,8 @@ export const FormOrcamento = () => {
             {...register('tipoNecessidade', { required: 'Campo obrigatório' })}
           />
           {errors.tipoNecessidade && (
-              <S.ErrorMessage>{errors.tipoNecessidade.message}</S.ErrorMessage>
-            )}
+            <S.ErrorMessage>{errors.tipoNecessidade.message}</S.ErrorMessage>
+          )}
         </S.Assunto>
 
         {/* Produto / Serviço */}
@@ -179,7 +179,7 @@ export const FormOrcamento = () => {
           <S.TextArea rows={4} {...register('observacoes')} />
         </S.Mensagem>
 
-        <Button
+        <CustomButton
           text="Solicitar Orçamento"
           variant="secondary"
           paddingHeight="large"

@@ -15,7 +15,6 @@ export const HeaderContainer = styled.header<{ $isScrolled: boolean }>`
   height: ${({ $isScrolled }) => ($isScrolled ? '70px' : '110px')};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
-    /* Using mediumDesktop for 1037px */
     top: 55px;
   }
 
@@ -24,7 +23,6 @@ export const HeaderContainer = styled.header<{ $isScrolled: boolean }>`
   }
 
   @media (max-width: 851px) {
-    /* Not in theme */
     top: 60px;
   }
 `;
@@ -35,13 +33,11 @@ export const HeaderContent = styled.div`
   align-items: center;
   max-width: ${({ theme }) => theme.breakpoints.largeDesktop};
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing.small}
-    ${({ theme }) => theme.spacing.large};
+ padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.large};
   width: 100%;
   box-sizing: border-box;
 
   @media (max-width: 970px) {
-    /* Not in theme */
     justify-content: space-between;
   }
 
@@ -50,12 +46,10 @@ export const HeaderContent = styled.div`
   }
 
   @media (max-width: 775px) {
-    /* Not in theme */
     margin-top: 35px;
   }
 
   @media (max-width: 770px) {
-    /* Not in theme */
     padding: ${({ theme }) => theme.spacing.small} 6rem;
   }
 `;
@@ -81,9 +75,9 @@ export const ContactButton = styled.button`
 
   &:hover {
     background: ${({ theme }) =>
-      theme.colors.primaryDark}; /* Assuming f4c27b is a darker primary */
+      theme.colors.primaryDark};
     color: ${({ theme }) =>
-      theme.colors.darkGray}; /* Assuming 121212 is a dark color */
+      theme.colors.darkGray};
   }
 
   .arrow {
@@ -122,7 +116,6 @@ export const MenuWrapper = styled.div`
   gap: 54px;
 
   @media (max-width: 1053px) {
-    /* Not in theme */
     gap: ${({ theme }) => theme.spacing.large};
   }
 
@@ -139,7 +132,7 @@ export const MenuToggle = styled.button`
   background: none;
   border: none;
   font-size: 2rem;
-  color: #eceff1; /* Not in theme, keeping as is for now, close to lightGray */
+  color: ${({ theme }) => theme.colors.white}; 
   cursor: pointer;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
@@ -150,7 +143,7 @@ export const MenuToggle = styled.button`
 export const MenuContainer = styled.div<{ $open: boolean }>`
   display: flex;
   align-items: center;
-  gap: 54px; /* Not in theme, keeping as is for now */
+  gap: 54px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mediumDesktop}) {
     position: absolute;

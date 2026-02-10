@@ -3,6 +3,7 @@ import image from '../../assets/images/PagesHeroSolucoes.jpg';
 import * as S from './SolucoesIndustriais.styles';
 import { useNavigate } from 'react-router-dom';
 import { SEO } from '../../components/SEO/Seo';
+import { CustomButton } from '../../components/CustomButton/CustomButton';
 
 export const SolucoesIndustriais = () => {
   const navigate = useNavigate();
@@ -67,9 +68,13 @@ export const SolucoesIndustriais = () => {
               sua necessidade industrial.
             </p>
 
-            <S.Button onClick={() => navigate('/orcamento')}>
-              Solicitar orçamento
-            </S.Button>
+            <CustomButton
+              text="Solicitar Orçamento"
+              variant="lightPrimary"
+              paddingHeight="large"
+              type="submit"
+              onClick={() => navigate('/orcamento')}
+            />
           </S.CTA>
         </S.Container>
       </PageHeroSection>

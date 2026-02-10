@@ -1,79 +1,61 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  max-width: 1100px;
+  max-width: ${({theme}) => theme.breakpoints.desktop};
   margin: 0 auto;
-  padding: 0 20px 80px;
-  font-family: 'Poppins', sans-serif;
-  color: #222;
+  padding: 0 ${({theme}) => theme.spacing.medium} 80px;
+  font-family: ${({theme}) => theme.fonts.body};
+  color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.86)};
   line-height: 1.6;
   caret-color: transparent;
 `;
 
 export const Intro = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: ${({theme}) => theme.spacing.large};
 
   p {
-    font-size: 1rem;
-    color: #333;
+    font-size: ${({theme}) => theme.spacing.medium};
+    color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.8)};
     margin-bottom: 1.5rem;
     text-align: justify;
   }
 
   strong {
     font-weight: 600;
-    color: #1e7f4f;
+    color: ${({theme}) => theme.colors.success};
   }
 `;
 
 export const Highlight = styled.div`
-  background: #eef5ea;
-  border-left: 5px solid #94c11f;
-  padding: 1.5rem 2rem;
+  background: ${({theme}) => theme.colors.background.light};
+  border-left: 5px solid ${({theme}) => theme.colors.primary};
+  padding: 1.5rem ${({theme}) => theme.spacing.large};
   border-radius: 8px;
   margin-bottom: 4rem;
 
   p {
     margin: 0;
-    font-size: 1rem;
-    color: #333;
+    font-size: ${({theme}) => theme.spacing.medium};
+    color: ${({theme}) => theme.hexToRgba(theme.colors.black, 0.8)};
   }
 `;
 
 export const CTA = styled.div`
   text-align: center;
-  padding: 3rem 2rem;
-  background: linear-gradient(135deg, #1e7f4f, #2c8f5c);
+  padding: ${({theme}) => theme.spacing.large} ${({theme}) => theme.spacing.large};
+  background: linear-gradient(135deg, ${({theme}) => theme.colors.success}, ${({theme}) => theme.colors.lightSuccess});
   border-radius: 16px;
-  color: #fff;
+  color: ${({theme}) => theme.colors.white};
 
   h3 {
     font-size: 1.6rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: ${({theme}) => theme.spacing.medium};
   }
 
   p {
-    font-size: 1rem;
+    font-size: ${({theme}) => theme.spacing.medium};
     max-width: 600px;
-    margin: 0 auto 2rem;
-    line-height: 1.5;
-  }
-`;
-
-export const Button = styled.button`
-  background-color: #94c11f;
-  color: #1f1f1f;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 30px;
-  padding: 0.9rem 2.2rem;
-  cursor: pointer;
-  transition: all 0.25s ease;
-
-  &:hover {
-    background-color: #a7d12a;
-    transform: translateY(-2px);
+    margin: 0 auto ${({theme}) => theme.spacing.large};
   }
 `;

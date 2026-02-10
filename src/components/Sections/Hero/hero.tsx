@@ -1,6 +1,6 @@
 import * as S from './Hero.styles';
 import { motion } from 'framer-motion';
-import { Button } from '../../Button/Button';
+import { CustomButton } from '../../CustomButton/CustomButton';
 import React from 'react';
 
 interface HeroProps {
@@ -46,13 +46,13 @@ export const Hero = React.memo(
             <S.HeroSubtitle>{subtitle}</S.HeroSubtitle>
 
             <S.ButtonGroup>
-              <Button
+              <CustomButton
                 text={primaryButtonText}
                 onClick={onPrimaryClick}
                 variant="primary"
                 paddingHeight="large"
               />
-              <Button
+              <CustomButton
                 text={secondaryButtonText}
                 onClick={onSecondaryClick}
                 variant="outline-white"
