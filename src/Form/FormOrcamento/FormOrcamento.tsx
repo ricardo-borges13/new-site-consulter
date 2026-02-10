@@ -182,7 +182,6 @@ export const FormOrcamento = () => {
         <CustomButton
           text="Solicitar Orçamento"
           variant="secondary"
-          paddingHeight="large"
           type="submit"
           disabled={isSubmitting}
           loading={isSubmitting}

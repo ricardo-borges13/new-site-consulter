@@ -164,7 +164,6 @@ export const FormContact = () => {
         <CustomButton
           text="Enviar"
           variant="secondary"
-          paddingHeight="large"
           type="submit"
           disabled={isSubmitting}
           loading={isSubmitting}
