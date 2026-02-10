@@ -6,16 +6,11 @@ type ButtonVariant =
   | 'outline-white'
   | 'lightPrimary'
   | 'headerMain';
-type HeightVariant = 'small' | 'large';
 
 export const StyledButton = styled.button<{
   $variant: ButtonVariant;
-  $heightVariant?: HeightVariant; // Props do componente styled
 }>`
   border: none;
-  /* border-radius: 10px; */
-  /* font-size: 1.3rem; */
-  /* font-weight: bold; */
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
@@ -23,15 +18,6 @@ export const StyledButton = styled.button<{
     opacity: 0.6;
     cursor: not-allowed;
   }
-
-  ${({ $heightVariant }) =>
-    $heightVariant === 'small'
-      ? css`
-          padding: 0.2rem 1.8rem;
-        `
-      : css`
-          padding: 0.8rem 1.4rem;
-        `}
 
   ${({ $variant, theme }) => {
     switch ($variant) {
@@ -43,32 +29,58 @@ export const StyledButton = styled.button<{
             ${theme.hexToRgba(theme.colors.primary, 0.7)} 100%
           ) !important;
           color: ${theme.colors.white};
+          border-radius: 10px;
+          font-weight: bold;
+          padding: 0.8rem 1.4rem;
 
           &:hover {
             background: ${theme.colors.primaryDark};
             color: ${theme.colors.darkGray};
+          }
+
+           &:active {
+            background-color: ${theme.colors.secondary};
+            transform: scale(0.98);
           }
         `;
       case 'secondary':
         return css`
           background-color: ${theme.colors.secondary};
           color: ${theme.colors.white};
+          padding: 0.8rem;
+          border: none;
+          border-radius: 10px;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
 
           &:hover {
             background-color: ${theme.hexToRgba(theme.colors.secondary, 0.8)};
           }
+
+          &:active {
+            background-color: ${theme.colors.secondary};
+            transform: scale(0.98);
+          }
         `;
-      case 'outline-white': // New variant
+      case 'outline-white':
         return css`
           background-color: transparent;
           color: ${theme.colors.white};
+          border-radius: 10px;
+          font-weight: bold;
           border: 2px solid ${theme.colors.white};
+          padding: 0.8rem 1.4rem;
 
           &:hover {
-            background-color: ${theme.hexToRgba(theme.colors.white, 0.1)};
+            background-color: ${theme.hexToRgba(theme.colors.white, 0.2)};
+          }
+
+           &:active {
+            background-color: ${theme.colors.secondary};
+            transform: scale(0.98);
           }
         `;
-      case 'lightPrimary': // New variant
+      case 'lightPrimary':
         return css`
           background-color: ${({ theme }) => theme.colors.lightPrimary};
           color: ${theme.colors.black};
@@ -78,9 +90,15 @@ export const StyledButton = styled.button<{
           border-radius: 30px;
           padding: 0.9rem 2.2rem;
           transition: all 0.25s ease;
+          
           &:hover {
             background-color: ${({ theme }) => theme.colors.primaryDark};
             transform: translateY(-2px);
+          }
+
+           &:active {
+            background-color: ${theme.colors.secondary};
+            transform: scale(0.98);
           }
         `;
       case 'headerMain':
@@ -100,13 +118,17 @@ export const StyledButton = styled.button<{
           font-weight: 600;
           padding: 0.4rem 1.4rem;
           min-width: 120px;
-          border-radius: 3px;
+          border-radius: 15px;
           border: none;
           transition: all 0.3s ease;
 
-         &:hover {
-
+          &:hover {
             color: ${theme.colors.darkGray};
+          }
+
+          &:active {
+            background-color: ${theme.colors.secondary};
+            transform: scale(0.98);
           }
 
           @media (max-width: ${theme.breakpoints.smallMobile}) {
@@ -122,27 +144,11 @@ export const StyledButton = styled.button<{
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-weight: normal;
     font-size: 1.1rem;
-    ${({ $heightVariant }) =>
-      $heightVariant === 'small'
-        ? css`
-            padding: 0.1rem 1rem;
-          `
-        : css`
-            padding: 0.6rem 1.2rem;
-          `}
+    padding: 0.6rem 1.2rem;
   }
 
-  @media (max-width: 490px) {
-    /* This breakpoint is not in theme, keeping as is for now */
+  @media (max-width: ${({ theme }) => theme.breakpoints.extraSmallMobile}) {
     font-weight: normal;
     font-size: 0.9rem;
-    ${({ $heightVariant }) =>
-      $heightVariant === 'small'
-        ? css`
-            padding: 0.1rem 1rem;
-          `
-        : css`
-            padding: 0.6rem 1.2rem;
-          `}
   }
 `;

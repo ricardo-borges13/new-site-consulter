@@ -50,13 +50,11 @@ export const Hero = React.memo(
                 text={primaryButtonText}
                 onClick={onPrimaryClick}
                 variant="primary"
-                paddingHeight="large"
               />
               <CustomButton
                 text={secondaryButtonText}
                 onClick={onSecondaryClick}
                 variant="outline-white"
-                paddingHeight="large"
               />
             </S.ButtonGroup>
           </motion.div>

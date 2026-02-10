@@ -2095,9 +2095,233 @@ background-color: #SUA_COR;
 
 --------------------------------------
 
+# Componente `CustomButton` - ok
 
+Componente de botão reutilizável e estilizado construído com **React e Styled Components**, oferecendo múltiplas variantes visuais e suporte a estados de loading e disabled.
 
+---
 
+## Características
+
+- 🎨 **5 variantes de estilo** predefinidas
+- ♿ **Suporte a estados** disabled e loading
+- 📱 **Responsivo** com breakpoints mobile
+- 🎯 **Flexível** - aceita texto ou children (ícones, JSX)
+- ⚡ **Transições e animações** suaves
+- 💅 **Estilização** com Styled Components e tema
+
+---
+
+## Local de Uso
+
+- Utilizado em **formulários, headers, páginas de ação** e qualquer lugar que necessite botões estilizados
+- Importado diretamente de `./CustomButton`
+
+---
+
+## Estrutura de Props
+```tsx
+type ButtonProps = {
+  text?: string;              // Texto do botão (opcional se usar children)
+  children?: ReactNode;        // Conteúdo customizado (ícones, JSX, etc)
+  onClick?: () => void;        // Função executada ao clicar
+  type?: 'button' | 'submit' | 'reset';  // Tipo HTML do botão (padrão: 'button')
+  variant?: 'primary' | 'secondary' | 'outline-white' | 'lightPrimary' | 'headerMain';  // Variante de estilo (padrão: 'primary')
+  disabled?: boolean;          // Desabilita o botão (padrão: false)
+  loading?: boolean;           // Mostra estado de carregamento (padrão: false)
+};
+```
+
+---
+
+## Variantes Disponíveis
+
+### `primary`
+Botão principal com **gradiente**, ideal para ações primárias.
+- Background: gradiente do tema (primary)
+- Hover: muda cor de fundo e texto para darkGray
+- Active: escala reduzida (0.98) e cor secundária
+- Utilizado no primeiro botão do`Hero` e `SectionInfo`
+
+### `secondary`
+Botão secundário **sólido** para ações alternativas.
+- Background: cor secundária do tema
+- Hover: opacidade reduzida (0.8)
+- Active: escala reduzida e cor secundária
+- Utilizado nos `Formulários`
+
+### `outline-white`
+Botão com **borda branca e fundo transparente**, ótimo para fundos escuros.
+- Background: transparente
+- Border: 2px branco
+- Hover: fundo branco semi-transparente (0.2)
+- Utilizado no segundo botão do `Hero`
+
+### `lightPrimary`
+Botão com **cor primária clara e bordas arredondadas** (30px).
+- Background: lightPrimary do tema
+- Hover: translateY(-2px) + primaryDark
+- Padding: 0.9rem 2.2rem
+- Utilizado na página `Soluções Industriais`
+
+### `headerMain`
+Botão específico para **header com layout inline-flex**.
+- Display: inline-flex com gap de 10px
+- Min-width: 120px
+- Responsivo: **oculto em smallMobile**
+- Utilizado no `HeaderMain`
+
+---
+
+---
+
+## Como Usar
+
+### Botão Simples com Texto
+```tsx
+<CustomButton
+  text="Clique Aqui"
+  onClick={() => console.log('Clicado!')}
+/>
+```
+
+### Botão com Ícone
+```tsx
+import { FaShoppingCart } from 'react-icons/fa';
+
+<CustomButton variant="primary">
+  <FaShoppingCart />
+  Adicionar ao Carrinho
+</CustomButton>
+```
+
+### Botão de Submissão em Formulário
+```tsx
+<CustomButton
+  type="submit"
+  variant="secondary"
+  text="Enviar Formulário"
+/>
+```
+
+### Botão com Estado de Loading
+```tsx
+<CustomButton
+  variant="lightPrimary"
+  text="Salvar"
+  loading={isSubmitting}
+  onClick={handleSave}
+/>
+// Exibe "Enviando..." enquanto loading=true
+```
+
+### Botão Desabilitado
+```tsx
+<CustomButton
+  text="Indisponível"
+  disabled={true}
+  variant="outline-white"
+/>
+```
+
+### Botão de Header com Ícone
+```tsx
+<CustomButton variant="headerMain">
+  <FaUser />
+  Minha Conta
+</CustomButton>
+```
+
+### Combinação: Ícone + Loading
+```tsx
+<CustomButton
+  variant="primary"
+  loading={isSaving}
+  onClick={handleSubmit}
+>
+  <FaSave />
+  Salvar Alterações
+</CustomButton>
+// Quando loading=true, exibe apenas "Enviando..."
+```
+
+---
+
+## Responsividade
+
+O componente ajusta automaticamente seu estilo em diferentes breakpoints:
+
+- **Mobile** (`max-width: mobile`):
+  - Font-weight: normal
+  - Font-size: 1.1rem
+  - Padding: 0.6rem 1.2rem
+
+- **Extra Small Mobile** (`max-width: extraSmallMobile`):
+  - Font-weight: normal
+  - Font-size: 0.9rem
+
+- **Small Mobile** (variant `headerMain`):
+  - Display: none (botão fica oculto)
+
+---
+
+## Estados Visuais
+
+### Disabled
+- Opacidade: **0.6**
+- Cursor: **not-allowed**
+- Interações desabilitadas
+
+### Loading
+- Texto alterado para **"Enviando..."**
+- Botão automaticamente **desabilitado**
+- Mantém estilo da variante escolhida
+
+### Active (ao clicar)
+- Transform: **scale(0.98)**
+- Background: cor **secundária** do tema
+- Feedback visual imediato
+
+---
+
+## Requisitos de Tema
+
+O componente espera um objeto `theme` com a seguinte estrutura:
+```typescript
+{
+  colors: {
+    primary: string;
+    primaryDark: string;
+    secondary: string;
+    lightPrimary: string;
+    white: string;
+    black: string;
+    darkGray: string;
+  },
+  spacing: {
+    medium: string;
+  },
+  breakpoints: {
+    mobile: string;
+    smallMobile: string;
+    extraSmallMobile: string;
+  },
+  hexToRgba: (hex: string, alpha: number) => string;
+}
+```
+
+---
+
+## Observações
+
+- A propriedade `text` é **opcional** se você usar `children`
+- Quando `loading={true}`, o texto é substituído por **"Enviando..."**
+- O componente utiliza **transient props** (`$variant`) para evitar warnings de props não-HTML
+- Todas as variantes possuem **transições suaves** (0.2s - 0.3s ease)
+- O botão `headerMain` possui **display: inline-flex** e suporta ícones com gap automático
+- Estados `disabled` e `loading` **desabilitam** automaticamente a interação do botão
+
+----------------------------------
 
 # 📄 index.html — Estrutura Base & SEO Global
 

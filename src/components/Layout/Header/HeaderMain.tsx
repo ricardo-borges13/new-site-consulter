@@ -40,8 +40,6 @@ export const HeaderMain = () => {
           <CustomButton
             text="Orçamento"
             variant="headerMain"
-            paddingHeight="small"
-            type="button"
             onClick={() => navigate('/orcamento')}
           >
             Orçamento

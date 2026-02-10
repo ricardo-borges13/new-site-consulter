@@ -7,8 +7,7 @@ type ButtonProps = {
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'primary' | 'secondary' | 'outline-white' | 'lightPrimary' | 'headerMain';
-  paddingHeight?: 'small' | 'large';
-  disabled?: boolean;
+   disabled?: boolean;
   loading?: boolean;
 };
 
@@ -18,7 +17,6 @@ export const CustomButton = ({
   onClick,
   type = 'button',
   variant = 'primary',
-  paddingHeight = 'large',
   disabled = false,
   loading = false,
 }: ButtonProps) => {
@@ -27,7 +25,6 @@ export const CustomButton = ({
       type={type}
       onClick={onClick}
       $variant={variant}
-      $heightVariant={paddingHeight}
       disabled={disabled || loading}
     >
       {loading ? 'Enviando...' : children ?? text}
