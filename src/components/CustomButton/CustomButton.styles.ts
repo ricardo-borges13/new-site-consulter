@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline-white';
+type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'outline-white'
+  | 'lightPrimary'
+  | 'headerMain';
 type HeightVariant = 'small' | 'large';
 
 export const StyledButton = styled.button<{
@@ -8,9 +13,9 @@ export const StyledButton = styled.button<{
   $heightVariant?: HeightVariant; // Props do componente styled
 }>`
   border: none;
-  border-radius: 10px;
-  font-size: 1.3rem;
-  font-weight: bold;
+  /* border-radius: 10px; */
+  /* font-size: 1.3rem; */
+  /* font-weight: bold; */
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
@@ -63,6 +68,52 @@ export const StyledButton = styled.button<{
             background-color: ${theme.hexToRgba(theme.colors.white, 0.1)};
           }
         `;
+      case 'lightPrimary': // New variant
+        return css`
+          background-color: ${({ theme }) => theme.colors.lightPrimary};
+          color: ${theme.colors.black};
+          font-size: ${({ theme }) => theme.spacing.medium};
+          font-weight: 600;
+          border: none;
+          border-radius: 30px;
+          padding: 0.9rem 2.2rem;
+          transition: all 0.25s ease;
+          &:hover {
+            background-color: ${({ theme }) => theme.colors.primaryDark};
+            transform: translateY(-2px);
+          }
+        `;
+      case 'headerMain':
+        return css`
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+
+          background: linear-gradient(
+            32deg,
+            ${theme.colors.primary} 0%,
+            ${theme.hexToRgba(theme.colors.primary, 0.7)} 100%
+          );
+          color: ${theme.colors.white};
+
+          font-weight: 600;
+          padding: 0.4rem 1.4rem;
+          min-width: 120px;
+          border-radius: 3px;
+          border: none;
+          transition: all 0.3s ease;
+
+         &:hover {
+
+            color: ${theme.colors.darkGray};
+          }
+
+          @media (max-width: ${theme.breakpoints.smallMobile}) {
+            display: none;
+          }
+        `;
+
       default:
         return css``;
     }

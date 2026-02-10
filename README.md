@@ -153,7 +153,7 @@ Componente responsável por **definir o layout global da aplicação**, envolven
 
 ---
 
-### Componente `Hero` (Atualizado)
+### Componente `Hero` (OK)
 
 Componente responsável pelo **banner principal (Hero Section)** da página inicial do site.
 Apresenta um título de destaque, subtítulo e botões de call-to-action sobre uma imagem de fundo impactante, com foco em conversão e apresentação institucional.
@@ -163,15 +163,15 @@ Apresenta um título de destaque, subtítulo e botões de call-to-action sobre u
 - Importado e utilizado na page Home (`Home.tsx`)
 
 #### Estrutura de Props
-
 ```tsx
 type HeroProps = {
   title: string; // Título principal (obrigatório)
   subtitle: string; // Subtítulo de apoio (obrigatório)
-  primaryButtonText: string; // Texto do botão principal
-  secondaryButtonText: string; // Texto do botão secundário
-  onPrimaryClick?: () => void; // Callback do botão principal
-  onSecondaryClick?: () => void; // Callback do botão secundário
+  primaryButtonText: string; // Texto do botão principal (obrigatório)
+  secondaryButtonText: string; // Texto do botão secundário (obrigatório)
+  image: string; // Caminho da imagem de fundo (obrigatório)
+  onPrimaryClick?: () => void; // Callback do botão principal (opcional)
+  onSecondaryClick?: () => void; // Callback do botão secundário (opcional)
 };
 ```
 
@@ -180,32 +180,50 @@ type HeroProps = {
 Na página Home, importe o componente Hero e informe as propriedades desejadas.
 A lógica de navegação ou qualquer outra ação dos botões deve ser definida na página, mantendo o componente desacoplado de regras de negócio.
 
+**Importante:** A imagem de fundo agora é passada via prop `image` diretamente no JSX.
 ```tsx
 <Hero
-        title="Soluções industriais em borrachas e materiais elétricos"
-        subtitle="Atendendo indústrias com qualidade, agilidade e confiança"
-        primaryButtonText="Solicitar orçamento"
-        secondaryButtonText="Fale com um especialista"
-        onPrimaryClick={() => navigate('/contato')}
-        onSecondaryClick={() => navigate('/empresa')}
-      />
-};
+  title="Soluções industriais em borrachas e materiais elétricos"
+  subtitle="Atendendo indústrias com qualidade, agilidade e confiança"
+  primaryButtonText="Solicitar orçamento"
+  secondaryButtonText="Fale com um especialista"
+  image="/images/hero-banner.jpg"
+  onPrimaryClick={handlePrimaryClick}
+  onSecondaryClick={handleSecondaryClick}
+/>
 ```
 
 #### 🎨 Características
 
-- Responsivo: Adaptado para desktop, tablet e mobile ( height: clamp(400px, 55vh, 620px);)
-- Imagem de fundo fixa: Definida no arquivo de styled-components (`Hero.styles.ts`)
-- Overlay escuro: Garante legibilidade do texto sobre a imagem
-- Botões interativos: Estados de hover e foco para melhor UX
-- Tipografia escalável: Ajustes automáticos por breakpoint
-- Acessível: Estrutura semântica utilizando <section> e headings adequados
+- **Responsivo**: Adaptado para desktop, tablet e mobile (`height: clamp(400px, 55vh, 620px)`)
+- **Imagem de fundo otimizada**: Tag `<img>` com `loading="eager"` e `fetchPriority="high"` para carregamento prioritário
+- **Overlay escuro**: Gradiente que garante legibilidade do texto sobre a imagem
+- **Animação de entrada**: Utiliza Framer Motion para transição suave no carregamento
+- **Memoização com React.memo**: Evita re-renderizações desnecessárias quando as props não mudam
+- **Botões interativos**: Estados de hover e foco para melhor UX
+- **Tipografia escalável**: Ajustes automáticos por breakpoint
+- **Acessível**: Estrutura semântica utilizando `<section>` e headings adequados
 
 #### Tamanho da Imagem
-- 1920 x 900 pixels
-- Peso Ideal: 150 x 250 KB
-- Formato recomendado: JPG (Salvar para Web no photoShopp. Porcentagem (%) da qualidade de forma que fique no tamanho do peso ideal)
 
+- **Dimensões**: 1920 x 900 pixels
+- **Peso ideal**: 150 - 250 KB
+- **Formato recomendado**: JPG (Salvar para Web no Photoshop, ajustando a qualidade (%) para atingir o peso ideal)
+
+#### Otimizações de Performance
+
+O componente utiliza **React.memo** para memoização, evitando re-renderizações desnecessárias.
+
+**Para garantir efetividade do React.memo**, as funções de callback devem ser estáveis no componente pai:
+```tsx
+const handlePrimaryClick = useCallback(() => {
+  navigate('/orcamento');
+}, [navigate]);
+
+const handleSecondaryClick = useCallback(() => {
+  navigate('/contato');
+}, [navigate]);
+```
 
 #### Observação Importante
 
