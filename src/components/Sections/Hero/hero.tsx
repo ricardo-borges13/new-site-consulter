@@ -31,6 +31,7 @@ export const Hero = React.memo(
           alt="Banner principal"
           loading="eager"
           fetchPriority="high"
+          decoding="async"
         />
 
         {/* Overlay escuro */}

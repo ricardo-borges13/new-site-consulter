@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  background-color: ${({ theme }) =>
-    theme.hexToRgba(theme.colors.black, 0.94)}; /* #0f0f0f is close to black */
+  background-color: ${({ theme }) => theme.hexToRgba(theme.colors.black, 0.94)};
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.body};
   caret-color: transparent;
@@ -11,9 +10,7 @@ export const FooterContainer = styled.footer`
 export const FooterTop = styled.div`
   max-width: ${({ theme }) => theme.breakpoints.desktop};
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing.large}
-    ${({ theme }) => theme.spacing.medium}; /* 3rem 1.5rem */
-
+  padding: ${({ theme }) => `${theme.spacing.large} ${theme.spacing.medium}`};
   display: grid;
   grid-template-columns: 1.7fr 1fr 1fr 1.5fr;
   gap: ${({ theme }) => theme.spacing.large}; /* 2rem */
@@ -108,9 +105,7 @@ export const Block = styled.div`
 export const FooterBottom = styled.div`
   border-top: 1px solid
     ${({ theme }) => theme.hexToRgba(theme.colors.white, 0.1)};
-  padding: ${({ theme }) => theme.spacing.medium}
-    ${({ theme }) => theme.spacing.medium}; /* 1rem 1.5rem */
-
+  padding: ${({ theme }) => `${theme.spacing.large} ${theme.spacing.medium}`};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -120,6 +115,16 @@ export const FooterBottom = styled.div`
 
   max-width: ${({ theme }) => theme.breakpoints.desktop};
   margin: 0 auto;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;

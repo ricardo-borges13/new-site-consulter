@@ -86,7 +86,15 @@ export const Footer = ({ phone, phone2, phone3, email }: ContactInfo) => {
       <S.FooterBottom>
         <span>
           © {new Date().getFullYear()} Consulter Soluções. Todos os direitos
-          reservados.
+          reservados. | Desenvolvido por{' '}
+          <a
+            href="https://www.invetec.com.br/"
+            title="Invetec - Investindo em Tecnologia"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            INVETEC.
+          </a>
         </span>
         <small>Versão {APP_VERSION}</small>
       </S.FooterBottom>
