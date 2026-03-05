@@ -22,8 +22,8 @@ export const GlobalStyle = createGlobalStyle`
   background-color: ${({ theme }) => theme.colors.background.global};
   background: linear-gradient(
     180deg,
-    ${props => (props.theme as any).colors.lightGray} 0%,
-    ${props => (props.theme as any).colors.mediumGray} 100%
+    ${({theme}) => theme.colors.lightGray} 0%,
+    ${({theme}) => theme.colors.mediumGray} 100%
 
 );
 

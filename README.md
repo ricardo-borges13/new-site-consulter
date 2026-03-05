@@ -86,19 +86,163 @@ A pasta `router` é responsável por **centralizar a configuração de rotas da 
 
 ---
 
-### Arquivo `AppRoutes.tsx`
+# Arquivo `AppRoutes.tsx` - OK
 
-- Responsável por mapear os caminhos (`path`) para seus respectivos componentes de página
-- Permite organizar rotas com e sem layout
-- Facilita a manutenção e expansão da navegação da aplicação
+Responsável por **configurar e mapear todas as rotas da aplicação** usando React Router v6, definindo quais componentes serão renderizados para cada caminho (URL).
 
 ---
 
-### Integração com a aplicação
+## Funcionamento
 
-O roteamento é inicializado no arquivo `App.tsx` através do componente:
+- Utiliza `createBrowserRouter` do **React Router v6** para criar o roteador
+- Define rotas **aninhadas** usando a estrutura de `children`
+- Implementa **lazy loading** para otimizar o carregamento inicial da aplicação
+- Configura rota **404** (Not Found) para URLs inexistentes
 
-<RouterProvider router={router} />
+---
+
+## Estrutura de Rotas
+
+### **Rota Pai (Layout Compartilhado)**
+```tsx
+{
+  element: <Layout />,
+  children: [ /* rotas filhas */ ]
+}
+```
+- Todas as rotas filhas **herdam** o layout (Header, Footer, WhatsApp)
+- O componente `<Outlet />` dentro de `Layout` é substituído pelo conteúdo de cada página
+
+### **Rotas Filhas (Páginas)**
+
+| Path | Componente | Descrição |
+|------|------------|-----------|
+| `/` | `Home` | Página inicial |
+| `/quem-somos` | `QuemSomos` | Institucional |
+| `/produtos/material-eletrico` | `Eletrica` | Produtos elétricos |
+| `/produtos/borrachas-industriais` | `Borrachas` | Produtos de borracha |
+| `/produtos/acessorios-industriais` | `AcessoriosManutencao` | Acessórios |
+| `/produtos/solucoes-industriais` | `SolucoesIndustriais` | Soluções |
+| `/trabalhe-conosco` | `TrabalheConosco` | Recrutamento |
+| `/contato` | `Contato` | Formulário de contato |
+| `/orcamento` | `Orcamento` | Solicitação de orçamento |
+| `*` | `NotFound` | Página 404 (qualquer rota inválida) |
+
+---
+
+## Lazy Loading (Code Splitting)
+
+### **Implementação:**
+```tsx
+const Home = lazy(() => import('../pages/Home'));
+const QuemSomos = lazy(() => import('../pages/QuemSomos'));
+// ... demais páginas
+```
+
+### **Benefícios:**
+- ✅ **Carregamento inicial mais rápido**: apenas o código da página atual é baixado
+- ✅ **Menor bundle size**: cada página é um chunk separado
+- ✅ **Melhor performance**: carrega sob demanda (on-demand)
+- ✅ **Experiência otimizada**: usuário não baixa código de páginas que não visitará
+
+### **Requisito:**
+O `lazy()` **deve** ser usado com `<Suspense>` no `App.tsx`:
+```tsx
+<Suspense fallback={<Loading />}>
+  <RouterProvider router={router} />
+</Suspense>
+```
+
+---
+
+## Rota 404 (Not Found)
+```tsx
+{ path: '*', element: <NotFound /> }
+```
+- **Captura qualquer URL** que não corresponda às rotas definidas
+- Exibe página personalizada de erro 404
+- Deve ser a **última rota** na lista de children
+
+---
+
+## Integração com a Aplicação
+
+### **Arquivo `App.tsx`:**
+```tsx
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes/AppRoutes';
+import { Suspense } from 'react';
+
+function App() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
+}
+```
+
+---
+
+## Organização de Rotas
+
+### **Rotas Institucionais:**
+- `/` - Home
+- `/quem-somos` - Sobre a empresa
+- `/contato` - Formulário de contato
+- `/trabalhe-conosco` - Carreiras
+
+### **Rotas de Produtos (Agrupadas por `/produtos/`):**
+- `/produtos/material-eletrico`
+- `/produtos/borrachas-industriais`
+- `/produtos/acessorios-industriais`
+- `/produtos/solucoes-industriais`
+
+### **Rotas de Ação:**
+- `/orcamento` - Solicitação de orçamento
+
+---
+
+## Vantagens da Estrutura Atual
+
+- ✅ **Rotas aninhadas**: todas compartilham o mesmo layout automaticamente
+- ✅ **Lazy loading**: otimização de performance
+- ✅ **Organização clara**: rotas agrupadas por categoria (`/produtos/`)
+- ✅ **Escalável**: fácil adicionar novas rotas
+- ✅ **SEO-friendly**: URLs semânticas e hierárquicas
+- ✅ **Fallback 404**: captura rotas inválidas
+
+---
+
+## Como Adicionar uma Nova Rota
+
+### **1. Criar o componente da página:**
+```tsx
+// src/pages/NovaPagina/index.tsx
+export default function NovaPagina() {
+  return <div>Nova Página</div>;
+}
+```
+
+### **2. Adicionar lazy import:**
+```tsx
+const NovaPagina = lazy(() => import('../pages/NovaPagina'));
+```
+
+### **3. Adicionar rota no array `children`:**
+```tsx
+{ path: '/nova-pagina', element: <NovaPagina /> }
+```
+
+---
+
+## Observações
+
+- O `createBrowserRouter` usa a **History API** do navegador (URLs limpas sem `#`)
+- Todas as rotas filhas **herdam** automaticamente o `<Layout />`
+- O lazy loading requer que os componentes sejam **default exports**
+- A ordem das rotas importa: rotas mais específicas devem vir **antes** de rotas genéricas
+- A rota `*` (404) deve sempre ser a **última** no array
 
 ---
 
@@ -130,26 +274,112 @@ Componente responsável por **resetar o scroll da página ao trocar de rota**.
 
 ### Componente `Layout`
 
-Componente responsável por **definir o layout global da aplicação**, envolvendo todas as páginas que compartilham estrutura visual comum.
+
+Componente responsável por **definir o layout global da aplicação**, envolvendo todas as páginas que compartilham estrutura visual comum (Header, Footer, WhatsApp Button e ScrollToTop)
 
 #### Funcionamento
 
-- Renderiza elementos fixos da aplicação (Header e Footer)
-- Utiliza o componente `<Outlet />` do React Router para renderizar o conteúdo dinâmico das páginas
-- Permite centralizar comportamentos globais (ex: `ScrollToTop`)
+- Renderiza elementos **fixos** da aplicação:
+  - `HeaderTop`: cabeçalho superior com informações de contato
+  - `HeaderMain`: menu de navegação principal
+  - `Footer`: rodapé com dados de contato
+  - `WhatsAppButton`: botão flutuante de WhatsApp (carregado dinamicamente)
+  - `ScrollToTop`: comportamento de scroll ao topo ao navegar entre páginas
+
+- Utiliza o componente `<Outlet />` do **React Router** para renderizar o conteúdo dinâmico das páginas
+
+- Carrega configurações do WhatsApp via **fetch** do arquivo `/public/whatsApp.json`
+
+---
 
 #### Local de Uso
 
 - Importado e utilizado na configuração de rotas (`AppRoutes.tsx`)
 - Atua como rota pai para páginas que utilizam layout compartilhado
 
-#### Objetivo
+----
 
-- Evitar duplicação de código (Header/Footer em cada página)
-- Garantir consistência visual entre páginas
-- Facilitar manutenção e evolução do layout
+## Estrutura do Componente
+
+### **Estado Interno:**
+```tsx
+const [whatsApp, setWhatsApp] = useState({});
+```
+- Armazena telefone e mensagem padrão do WhatsApp
+- Carregados via `useEffect` do arquivo `whatsApp.json`
+
+### **Renderização Condicional:**
+```tsx
+{whatsApp.phone && (
+
+)}
+```
+- Botão WhatsApp só aparece **após** carregar os dados com sucesso
 
 ---
+
+## Dados de Contato
+
+O componente importa e repassa `contactData` para:
+- `HeaderTop`
+- `Footer`
+
+Garantindo que informações de contato sejam **centralizadas** e **consistentes**.
+
+---
+
+## Estilização
+
+### `LayoutWrapper`
+- Display: **flex column**
+- Min-height: **100vh** (garante que o layout ocupe pelo menos a altura da tela)
+
+### `MainContent`
+- Flex: **1** (expande para preencher o espaço disponível)
+- Padding-top: **100px** (compensa altura do header fixo)
+- **Responsivo**: Em `smallScreenMobile`, padding aumenta para **180px**
+
+---
+
+## Responsividade
+
+- **Desktop**: `padding-top: 100px`
+- **Mobile (< smallScreenMobile)**: `padding-top: 180px`
+  - Compensa altura maior do header em dispositivos móveis
+
+---
+
+## Configuração Externa
+
+### Arquivo `whatsApp.json` (public/)
+```json
+{
+  "phone": "5511999999999",
+  "message": "Olá! Gostaria de mais informações."
+}
+```
+
+---
+
+#### Objetivo
+
+- ✅ **Evitar duplicação** de código (Header/Footer em cada página)
+- ✅ **Garantir consistência** visual entre páginas
+- ✅ **Centralizar comportamentos** globais (scroll, WhatsApp)
+- ✅ **Facilitar manutenção** e evolução do layout
+- ✅ **Carregar dados dinâmicos** (WhatsApp config)
+
+
+---
+
+## Observações
+
+- O `<Outlet />` é substituído pelo conteúdo de cada rota filha
+- Se o fetch do `whatsApp.json` falhar, o botão WhatsApp **não será renderizado**
+- O `ScrollToTop` garante que ao navegar entre páginas, a tela **volte ao topo**
+- O `contactData` deve ser exportado do módulo `Header` para funcionar corretamente
+
+-----------------
 
 ### Componente `Hero` (OK)
 
@@ -1153,6 +1383,7 @@ Componente genérico responsável por aplicar **animação de entrada baseada no
 
 Utiliza a biblioteca **Framer Motion** para animar elementos quando eles entram na área visível da tela (viewport), criando uma experiência visual mais fluida e moderna.
 
+npm install framer-motion
 ---
 
 #### Local de Uso
