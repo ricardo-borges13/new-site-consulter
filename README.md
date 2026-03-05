@@ -14,6 +14,28 @@ Este é um site baseado em React para a Consulter, uma empresa que fornece solu�
 **Linting:** ESLint
 **Gerenciador de Pacotes:** npm
 
+### OBSERVAÇÃO
+Projeto rodando ainda em fase de teste no endereço: https://consulter.invetec.com.br/
+
+* Tive que criar um SUB-DOMINIO na DialHost
+* O arquivo .htaccess ficou da seguinte forma:
+
+***.htaccess***
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^index\.html$ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+</IfModule>
+
+
+
+
+
 ## Convenções de Desenvolvimento
 
 - O projeto segue a estrutura padrão de projetos React.
