@@ -292,6 +292,90 @@ Componente responsável por **resetar o scroll da página ao trocar de rota**.
 
 ---
 
+## 🎨 Theme (Styled Components)
+
+O projeto utiliza **Styled Components** com **ThemeProvider** para centralizar e padronizar estilos globais da aplicação.
+
+O tema permite definir cores, tipografia e outros tokens de design em um único local, facilitando a manutenção e garantindo consistência visual em toda a interface.
+
+---
+
+### 📁 Estrutura
+src
+└ theme
+├ theme.ts
+└ styled-components.d.ts
+
+
+---
+
+### 📄 `theme.ts`
+
+Responsável por definir o objeto de tema utilizado em toda a aplicação.
+
+Exemplo:
+
+```ts
+export const theme = {
+  colors: {
+    background: {
+      global: '#F9FAFB',
+    },
+    text: {
+      primary: '#AAAAAA',
+    },
+    fonts: {
+      global: 'Poppins, sans-serif',
+    },
+    primary: '#94c11f',
+    secundary: '#f6f6f6',
+    success: '#1e7f4f',
+    error: '#b30000',
+  }
+};
+
+export type Theme = typeof theme;
+```
+### 📄 styled-components.d.ts
+Arquivo responsável por tipar o tema no TypeScript, permitindo autocomplete e validação de tipos ao utilizar o theme.
+
+```tsx
+import 'styled-components';
+import { Theme } from './theme';
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends Theme {}
+}
+```
+### 📄 Uso no App.tsx
+O ThemeProvider é utilizado para disponibilizar o tema para toda a aplicação.
+
+```tsx
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme/theme';
+
+<ThemeProvider theme={theme}>
+  <GlobalStyle />
+  <RouterProvider router={router} />
+</ThemeProvider>
+```
+
+### 📄 Utilizando o tema nos componentes
+```tsx
+color: ${({ theme }) => theme.colors.primary};
+background: ${({ theme }) => theme.colors.background.global};
+font-family: ${({ theme }) => theme.colors.fonts.global};
+```
+# ✅ Benefícios
+- Centralização das variáveis de design
+- Melhor organização do CSS
+- Autocomplete no TypeScript
+- Facilita manutenção e escalabilidade
+- Preparado para implementar Dark Mode ou múltiplos temas no futuro
+
+--------------------
+
+
 ## ESTRUTURA DO SITE
 
 ### Componente `Layout`

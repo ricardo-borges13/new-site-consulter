@@ -1,9 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
 import { lazy } from 'react'; // Import React and Suspense
+import Home from '../pages/Home';
 
-// Dynamically import page components
-const Home = lazy(() => import('../pages/Home'));
 const QuemSomos = lazy(() => import('../pages/QuemSomos'));
 const TrabalheConosco = lazy(() => import('../pages/TrabalheConosco'));
 const Contato = lazy(() => import('../pages/Contato'));
